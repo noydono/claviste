@@ -1,0 +1,47 @@
+<a class="waves-effect waves-light btn modal-trigger" href="#modalUpdate">Update</a>
+
+
+
+<form action="article/update" method="POST">
+  <div id="modalUpdate" class="modal">
+
+    <div class="modal-content">
+      <div class="col s12">
+
+
+
+        <div class="row">
+          <h2>Editer un article</h2>
+        </div>
+
+{{#each dbArticle}}
+        <div class="row">
+          <div class="card blue-grey darken-1">
+
+            <div class="card-content white-text">             
+              <label for="titleArticle">Titre De L'article</label>
+              <input id="titleArticle" type="text" name="title" value="{{title}}">
+              <label for="textarea1">Textarea</label>
+              <textarea id="textarea1" class="materialize-textarea" name="content">{{content}}</textarea>
+              <label for="titleArticle">author</label>
+              <input id="titleArticle" type="text" name="author" value="{{author}}">
+            </div>
+
+            <form action="article/update">
+              <div class="card-action">
+                <button class="waves-effect waves-light btn" type="submit">Envoyer <i class="far fa-paper-plane"></i></button>
+              </div>
+            </form>
+          </div>
+        </div>
+{{/each}}
+
+      </div>
+    </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="modal-close waves-effect waves-light btn">Agree</button>
+    </div>
+
+  </div>
+</form>

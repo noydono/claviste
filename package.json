@@ -1,0 +1,30 @@
+{
+  "name": "claviste",
+  "version": "1.0.0",
+  "description": "blog clavier",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js",
+    "sass": "sass --watch ./public/materialize-src/sass/materialize.scss:./public/css/style.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noydono/claviste.git"
+  },
+  "author": "noy_dono",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noydono/claviste/issues"
+  },
+  "homepage": "https://github.com/noydono/claviste#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "express-session": "^1.17.0",
+    "handlebars": "^4.5.0",
+    "mongoose": "^5.9.2",
+    "nodemon": "^2.0.2"
+  }
+}
