@@ -4,8 +4,10 @@
 const   express = require('express'),
         app = express(),
         hbs = require('express-handlebars'),
+        Handlebars = require('handlebars')
         mongoose = require('mongoose'),
         bodyParser = require('body-parser'),
+        fileUpload = require('express-fileupload'),
         port = 3000
 
 
@@ -16,11 +18,19 @@ const ROUTER = require('./api/router'),
         keys = require('./config/keys')
 
 
+
+/*
+ *   hbs Moment
+ * * * * * */
+const MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
+
+
 /*
  *   Body Parser
  * * * * * */
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: true }))
  
 // parse application/json
 app.use(bodyParser.json())
@@ -32,7 +42,8 @@ app.use(bodyParser.json())
 mongoose.connect(keys.mongoLocal , {
 
     useNewUrlParser: true,
-    useUnifiedTopology: true
+    useUnifiedTopology: true,
+    useFindAndModify:false,
 
 }, (err)=> {
 
@@ -52,7 +63,7 @@ mongoose.connect(keys.mongoLocal , {
 /*
  *  express
  * * * * * */
-app.use(express.static('public'));
+app.use('/public', express.static('public'));
 
 
 /*
@@ -64,8 +75,10 @@ app.engine('hbs', hbs({
     defaultLayout: 'main'
 }));
 
-
-
+app.use(fileUpload({
+    useTempFiles : true,
+    tempFileDir : '/tmp/'
+}));
 
 app.use('/', ROUTER)
 

@@ -2,44 +2,44 @@
 
 
 <!-- Modal Create -->
-<form action="article/create" method="POST">
-<div id="modalCreate" class="modal">
+<form action="article/create" method="POST" enctype="multipart/form-data">
+  <div id="modalCreate" class="modal">
 
-  <div class="modal-content">
-    <div class="col s12">
-      <div class="row">
+    <div class="modal-content">
+      <div class="col s12">
+
         <h2>Créé un article</h2>
-      </div>
 
-      <div class="row">
         <div class="input-field col s12">
           <input id="titleArticle" type="text" name="title">
           <label for="titleArticle">Titre De L'article</label>
         </div>
-      </div>
 
-      <div class="row">
         <div class="input-field col s12">
           <textarea id="textarea1" class="materialize-textarea" name="content"></textarea>
           <label for="textarea1">Textarea</label>
         </div>
-      </div>
 
-      <div class="row">
         <div class="input-field col s12">
           <input id="titleArticle" type="text" name="author">
           <label for="titleArticle">author</label>
         </div>
+
+        <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file" name="file">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+        </div>
       </div>
-
     </div>
-  </div>
 
-  <div class="modal-footer">
-    <button href="#!" type="submit" class="modal-close waves-effect waves-light btn">Agree</button>
-  </div>
+    <div class="modal-footer">
+      <button type="submit" class="modal-close waves-effect waves-light btn">Agree</button>
+    </div>
 
-</div>
+  </div>
 </form>
-
-

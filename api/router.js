@@ -2,17 +2,15 @@
  *  module
  * * * * * */
 
-const   express = require('express') ,
-        router = express.Router()
+const express = require('express'),
+    router = express.Router()
 
 /*
  *  controllers
  * * * * * */
 
 const indexController = require('./controllers/pages/index'),
-    createArticleController = require ('./controllers/article/articleCreate')
-
-
+    ArticleController = require('./controllers/article/articleController')
 
 
 /*
@@ -23,6 +21,13 @@ router.route('/')
 //---------------------------------CRUD Article-------------------------
 
 router.route('/article/create')
-    .post(createArticleController.create)
+    .post(ArticleController.create)
+
+router.route('/article/update/:id')
+    .post(ArticleController.update)
+
+router.route('/article/delete/:id')
+    .post(ArticleController.delete)
+
 
 module.exports = router
