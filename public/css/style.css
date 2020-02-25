@@ -3420,10 +3420,9 @@ small {
 
 .card {
   position: relative;
-  margin: 0.5rem 0 1rem 0;
   background-color: #fff;
   transition: box-shadow .25s;
-  border-radius: 2px; }
+  border-radius: 10px; }
   .card .card-title {
     font-size: 24px;
     font-weight: 300; }
@@ -3803,9 +3802,9 @@ small {
     .btn-floating.btn-small i {
       line-height: 32.4px; }
   .btn-floating.halfway-fab {
-    position: absolute;
-    right: 24px;
-    bottom: -20px; }
+    position: fixed;
+    left: 2%;
+    top: 10%; }
     .btn-floating.halfway-fab.left {
       right: auto;
       left: 24px; }
@@ -4097,7 +4096,8 @@ body.keyboard-focused .dropdown-content li:focus {
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  width: 90%;
+  width: 50%;
+  max-height: 85%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
@@ -4119,7 +4119,9 @@ body.keyboard-focused .dropdown-content li:focus {
     padding: 4px 6px;
     height: 56px;
     width: 100%;
-    text-align: right; }
+    text-align: right;
+    position: relative;
+    bottom: 0; }
     .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-small, .modal .modal-footer .btn-flat {
       margin: 6px 0; }
 

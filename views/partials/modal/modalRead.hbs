@@ -1,19 +1,21 @@
-<a class="waves-effect waves-light btn modal-trigger" href="#modalRead">read</a>
-
 <div id="modalRead" class="modal">
+
   <div class="modal-content">
+
     <div class="row">
       <h2>List des Article</h2>
     </div>
+
     {{#each dbArticle}}
+
     <form action="article/delete/{{_id}}" method="POST">
+
       <div class="row">
+
         <div class="card brown lighten-2 hoverable">
 
           <div class="card-image">
-
             <img src="{{img}}">
-
           </div>
 
           <div class="card-content ">
@@ -22,16 +24,22 @@
           </div>
 
           <div class="card-action">
+
             <a href="#">{{author}}</a>
+
             <div>Publier le {{moment createDate format = "DD-MM-YYYY"}}
               a {{moment createDate format = "hh:mm"}}
             </div>
+
             <button class="waves-effect waves-light btn left-align red darken-1" type="submit"> supprimer <i
                 class="material-icons right fas fa-trash-alt"></i></button>
+         
           </div>
 
         </div>
+
       </div>
+      
     </form>
     {{/each}}
 

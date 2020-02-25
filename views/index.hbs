@@ -1,36 +1,8 @@
 
-<ul id="slide-out" class="sidenav sidenav-overlay">
-    <li>
-        <div class="user-view">
-            <div class="background">
-                <img src="https://picsum.photos/500">
-            </div>
-            <a href="#user"><img class="circle" src="https://picsum.photos/200/300"></a>
-            <a href="#name"><span class="white-text name">John Doe</span></a>
-            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-        </div>
-    </li>
-    <li>{{>CRUDArticle/modalCreate}}</li>
-    <li>{{>CRUDArticle/modalRead}}</li>
-    <li>{{>CRUDArticle/modalUpdate}}</li>
-</ul>
-<a href="#" data-target="slide-out" class="sidenav-trigger btn-floating btn-large waves-effect waves-light red pulse"><i class="material-icons">menu</i></a>
 
+{{>sidebar/button}}
 
+{{>parallax/indexParallax}}
 
-
-<script> // Or with jQuery
-
-    $(document).ready(function () {
-        $('.sidenav').sidenav();
-    });
-
-    // Or with jQuery
-
-  $(document).ready(function () {
-    $('.modal').modal();
-  });
-
-
-</script>
+{{>sidebar/sidebar }}
 

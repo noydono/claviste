@@ -1,0 +1,39 @@
+
+<ul id="slide-out" class="sidenav">
+    <li>
+        <div class="user-view">
+            <div class="background">
+                <img src="https://picsum.photos/700">
+            </div>
+            <a href="#user"><img class="circle" src="https://picsum.photos/200/300"></a>
+            <a href="#name"><span class="white-text name">John Doe</span></a>
+            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
+        </div>
+    </li>
+    <li><a class="waves-effect waves-light btn modal-trigger" href="#modalInscription">m'inscrire</a></li>
+    <li><a class="waves-effect waves-light btn modal-trigger" href="#modalCreate">create</a></li>
+    <li><a class="waves-effect waves-light btn modal-trigger" href="#modalRead">read</a></li>
+    <li><a class="waves-effect waves-light btn modal-trigger" href="#modalUpdate">Update</a></li>
+</ul>
+
+{{>modal/modalCreate}}
+{{>modal/modalRead}}
+{{>modal/modalUpdate}}
+{{>modal/modalInscription}}
+
+
+
+<script> // Or with jQuery
+
+    $(document).ready(function () {
+        $('.sidenav').sidenav();
+    });
+
+    // Or with jQuery
+
+  $(document).ready(function () {
+    $('.modal').modal();
+  });
+
+
+</script>
