@@ -1,6 +1,5 @@
-
 <!-- Modal Create -->
-<form action="article/create" method="POST" enctype="multipart/form-data">
+<form action="user/create" method="POST" enctype="multipart/form-data">
   <div id="modalInscription" class="modal">
 
     <div class="modal-content">
@@ -9,63 +8,48 @@
         <h2>Inscris-toi</h2>
       </div>
 
-      
-    <div class="col s12">
 
-      <div class="row">
-        <div class="input-field col s6">
-          <input placeholder="Placeholder" id="first_name" type="text" class="validate">
-          <label for="first_name">First Name</label>
+      <div class="col s12">
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="Pseaudo" type="text" name="pseaudo" class="validate autocomplete" required>
+            <label for="Pseaudo">Pseaudo</label>
+          </div>
         </div>
-        <div class="input-field col s6">
-          <input id="last_name" type="text" class="validate">
-          <label for="last_name">Last Name</label>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="email" type="email" name="email" class="validate autocomplete" required>
+            <label for="email">Email</label>
+          </div>
         </div>
+
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="password" type="password" name="password" class="validate" required>
+            <label for="password">Password</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="input-field col s12">
+            <input id="passwordVerif" type="password" name="passwordVerif" class="validate" required>
+            <label for="passwordVerif">retaper votre password</label>
+          </div>
+        </div>
+
+
       </div>
 
-      <div class="row">
-        <div class="input-field col s12">
-          <input disabled value="I am not editable" id="disabled" type="text" class="validate">
-          <label for="disabled">Disabled</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="email" type="email" class="validate">
-          <label for="email">Email</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="password" type="password" class="validate">
-          <label for="password">Password</label>
-        </div>
-      </div>
-
-      <div class="row">
-        <div class="input-field col s12">
-          <input id="passwordVerif" type="password" class="validate">
-          <label for="passwordVerif">retaper votre password</label>
-        </div>
-      </div>
-      
-     
-    </div>
- 
     </div>
 
     <div class="modal-footer">
-      <button type="submit" class="modal-close waves-effect waves-light btn">Agree</button>
+      <button type="submit" class="modal-close waves-effect waves-light btn" >S'inscrire</button>
     </div>
 
   </div>
 </form>
+
+

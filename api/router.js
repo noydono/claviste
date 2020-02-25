@@ -3,8 +3,8 @@
  * * * * * */
 
 const express = require('express'),
-    router = express.Router(),
-    multer = require('../config/Multer-config')
+    router = express.Router()
+    // multer = require('../config/Multer-config')
     
 
 /*
@@ -12,7 +12,8 @@ const express = require('express'),
  * * * * * */
 
 const indexController = require('./controllers/pages/index'),
-    ArticleController = require('./controllers/article/articleController')
+    ArticleController = require('./controllers/article/articleController'),
+    UserController = require('./controllers/user/userController')
 
 
 /*
@@ -21,18 +22,22 @@ const indexController = require('./controllers/pages/index'),
 router.route('/')
     .get(indexController.get)
 //---------------------------------CRUD Article-------------------------
-
 router.route('/article/create')
-    .post(multer,ArticleController.create)
+    .post(ArticleController.create)
 
 router.route('/article/update/:id')
-    .post(multer,ArticleController.update)
+    .post(ArticleController.update)
 
 router.route('/article/delete/:id')
     .post(ArticleController.delete)
 
     router.route('/article/deleteAll')
     .post(ArticleController.deleteAll)
+
+// ----------------------------CRUD User------------------------------------
+
+router.route('/user/create')
+    .post(UserController.create)
 
 
 module.exports = router
