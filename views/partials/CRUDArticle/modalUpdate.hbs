@@ -12,9 +12,15 @@
       </div>
 
       {{#each dbArticle}}
-      <form action="article/update/{{_id}}" method="POST">
+      <form action="article/update/{{_id}}" method="POST" enctype="multipart/form-data">
         <div class="row">
           <div class="card brown lighten-2 hoverable">
+
+            <div class="card-image">
+
+              <img src="{{img}}">
+
+            </div>
             <div class="card-content ">
               <div class="row">
 
@@ -36,7 +42,7 @@
               <div class="file-field input-field">
                 <div class="btn">
                   <span>File</span>
-                  <input type="file">
+                  <input type="file" name="img">
                 </div>
                 <div class="file-path-wrapper">
                   <input class="file-path validate" type="text">

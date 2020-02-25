@@ -7,25 +7,23 @@ const   express = require('express'),
         Handlebars = require('handlebars')
         mongoose = require('mongoose'),
         bodyParser = require('body-parser'),
-        fileUpload = require('express-fileupload'),
+        morgan = require('morgan'),
+        
         port = 3000
-
-
 /*
  *   api
  * * * * * */
 const ROUTER = require('./api/router'),
         keys = require('./config/keys')
-
-
-
+/*
+ *   Morgan
+ * * * * * */
+app.use(morgan('dev'));
 /*
  *   hbs Moment
  * * * * * */
 const MomentHandler = require("handlebars.moment");
 MomentHandler.registerHelpers(Handlebars);
-
-
 /*
  *   Body Parser
  * * * * * */
@@ -34,8 +32,6 @@ app.use(bodyParser.urlencoded({ extended: true }))
  
 // parse application/json
 app.use(bodyParser.json())
- 
-
 /*
  *  mongoose
  * * * * * */
@@ -73,11 +69,6 @@ app.set('view engine', 'hbs');
 app.engine('hbs', hbs({
     extname: 'hbs',
     defaultLayout: 'main'
-}));
-
-app.use(fileUpload({
-    useTempFiles : true,
-    tempFileDir : '/tmp/'
 }));
 
 app.use('/', ROUTER)

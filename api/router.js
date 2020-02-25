@@ -3,7 +3,9 @@
  * * * * * */
 
 const express = require('express'),
-    router = express.Router()
+    router = express.Router(),
+    multer = require('../config/Multer-config')
+    
 
 /*
  *  controllers
@@ -21,13 +23,16 @@ router.route('/')
 //---------------------------------CRUD Article-------------------------
 
 router.route('/article/create')
-    .post(ArticleController.create)
+    .post(multer,ArticleController.create)
 
 router.route('/article/update/:id')
-    .post(ArticleController.update)
+    .post(multer,ArticleController.update)
 
 router.route('/article/delete/:id')
     .post(ArticleController.delete)
+
+    router.route('/article/deleteAll')
+    .post(ArticleController.deleteAll)
 
 
 module.exports = router

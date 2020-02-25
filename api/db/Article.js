@@ -10,7 +10,8 @@ var ArticleSchema = new mongoose.Schema({
         type: Date,
         default: new Date()
         },
-    image:String
+    img:String,
+    nameImg : String
 });
 
 const Article = mongoose.model('Article', ArticleSchema);
