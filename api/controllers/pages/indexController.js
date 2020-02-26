@@ -5,6 +5,8 @@ module.exports = {
 
     get: async (req,res) => {
 
+        console.log(res.local);
+        
         const dbArticle = await Article.find({}) 
 
         console.log(req.session);

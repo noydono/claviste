@@ -1,3 +1,6 @@
+// req.flash ne marche pas fair la gestion d'err plus tard
+
+
 const User = require('../../db/User'),
     bcrypt = require('bcrypt');
 
@@ -14,7 +17,7 @@ module.exports = {
 
             if (req.body.password !== req.body.passwordVerif) {
                 console.log('error password')
-                req.flah('registerPwdErr','vaut deux mpd ne sont pas les mếme')
+                req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
                 res.render('index')
 
             } else {
@@ -53,27 +56,27 @@ module.exports = {
     },
     login: async (req, res) => {
 
-        
 
-        const dbUser =({ username: req.body.username })
-        
-        
-        User.findOne( dbUser, (err, user) => {
+
+        const dbUser = ({ username: req.body.username })
+
+
+        User.findOne(dbUser, (err, user) => {
 
 
             if (user) {
-                
+
                 bcrypt.compare(req.body.passwordVerif, user.passwordVerif, function (err, same) {
 
                     if (same) {
                         console.log('pwd same ');
                         req.session.userId = user._id
                         req.session.username = user.username,
-                        req.session.email = user.email,
-                        req.session.isAdmin = user.isAdmin,
-                        req.session.isVerified = user.isVerified,
-                        req.session.isBan = user.isBan,
-                        req.session.status = user.status
+                            req.session.email = user.email,
+                            req.session.isAdmin = user.isAdmin,
+                            req.session.isVerified = user.isVerified,
+                            req.session.isBan = user.isBan,
+                            req.session.status = user.status
 
                         res.redirect('/')
 
@@ -99,7 +102,43 @@ module.exports = {
 
 
 
-        
+
+    },
+    logout: (req, res) => {
+        console.log('coucou');
+
+        req.session.destroy(() => {
+            res.clearCookie("biscuit");
+            res.redirect('/')
+        })
+
+    },
+    update: async (req, res) => {
+
+        const query = await User.find({
+
+            _id: req.params.id
+        })
+
+        User.findByIdAndUpdate(query, {
+            status: req.body.status,
+            isAdmin: req.body.isAdmin,
+            isVerified: req.body.isVerified,
+            isBan: req.body.isBan,
+        },
+            (err, post) => {
+                if (err) {
+                    console.log(err);
+
+                    res.redirect('/')
+                } else {
+                    console.log('update ');
+
+                    res.redirect('/admin')
+
+
+                }
+            })
     }
 
 

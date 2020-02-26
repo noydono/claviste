@@ -8,7 +8,8 @@ module.exports = {
     create: (req, res) => {
 
         console.log("creation d'article");
-
+        console.log(req.file);
+        
 
         Article.create({
 
@@ -59,7 +60,7 @@ module.exports = {
                 } else {
                     console.log('article crée');
 
-                    res.redirect('/')
+                    res.redirect('back')
                 }
             })
 
@@ -90,7 +91,7 @@ module.exports = {
                             } else {
                                 console.log('article crée');
 
-                                res.redirect('/')
+                                res.redirect('back')
                             }
                         })
                     }

@@ -525,24 +525,24 @@ td, th{
   .collection-item {
     background-color: $collection-bg-color;
     line-height: $collection-line-height;
-    padding: 10px 20px;
+    padding: 10px 80px 10px 40px;
     margin: 0;
     border-bottom: 1px solid $collection-border-color;
 
     // Avatar Collection
     &.avatar {
       min-height: 84px;
-      padding-left: 72px;
+      padding-left: 90px;
       position: relative;
 
       // Don't style circles inside preloader classes.
       &:not(.circle-clipper) > .circle,
-      :not(.circle-clipper) > .circle {
+      :not(.circle-clipper) > .circle, {
         position: absolute;
         width: 42px;
         height: 42px;
         overflow: hidden;
-        left: 15px;
+        left: 20px;
         display: inline-block;
         vertical-align: middle;
       }
@@ -556,19 +556,24 @@ td, th{
 
 
       .title {
-        font-size: 16px;
+        font-size: 30px;
       }
 
       p {
         margin: 0;
       }
 
-      .secondary-content {
+      .secondary-content1 {
         position: absolute;
         top: 16px;
         right: 16px;
       }
 
+      .secondary-content2 {
+        position: absolute;
+        top: 60px;
+        right: 16px;
+      }
     }
 
 

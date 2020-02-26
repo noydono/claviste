@@ -6,15 +6,19 @@ const express = require('express'),
     router = express.Router()
     // multer = require('../config/Multer-config')
     
-
 /*
  *  controllers
  * * * * * */
 
-const indexController = require('./controllers/pages/index'),
+const indexController = require('./controllers/pages/indexController'),
     ArticleController = require('./controllers/article/articleController'),
-    UserController = require('./controllers/user/userController')
-
+    UserController = require('./controllers/user/userController'),
+    adminController = require('./controllers/pages/adminController'),
+    multer = require ('../config/Multer-config')
+/*
+ *  middleware
+ * * * * * */
+const isAdmin = require('./middleware/isAdmin')
 
 /*
  *  Route
@@ -22,11 +26,12 @@ const indexController = require('./controllers/pages/index'),
 router.route('/')
     .get(indexController.get)
 //---------------------------------CRUD Article-------------------------
+
 router.route('/article/create')
-    .post(ArticleController.create)
+    .post(multer,ArticleController.create)
 
 router.route('/article/update/:id')
-    .post(ArticleController.update)
+    .post(multer,ArticleController.update)
 
 router.route('/article/delete/:id')
     .post(ArticleController.delete)
@@ -41,6 +46,15 @@ router.route('/user/create')
 
 router.route('/user/login')
     .post(UserController.login)
+
+router.route('/user/logout')
+    .post(UserController.logout)
+
+router.route('/User/update/:id')
+    .post(multer,UserController.update)
+// ----------------------------layout Admin------------------------------------
+router.route('/admin')
+.get(adminController.get)
 
 
 module.exports = router

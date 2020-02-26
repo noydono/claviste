@@ -1,4 +1,6 @@
 <ul id="slide-out" class="sidenav">
+
+    {{#if user}}
     <li>
         <div class="user-view">
             <div class="background">
@@ -9,18 +11,28 @@
             <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
         </div>
     </li>
+    {{#if isAdmin}}
+    <li><a class="waves-effect waves-light btn modal-trigger" href="/admin">Administration</a></li>
+    {{else}}
+    {{/if}}
+
+    <form action="user/logout" method="POST">
+        <li><button type="submit" class="waves-effect waves-light btn modal-trigger"
+                style="bottom: 8%; position:absolute;">Deconnection</button></li>
+    </form>
+    {{else}}
+
     <li><a class="waves-effect waves-light btn modal-trigger" href="#modalInscription">m'inscrire</a></li>
     <li><a class="waves-effect waves-light btn modal-trigger" href="#modalLogin">Ce connecter</a></li>
-    {{!-- <li><a class="waves-effect waves-light btn modal-trigger" href="#modalCreate">create</a></li>
-    <li><a class="waves-effect waves-light btn modal-trigger" href="#modalRead">read</a></li>
-    <li><a class="waves-effect waves-light btn modal-trigger" href="#modalUpdate">Update</a></li> --}}
-    <li><a class="waves-effect waves-light btn modal-trigger" style="bottom: 7%; position:absolute;">Deconnection</a></li>
+
+    {{/if}}
+
+    
+
 
 </ul>
 
-{{>modal/modalCreate}}
-{{>modal/modalRead}}
-{{>modal/modalUpdate}}
+
 {{>modal/modalInscription}}
 {{>modal/modalLogin}}
 

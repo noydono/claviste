@@ -2337,12 +2337,12 @@ td, th {
   .collection .collection-item {
     background-color: #fff;
     line-height: 1.5rem;
-    padding: 10px 20px;
+    padding: 10px 80px 10px 40px;
     margin: 0;
     border-bottom: 1px solid #e0e0e0; }
     .collection .collection-item.avatar {
       min-height: 84px;
-      padding-left: 72px;
+      padding-left: 90px;
       position: relative; }
       .collection .collection-item.avatar:not(.circle-clipper) > .circle,
       .collection .collection-item.avatar :not(.circle-clipper) > .circle {
@@ -2350,7 +2350,7 @@ td, th {
         width: 42px;
         height: 42px;
         overflow: hidden;
-        left: 15px;
+        left: 20px;
         display: inline-block;
         vertical-align: middle; }
       .collection .collection-item.avatar i.circle {
@@ -2360,12 +2360,16 @@ td, th {
         background-color: #999;
         text-align: center; }
       .collection .collection-item.avatar .title {
-        font-size: 16px; }
+        font-size: 30px; }
       .collection .collection-item.avatar p {
         margin: 0; }
-      .collection .collection-item.avatar .secondary-content {
+      .collection .collection-item.avatar .secondary-content1 {
         position: absolute;
         top: 16px;
+        right: 16px; }
+      .collection .collection-item.avatar .secondary-content2 {
+        position: absolute;
+        top: 60px;
         right: 16px; }
     .collection .collection-item:last-child {
       border-bottom: none; }
@@ -4120,7 +4124,7 @@ body.keyboard-focused .dropdown-content li:focus {
     height: 56px;
     width: 100%;
     text-align: right;
-    position: relative;
+    position: absolute;
     bottom: 0; }
     .modal .modal-footer .btn, .modal .modal-footer .btn-large, .modal .modal-footer .btn-small, .modal .modal-footer .btn-flat {
       margin: 6px 0; }

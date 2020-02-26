@@ -7,7 +7,7 @@ const   express = require('express'),
         Handlebars = require('handlebars')
         mongoose = require('mongoose'),
         bodyParser = require('body-parser'),
-        morgan = require('morgan'),
+        // morgan = require('morgan'),
         session = require('express-session'),
         MongoStore = require('connect-mongo')(session);
         flash = require('connect-flash'),
@@ -61,6 +61,41 @@ app.use(session({
     
     }))
 
+
+/*
+ *   middleware global
+ * * * * * */
+
+    app.use('*', (req, res, next) => {
+
+
+
+        if (res.locals.user = req.session.userId) {
+    
+    
+            if (req.session.status === 'user') {
+    
+    
+    
+                if (req.session.isAdmin === true) {
+    
+    
+    
+                    res.locals.isAdmin = req.session.isAdmin
+    
+                }
+    
+
+                res.locals.user = req.session.status
+    
+            }
+    
+        }
+        // La function next permet qu'une fois la condition effectuer il reprenne son chemin
+        next()
+    })
+    
+
 /*
  *   FLash
  * * * * * */
@@ -69,7 +104,7 @@ app.use(flash())
 /*
  *   Morgan
  * * * * * */
-app.use(morgan('dev'));
+// app.use(morgan('dev'));
 
 /*
  *   hbs Moment
@@ -99,7 +134,8 @@ app.use('/public', express.static('public'));
 app.set('view engine', 'hbs');
 app.engine('hbs', hbs({
     extname: 'hbs',
-    defaultLayout: 'main'
+    defaultLayout: 'main',
+    layoutsDir: __dirname + '/views/layouts/'
 }));
 
 app.use('/', ROUTER)

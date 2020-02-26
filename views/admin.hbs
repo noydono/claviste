@@ -1,0 +1,29 @@
+
+
+
+{{>admin/navbar}}
+{{>admin/gestionPagination}}
+{{>admin/buttonAction}}
+
+
+
+
+
+<script>
+    
+    // Or with jQuery modal
+
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+
+  // Or with jQuery action button
+
+  $(document).ready(function(){
+    $('.fixed-action-btn').floatingActionButton();
+  });
+        
+   $(document).ready(function(){
+    $('select').formSelect();
+  });
+</script>
