@@ -8,29 +8,16 @@ const   express = require('express'),
         mongoose = require('mongoose'),
         bodyParser = require('body-parser'),
         morgan = require('morgan'),
+        session = require('express-session'),
+        MongoStore = require('connect-mongo')(session);
+        flash = require('connect-flash'),
         port = 3000
 /*
  *   api
  * * * * * */
 const ROUTER = require('./api/router'),
         keys = require('./config/keys')
-/*
- *   Morgan
- * * * * * */
-app.use(morgan('dev'));
-/*
- *   hbs Moment
- * * * * * */
-const MomentHandler = require("handlebars.moment");
-MomentHandler.registerHelpers(Handlebars);
-/*
- *   Body Parser
- * * * * * */
-// parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }))
- 
-// parse application/json
-app.use(bodyParser.json())
+
 /*
  *  mongoose
  * * * * * */
@@ -54,6 +41,51 @@ mongoose.connect(keys.mongoLocal , {
     }
     
 });
+
+/*
+ *   Express-session
+ * * * * * */
+
+app.use(session({
+
+    name: 'biscuit',
+     secret: 'Claviste',
+     saveUninitialized: true, // ne crée pas de session tant que quelque chose n'est pas stocké
+     resave: false,//ne pas enregistrer la session si non modifié
+     maxAge: 24 * 60 * 60 * 1000,
+      //me permet de stocker la sesion dans un store dans ma db et me la je connect le store a ma db
+      store: new MongoStore({ 
+            mongooseConnection: mongoose.connection,
+            
+        })
+    
+    }))
+
+/*
+ *   FLash
+ * * * * * */
+app.use(flash())
+
+/*
+ *   Morgan
+ * * * * * */
+app.use(morgan('dev'));
+
+/*
+ *   hbs Moment
+ * * * * * */
+const MomentHandler = require("handlebars.moment");
+MomentHandler.registerHelpers(Handlebars);
+
+/*
+ *   Body Parser
+ * * * * * */
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }))
+ 
+// parse application/json
+app.use(bodyParser.json())
+
 
 /*
  *  express

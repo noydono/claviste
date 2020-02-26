@@ -39,5 +39,8 @@ router.route('/article/delete/:id')
 router.route('/user/create')
     .post(UserController.create)
 
+router.route('/user/login')
+    .post(UserController.login)
+
 
 module.exports = router

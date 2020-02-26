@@ -4,17 +4,39 @@ const mongoose = require('mongoose'),
 
 var UserSchema = new mongoose.Schema({
 
-    username: String,
+    username: {
+        
+        type: String,
+        unique: true, 
+
+    },
     email: {
         type: String,
-        unique: true   //l'email ne doit pas etre identique aux autres utilisateurs
+        unique: true, 
+           //l'email ne doit etre identique aux autres utilisateurs
+    },
+    isAdmin:{
+        type:Boolean,
+        default:false
+    },
+    isVerified:{
+        type:Boolean,
+        default:false
+    },
+    isBan:{
+        type:Boolean,
+        default:false
+    },
+    status:{
+        type:String,
+        default:'user'
     },
     passwordVerif: String
   
 
 });
 
-// crypter le mot de passe
+// chiffrée le mot de passe
 UserSchema.pre('save', function (next) {
 
     const user = this                                      //prends le mot de passe

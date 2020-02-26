@@ -5,10 +5,15 @@ module.exports = {
 
     get: async (req,res) => {
 
-        const dbArticle = await Article.find({})   
+        const dbArticle = await Article.find({}) 
 
+        console.log(req.session);
+        
         res.render('index',{
-            dbArticle
+            dbArticle,
+            passwordNotSame: req.flash('passwordNotSame'),
+            registerPwdErr: req.flash('registerPwdErr'),
+            emailNotUnique: req.flash('emailNotUnique')
         })
     }
 
