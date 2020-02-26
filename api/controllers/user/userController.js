@@ -1,41 +1,53 @@
-const User = require('../../db/User'),
-bcrypt = require('bcrypt');
-path = require('path');
+const User = require('../../db/User')
 
 module.exports = {
 
-    create: (req, res) => {
+    create: async (req, res) => {
 
-        
+        console.log(req.body);
+        const mail = await User.find({
+            email: req.body.email
+        })
 
-        if (req.body.passwordVerif !== req.body.password) {
-            console.log('error password')
+        if (mail) {
+
             res.render('index')
+            console.log('mail exixten dans la db');
+            
         } else {
+            
+            if (req.body.password !== req.body.passwordVerif) {
+                console.log('error password')
+                res.render('index')
 
-            User.create({
-                pseaudo: req.body.pseaudo,
-                email: req.body.email,
-                passwordVerif: req.body.passwordVerif
+            } else {
+                console.log('password OK')
 
-            }, (error, user) => {
+                User.create({
 
-                if (error) {
-                    res.redirect('/')
-                } else {
-                    console.log('Success Create')
-                    res.redirect('/')
-                }
-            })
+                    username: req.body.username,
+                    email: req.body.email,
+                    passwordVerif: req.body.passwordVerif
 
+                }, (err, user) => {
+
+                    if (err) {
+                        console.log(err);
+
+                        res.redirect('/')
+
+                    } else {
+
+                        console.log('Success Create')
+                        res.redirect('/')
+
+                    }
+                })
+
+
+            }
 
         }
-
-
-
-
-
-        res.render('index')
     }
 
 

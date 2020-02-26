@@ -8,7 +8,6 @@ const   express = require('express'),
         mongoose = require('mongoose'),
         bodyParser = require('body-parser'),
         morgan = require('morgan'),
-        
         port = 3000
 /*
  *   api

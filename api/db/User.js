@@ -4,46 +4,13 @@ const mongoose = require('mongoose'),
 
 var UserSchema = new mongoose.Schema({
 
-    googleId:String,
-
-    username:String,
-   
+    username: String,
     email: {
         type: String,
-        unique: true   
+        unique: true   //l'email ne doit pas etre identique aux autres utilisateurs
     },
-    passwordVerif: {
-        type: String,
-    },
-
-    status: {
-        type: String,
-        default: 'user'
-    },
-
-    isAdmin: {
-    type: Boolean,
-    default: false
-    },
-
-    isBan: {
-    type: Boolean,
-    default: false
-    },
-
-    isVerified: {
-    type: Boolean,
-    default: false
-    },
-
-    createDate: {
-        type: Date,
-        default: new Date()
-        },
-
-    img:String,
-
-    nameImg : String
+    passwordVerif: String
+  
 
 });
 
@@ -52,8 +19,8 @@ UserSchema.pre('save', function (next) {
 
     const user = this                                      //prends le mot de passe
 
-    bcrypt.hash(user.password, 10, (error, encrypted) => {  //crypte le (! il faut installer bcrypt : npm i bcrypt)
-        user.password = encrypted
+    bcrypt.hash(user.passwordVerif, 10, (error, encrypted) => {  //crypte le (! il faut installer bcrypt : npm i bcrypt)
+        user.passwordVerif = encrypted
         next()                                                //et ensuite continue
     })
 })
