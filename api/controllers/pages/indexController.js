@@ -5,16 +5,13 @@ const User = require('../../db/User')
 module.exports = {
 
     get: async (req,res) => {
-
-        console.log(res.local);
         
-        const dbArticle = await Article.find({}) 
-        const dbUser = await User.find({
+        const dbArticle = await Article.find({})
+        const dbUser = await User.findById(req.session.userId)
+        
 
-            _id: req.params.id
-        })
-
-        console.log(req.session);
+        console.log(req.session)
+        console.log(dbUser);
         
         res.render('index',{
             dbArticle,

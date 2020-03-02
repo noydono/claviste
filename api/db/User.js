@@ -33,9 +33,9 @@ var UserSchema = new mongoose.Schema({
     },
     passwordVerif: String,
     img: String,
-    avatar: String,
+    avatarImg: String,
     nameImg: String,
-    avatarImg: String
+    avatarName: String
   
 
 });

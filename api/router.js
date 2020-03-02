@@ -14,7 +14,8 @@ const indexController = require('./controllers/pages/indexController'),
     ArticleController = require('./controllers/article/articleController'),
     UserController = require('./controllers/user/userController'),
     adminController = require('./controllers/pages/adminController'),
-    multer = require ('../config/Multer-config')
+    multer = require ('../config/Multer-config'),
+    MonCompteController = require('./controllers/user/monComptecontroller')
 /*
  *  middleware
  * * * * * */
@@ -36,8 +37,9 @@ router.route('/article/update/:id')
 router.route('/article/delete/:id')
     .post(ArticleController.delete)
 
-    router.route('/article/deleteAll')
+router.route('/article/deleteAll')
     .post(ArticleController.deleteAll)
+
 
 // ----------------------------CRUD User------------------------------------
 
@@ -52,6 +54,8 @@ router.route('/user/logout')
 
 router.route('/User/update/:id')
     .post(multer,UserController.update)
+router.route('moncompte/update')
+    .post(multer,MonCompteController.update)
 // ----------------------------layout Admin------------------------------------
 router.route('/admin')
 .get(adminController.get)

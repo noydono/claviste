@@ -10,7 +10,7 @@ module.exports = {
 
     create: async (req, res) => {
 
-        console.log(req.file);
+        console.log('create');
         
         const mail = await User.findOne({
             email: req.body.email
@@ -33,8 +33,10 @@ module.exports = {
                     username: req.body.username,
                     email: req.body.email,
                     passwordVerif: req.body.passwordVerif,
-                    img: `/public/uploads/${req.file.filename}`,
-                    nameImg: req.file.filename
+                    avatarImg: `/public/uploads/${req.file.filename}`,    
+                    avatarName: req.file.filename,
+                    bgImg: `/public/uploads/${req.file.filename}`,    
+                    bgName: req.file.filename
                    
 
                 }, (err, user) => {
@@ -65,7 +67,8 @@ module.exports = {
     login: async (req, res) => {
 
 
-
+        console.log('dans le login');
+        
         const dbUser = ({
             username: req.body.username
         })

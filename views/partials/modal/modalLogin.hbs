@@ -3,17 +3,18 @@
 
 <div id="modalLogin" class="modal modal-fixed-footer">
 
+
+      <div class="row right-align">
+        <a href="#" class="modal-close mr-15 " style="font-size:20px; color:black;"><i class="fas fa-times"></i></a>
+      </div>
+
   <div class="modal-content">
 
-    <div class="col s12 center-align">
+    <div class="row s12 center-align">
       <h2>Connecte-toi</h2>
-      
       <p class="red-text ">{{err}}</p>
     </div>
-
-
-    <div class="col s12">
-      
+ 
       <div class="row">
         <div class="input-field col s12">
           <input id="PseaudoConnection" type="text" class="validate " name="username" required>
@@ -28,15 +29,14 @@
         </div>
       </div>
 
-
-    </div>
-
   </div>
 
     <div class="modal-footer">
+      <a href="#modalMpdNodemailer" class=" modal-close  modal-trigger"> mot de pass Oublier</a>
+
       <button type="submit" class="modal-close waves-effect waves-light btn">se Connecter</button>
     </div>
   
-
 </div>
 </form>
+{{>modal/modalMpdNodemailer}}
