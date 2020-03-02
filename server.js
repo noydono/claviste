@@ -21,7 +21,7 @@ const ROUTER = require('./api/router'),
 /*
  *  mongoose
  * * * * * */
-mongoose.connect(keys.mongoLocal , {
+mongoose.connect(keys.mongoUri , {
 
     useNewUrlParser: true,
     useUnifiedTopology: true,

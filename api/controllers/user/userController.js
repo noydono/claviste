@@ -2,14 +2,19 @@
 
 
 const User = require('../../db/User'),
-    bcrypt = require('bcrypt');
+    bcrypt = require('bcrypt'),
+    path = require('path'),
+    fs = require('fs')
 
 module.exports = {
 
     create: async (req, res) => {
 
-
-        const mail = await User.findOne({ email: req.body.email })
+        console.log(req.file);
+        
+        const mail = await User.findOne({
+            email: req.body.email
+        })
 
         if (!mail) {
 
@@ -27,7 +32,10 @@ module.exports = {
 
                     username: req.body.username,
                     email: req.body.email,
-                    passwordVerif: req.body.passwordVerif
+                    passwordVerif: req.body.passwordVerif,
+                    img: `/public/uploads/${req.file.filename}`,
+                    nameImg: req.file.filename
+                   
 
                 }, (err, user) => {
 
@@ -58,7 +66,9 @@ module.exports = {
 
 
 
-        const dbUser = ({ username: req.body.username })
+        const dbUser = ({
+            username: req.body.username
+        })
 
 
         User.findOne(dbUser, (err, user) => {
@@ -121,11 +131,11 @@ module.exports = {
         })
 
         User.findByIdAndUpdate(query, {
-            status: req.body.status,
-            isAdmin: req.body.isAdmin,
-            isVerified: req.body.isVerified,
-            isBan: req.body.isBan,
-        },
+                status: req.body.status,
+                isAdmin: req.body.isAdmin,
+                isVerified: req.body.isVerified,
+                isBan: req.body.isBan,
+            },
             (err, post) => {
                 if (err) {
                     console.log(err);

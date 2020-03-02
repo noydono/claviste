@@ -3,9 +3,9 @@
 
 
 <!-- Modal Create -->  
-<form action="user/create" method="POST">
+<form action="user/create" method="POST"  enctype="multipart/form-data">
 
-<div id="modalInscription" class="modal">
+<div id="modalInscription" class="modal modal-fixed-footer">
 
   <div class="modal-content">
 
@@ -45,6 +45,17 @@
           <label for="passwordVerif">retaper votre password</label>
         </div>
       </div>
+
+      <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file" name="img">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+      </div>
+
 
 
     </div>

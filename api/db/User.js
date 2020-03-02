@@ -31,7 +31,11 @@ var UserSchema = new mongoose.Schema({
         type:String,
         default:'user'
     },
-    passwordVerif: String
+    passwordVerif: String,
+    img: String,
+    avatar: String,
+    nameImg: String,
+    avatarImg: String
   
 
 });

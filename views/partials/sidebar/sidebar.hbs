@@ -1,47 +1,47 @@
-<ul id="slide-out" class="sidenav">
 
-    {{#if user}}
-    <li>
-        <div class="user-view">
-            <div class="background">
-                <img src="https://picsum.photos/700">
-            </div>
-            <a href="#user"><img class="circle" src="https://picsum.photos/200/300"></a>
-            <a href="#name"><span class="white-text name">John Doe</span></a>
-            <a href="#email"><span class="white-text email">jdandturk@gmail.com</span></a>
-        </div>
-    </li>
-    {{#if isAdmin}}
-    <li><a class="waves-effect waves-light btn modal-trigger" href="/admin">Administration</a></li>
-    {{else}}
-    {{/if}}
-
-    <form action="user/logout" method="POST">
-        <li><button type="submit" class="waves-effect waves-light btn modal-trigger"
-                style="bottom: 8%; position:absolute;">Deconnection</button></li>
-    </form>
-    {{else}}
-
-    <li><a class="waves-effect waves-light btn modal-trigger" href="#modalInscription">m'inscrire</a></li>
-    <li><a class="waves-effect waves-light btn modal-trigger" href="#modalLogin">Ce connecter</a></li>
-
-    {{/if}}
-
-    
+        <form action="user/logout" method="POST">
+            <ul id="slide-out" class="sidenav">
+                {{#if user}}
+                <li>
+                    <div class="user-view">
+                        <div class="background">
+                            {{!-- <img src="{{dbUser.img}}" width="100%" height="100%"> --}}
+                        </div>
+                        <a href="#user">{{!--<img class="circle">--}}</a>
+                        <a href="#name"><span class="white-text name">{{dbUser.username}}</span></a>
+                        <a href="#email"><span class="white-text email">{{dbUser.email}}</span></a>
+                    </div>
+                </li>
+                {{#if isAdmin}}
+                <li><a class="waves-effect waves-light btn modal-trigger" href="/admin">Administration</a></li>
+                {{else}}
+                {{/if}}
 
 
-</ul>
+                <li><button type="submit" class="waves-effect waves-light btn modal-trigger"
+                        style="bottom: 8%; position:absolute;">Deconnection</button></li>
+
+                {{else}}
+
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#modalInscription">m'inscrire</a></li>
+                <li><a class="waves-effect waves-light btn modal-trigger" href="#modalLogin">Ce connecter</a></li>
+
+                {{/if}}
+
+            </ul>
+        </form>
 
 
 {{>modal/modalInscription}}
 {{>modal/modalLogin}}
 
 
-
 <script> // Or with jQuery
 
     $(document).ready(function () {
-        $('.sidenav').sidenav();
+        $('.sidenav').sidenav({
+            draggable: true
+        });
     });
 
     // Or with jQuery
@@ -50,5 +50,21 @@
         $('.modal').modal();
     });
 
+    // Or with jQuery
 
+    $(document).ready(function () {
+        $('.fixed-action-btn').floatingActionButton();
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.parallax').parallax();
+    });
 </script>

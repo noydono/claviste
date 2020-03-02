@@ -42,7 +42,7 @@ router.route('/article/delete/:id')
 // ----------------------------CRUD User------------------------------------
 
 router.route('/user/create')
-    .post(UserController.create)
+    .post(multer,UserController.create)
 
 router.route('/user/login')
     .post(UserController.login)
