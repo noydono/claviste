@@ -1,3 +1,4 @@
+
 {{#each dbArticle}}
 
 <div class="parallax-container">
@@ -11,10 +12,10 @@
     <li>
 
         <div class="collapsible-header">
-            <div class="row">
+            <div class="">
                 <span class="title">{{title}}</span>
                 <p>{{content}}</p>
-                <a class="circle right">Voir les commentaires<i class="fas fa-chevron-circle-down ml-5"></i></a>
+                <a class="circle right addCom">Voir les commentaires<i class="fas fa-chevron-circle-down ml-5"></i></a>
             </div>
         </div>
 
@@ -24,14 +25,15 @@
         </div>
 
         <div class="colorannex " style=" height:50px; ">
-            <a class="left-align author">{{author}}</a>
-            <div class="" style="">
-                <a>
-                    <i class="far fa-heart " style="font-size: 25px;">12</i>
+            <a class="left author ml-15 mt-5 mb-5 titre-text">{{author}}</a>
+            <div class="right mt-10 mb-10 mr-10" style="">
+                <a href="#modalCom{{_id}}" class="modal-trigger addCom ">
+                    22<i class="far fa-comment ml-5 mr-5" style="font-size: 25px;"></i>
                 </a>
-                <a href="#modal{{_id}}" class="modal-trigger">
-                    <i class="far fa-comment" style="font-size: 25px;">22</i>
+                <a class="addCom">
+                    12<i class="far fa-heart ml-1  " style="font-size: 25px;"></i>
                 </a>
+                
             </div>
 
 

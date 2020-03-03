@@ -2606,6 +2606,20 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+.author {
+  font-size: 25px;
+  font-family: "Lobster Two";
+  color: #93B7C2;
+}
+
+.addCom {
+  color: #93B7C2;
+}
+.addCom:hover {
+  color: #BD757B;
+  transition: 2s;
+}
+
 .valign-wrapper {
   display: flex;
   align-items: center;
@@ -3016,7 +3030,7 @@ table.responsive-table td {
   }
 }
 .title {
-  font-size: 25px;
+  font-size: 35px;
   color: #BD757B;
   font-family: "Lobster Two";
 }
@@ -5457,10 +5471,6 @@ small {
   background-color: #FFFFFF;
   transition: box-shadow 0.25s;
   border-radius: 2px;
-}
-.card .author {
-  font-size: 20px;
-  font-family: "Lobster Two";
 }
 .card .card-title {
   font-size: 40px;

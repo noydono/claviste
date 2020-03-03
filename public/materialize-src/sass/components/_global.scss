@@ -44,6 +44,19 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+.author{
+  font-size: 25px;
+  font-family: $font-titre;
+  color: $soustitre;
+  
+}
+.addCom{
+  color: $soustitre;
+  &:hover{
+    color: $titre;
+    transition: 2s;
+  }
+}
 
 // Positioning
 .valign-wrapper {
@@ -515,7 +528,7 @@ td, th{
 
 
 .title {
-  font-size: 25px;
+  font-size: 35px;
   color: $titre;
   font-family: $font-titre;
 }
