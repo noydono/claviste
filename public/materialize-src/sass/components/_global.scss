@@ -514,7 +514,11 @@ td, th{
 }
 
 
-
+.title {
+  font-size: 25px;
+  color: $titre;
+  font-family: $font-titre;
+}
 
 
 // Collections
@@ -632,7 +636,7 @@ td, th{
 }
 .collapsible .collection {
   margin: 0;
-  border: none;
+  
 }
 
 
