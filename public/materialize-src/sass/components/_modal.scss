@@ -11,7 +11,8 @@
   right: 0;
   background-color: #fafafa;
   padding: 0;
-  width: 100%;
+  width: 50%;
+  max-height: 85%;
   margin: auto;
   overflow-y: auto;
   border-radius: 2px;
@@ -39,6 +40,9 @@
     height: 56px;
     width: 100%;
     text-align: right;
+    position: absolute;
+    bottom: 0;
+
 
     .btn, .btn-flat {
       margin: 6px 0;
@@ -63,7 +67,7 @@
 // Modal with fixed action footer
 .modal.modal-fixed-footer {
   padding: 0;
-  height: 70%;
+  height:60%;
 
   .modal-content {
     position: absolute;
@@ -86,7 +90,7 @@
   bottom: -100%;
   margin: 0;
   width: 100%;
-  max-height: 45%;
+  max-height: 55%;
   border-radius: 0;
   will-change: bottom, opacity;
 }

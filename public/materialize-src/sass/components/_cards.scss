@@ -1,5 +1,3 @@
-
-
 .card-panel {
   transition: box-shadow .25s;
   padding: $card-padding;
@@ -11,41 +9,52 @@
 
 .card {
   position: relative;
-  margin: $element-top-margin 0 $element-bottom-margin 0;
   background-color: $card-bg-color;
   transition: box-shadow .25s;
   border-radius: 2px;
   @extend .z-depth-1;
 
 
+  
+
   .card-title {
-    font-size: 24px;
+    
+    font-size: 40px;
+    font-family: $font-titre ;
     font-weight: 300;
+    color: $titre;
+
     &.activator {
       cursor: pointer;
     }
   }
 
   // Card Sizes
-  &.small, &.medium, &.large {
+  &.small,
+  &.medium,
+  &.large {
     position: relative;
 
     .card-image {
       max-height: 60%;
       overflow: hidden;
     }
-    .card-image + .card-content {
+
+    .card-image+.card-content {
       max-height: 40%;
     }
+
     .card-content {
       max-height: 100%;
       overflow: hidden;
     }
+
     .card-action {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
+
     }
   }
 
@@ -63,7 +72,10 @@
 
   // Horizontal Cards
   &.horizontal {
-    &.small, &.medium, &.large {
+
+    &.small,
+    &.medium,
+    &.large {
       .card-image {
         height: 100%;
         max-height: none;
@@ -79,6 +91,7 @@
 
     .card-image {
       max-width: 50%;
+
       img {
         border-radius: 2px 0 0 2px;
         max-width: 100%;
@@ -145,6 +158,7 @@
     p {
       margin: 0;
     }
+
     .card-title {
       display: block;
       line-height: 32px;
@@ -160,18 +174,23 @@
     &:last-child {
       border-radius: 0 0 2px 2px;
     }
-    background-color: inherit; // Use inherit to inherit color classes
-    border-top: 1px solid rgba(160,160,160,.2);
+
+    background-color: $colorannex; // Use inherit to inherit color classes
+    border-top: 1px solid rgba(160, 160, 160, .2);
     position: relative;
     padding: 16px $card-padding;
 
     a:not(.btn):not(.btn-large):not(.btn-floating) {
-      color: $card-link-color;
+
+      color: $soustitre;
       margin-right: $card-padding;
       transition: color .3s ease;
       text-transform: uppercase;
 
-      &:hover { color: $card-link-color-light; }
+      &:hover {
+        color: black;
+        transition: 2s;
+      }
     }
   }
 

@@ -44,6 +44,19 @@ a {
   -webkit-tap-highlight-color: transparent;
 }
 
+.author{
+  font-size: 25px;
+  font-family: $font-titre;
+  color: $soustitre;
+  
+}
+.addCom{
+  color: $soustitre;
+  &:hover{
+    color: $titre;
+    transition: 2s;
+  }
+}
 
 // Positioning
 .valign-wrapper {
@@ -514,6 +527,13 @@ td, th{
 }
 
 
+.title {
+  font-size: 35px;
+  color: $titre;
+  font-family: $font-titre;
+}
+
+
 // Collections
 .collection {
   margin: $element-top-margin 0 $element-bottom-margin 0;
@@ -525,14 +545,14 @@ td, th{
   .collection-item {
     background-color: $collection-bg-color;
     line-height: $collection-line-height;
-    padding: 10px 20px;
+    padding: 10px 80px 10px 40px;
     margin: 0;
     border-bottom: 1px solid $collection-border-color;
 
     // Avatar Collection
     &.avatar {
       min-height: 84px;
-      padding-left: 72px;
+      padding-left: 90px;
       position: relative;
 
       // Don't style circles inside preloader classes.
@@ -542,7 +562,7 @@ td, th{
         width: 42px;
         height: 42px;
         overflow: hidden;
-        left: 15px;
+        left: 20px;
         display: inline-block;
         vertical-align: middle;
       }
@@ -556,19 +576,30 @@ td, th{
 
 
       .title {
-        font-size: 16px;
+        font-size: 25px;
+        .date {
+          font-size:18px;
+          color: rgb(99, 96, 96);
+        }
       }
+    
+      
 
       p {
         margin: 0;
       }
 
-      .secondary-content {
+      .secondary-content1 {
         position: absolute;
         top: 16px;
         right: 16px;
       }
 
+      .secondary-content2 {
+        position: absolute;
+        top: 60px;
+        right: 16px;
+      }
     }
 
 
@@ -618,7 +649,7 @@ td, th{
 }
 .collapsible .collection {
   margin: 0;
-  border: none;
+  
 }
 
 

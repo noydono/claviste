@@ -5,12 +5,12 @@
 }
 @media #{$medium-and-up} {
   .container {
-    width: 85%;
+    width: 95%;
   }
 }
 @media #{$large-and-up} {
   .container {
-    width: 70%;
+    width: 80%;
   }
 }
 .col .row {
@@ -51,7 +51,6 @@
     left: $perc;
   }
 }
-
 
 .row {
   margin-left: auto;
@@ -153,4 +152,18 @@
       }
     }
   }
+}
+
+$i: 10;
+$px: px;
+
+@for $i from 1 through 30 {
+    .pt-#{$i} { padding-top:$i+$px !important; };
+    .pb-#{$i} { padding-bottom:$i+$px !important; };
+    .pl-#{$i} { padding-left:$i+$px !important; };
+    .pr-#{$i} { padding-right:$i+$px !important; };
+    .mt-#{$i} { margin-top:$i+$px !important; };
+    .mb-#{$i} { margin-bottom:$i+$px !important; };
+    .ml-#{$i} { margin-left:$i+$px !important; };
+    .mr-#{$i} { margin-right:$i+$px !important; };
 }

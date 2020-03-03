@@ -1,0 +1,65 @@
+
+{{#each dbArticle}}
+
+<div class="parallax-container">
+    <div class="parallax">
+        <img src="{{img}}" alt="clavier Mécanique">
+    </div>
+</div>
+
+
+<ul class="collapsible">
+    <li>
+
+        <div class="collapsible-header">
+            <div>
+                <span class="title">{{title}}</span>
+                <p>{{content}}</p>
+                <a class="circle right addCom">Voir les commentaires<i class="fas fa-chevron-circle-down ml-5"></i></a>
+            </div>
+        </div>
+
+        <div class="collapsible-body">
+           
+            <span class="title">Commentaire</span>
+
+            <ul class="collection"> 
+                {{#each ../Coms}}
+                <li class="collection-item avatar">
+                    <i class="material-icons circle">folder</i>
+                    <span class="title">{{username}}<span class="date">{{createDate}}</span></span>
+
+                    <p>
+                        <i class="fas fa-quote-left"></i>
+                        {{content}}
+                        <i class="fas fa-quote-right"></i>
+                    </p>
+                </li>
+                {{/each}}
+            </ul>
+        
+        </div>
+
+        <div class="colorannex " style=" height:50px; ">
+            <a class="left author ml-15 mt-5 mb-5 titre-text">{{author}}</a>
+            <div class="right mt-10 mb-10 mr-10" style="">
+                <a href="#modalCom{{_id}}" class="modal-trigger addCom ">
+                    22<i class="far fa-comment ml-5 mr-5" style="font-size: 25px;"></i>
+                </a>
+                <a class="addCom">
+                    12<i class="far fa-heart ml-1  " style="font-size: 25px;"></i>
+                </a>
+
+            </div>
+
+
+
+            {{>modal/modalAddCommentaire}}
+        </div>
+
+    </li>
+</ul>
+
+
+
+{{/each}}

@@ -1,0 +1,76 @@
+
+{{!-- req.flash ne marche pas fairt la gestion erreur --}}
+
+
+<!-- Modal Create -->  
+<form action="user/create" method="POST"  enctype="multipart/form-data">
+
+<div id="modalInscription" class="modal modal-fixed-footer">
+
+
+      <div class="row right-align">
+        <a href="#" class="modal-close mr-15 right mt-5" style="font-size:20px; color:black;"><i class="fas fa-times"></i></a>
+      </div>
+
+  <div class="modal-content">
+
+    <div class="col s12 center-align">
+      <h2 class="title">Inscris-toi</h2>
+      {{!-- <p>{{passwordNotSame}}<br>{{registerPwdErr}}<br>{{emailNotUnique}}</p> --}}
+    </div>
+
+
+    <div class="col s12">
+      
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="Pseaudo" type="text" class="validate " name="username" required>
+          <label for="Pseaudo">Pseaudo</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="email" type="email" class="validate " name="email" required>
+          <label for="email">Email</label>
+        </div>
+      </div>
+
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="password" type="password" class="validate" name="password" required>
+          <label for="password">Password</label>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="input-field col s12">
+          <input id="passwordVerif" type="password" class="validate" name="passwordVerif" required>
+          <label for="passwordVerif">retaper votre password</label>
+        </div>
+      </div>
+
+    
+      <div class="file-field input-field">
+          <div class="btn">
+            <span>File</span>
+            <input type="file" name="img">
+          </div>
+          <div class="file-path-wrapper">
+            <input class="file-path validate" type="text">
+          </div>
+      </div>
+
+    
+    </div>
+
+  </div>
+
+    <div class="modal-footer">
+      <button type="submit" class="modal-close waves-effect waves-light btn">S'inscrire</button>
+    </div>
+  
+
+</div>
+</form>

@@ -1,3 +1,50 @@
-    <script src="../app.js"></script>
     <script src="https://kit.fontawesome.com/614db98f48.js" crossorigin="anonymous"></script>
-    <script src="/materialize-src/js/bin/materialize.min.js"></script>
+    <script src="/public/materialize-src/js/bin/materialize.min.js"></script>
+
+<script>
+   
+
+    $(document).ready(function () {
+        $('.dropdown-trigger').dropdown({
+            closeOnClick:false
+        })
+    });
+
+
+    $(document).ready(function () {
+        $('.collapsible').collapsible({
+            accordion:true,
+        });
+    });
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.sidenav').sidenav({
+            draggable: true
+        });
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.modal').modal();
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.fixed-action-btn').floatingActionButton();
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('select').formSelect();
+    });
+
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.parallax').parallax();
+    });
+</script>
