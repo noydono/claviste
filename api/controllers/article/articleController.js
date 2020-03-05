@@ -18,7 +18,8 @@ module.exports = {
             author: req.body.author,
             img: `/public/uploads/${req.file.filename}`,
             nameImg: req.file.filename,
-            createDate: new Date()
+            createDate: new Date(),
+            commentaire : []
 
         }, (err, post) => {
 

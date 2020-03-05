@@ -9,15 +9,17 @@ var ArticleSchema = new mongoose.Schema({
     createDate: {
         type: Date,
         default: new Date()
-        },
+    },
     img: String,
-    nameImg : String,
+    nameImg: String,
     articleVerified: {
 
-        type:Number,
+        type: Number,
         default: 0
-        
+
     }
+
+
 });
 
 const Article = mongoose.model('Article', ArticleSchema);
