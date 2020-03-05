@@ -10,18 +10,11 @@ module.exports = {
         // recuperation de db dans variable
         const dbUser = await User.findById(req.session.userId)
 
-        const pourcent = nvote/TOTalUser*100
-
-        const dbArticle = await Article.find({articleVerified : pourcent}),
-
-        
-
-        
-            
-
-            
-            // dbCom = await Com.find({})
-            // Coms = dbCom.reverse()
+        // const pourcent = nvote/TOTalUser*100
+        const dbArticle = await Article.find({}),
+            dbArticleverif = await Article.find({ articleVerified: 2 }),
+            dbCom = await Com.find({}),
+            Coms = dbCom.reverse()
 
 
         console.log(dbArticle)
@@ -29,8 +22,9 @@ module.exports = {
         res.render('index', {
 
             dbArticle,
+            dbArticleverif,
             dbUser,
-            // Coms,
+            Coms,
             passwordNotSame: req.flash('passwordNotSame'),
             registerPwdErr: req.flash('registerPwdErr'),
             emailNotUnique: req.flash('emailNotUnique')
