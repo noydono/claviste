@@ -10,7 +10,6 @@ var ArticleSchema = new mongoose.Schema({
         type: Date,
         default: new Date()
         },
-<<<<<<< HEAD
     img: String,
     nameImg : String,
     articleVerified: {
@@ -19,10 +18,6 @@ var ArticleSchema = new mongoose.Schema({
         default: 0
         
     }
-=======
-    img:String,
-    nameImg : String
->>>>>>> thibault
 });
 
 const Article = mongoose.model('Article', ArticleSchema);

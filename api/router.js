@@ -15,12 +15,8 @@ const indexController = require('./controllers/pages/indexController'),
     UserController = require('./controllers/user/userController'),
     adminController = require('./controllers/pages/adminController'),
     multer = require ('../config/Multer-config'),
-<<<<<<< HEAD
     MonCompteController = require('./controllers/user/monComptecontroller'),
     CommentaireController = require('./controllers/article/CommentaireController')
-=======
-    MonCompteController = require('./controllers/user/monComptecontroller')
->>>>>>> thibault
 /*
  *  middleware
  * * * * * */
@@ -45,14 +41,10 @@ router.route('/article/delete/:id')
 router.route('/article/deleteAll')
     .post(ArticleController.deleteAll)
 
-<<<<<<< HEAD
 // ----------------------------CRUD Commentaire------------------------------------
 
 router.route('/commentaire/create/:id')
     .post(CommentaireController.addCom)
-=======
-
->>>>>>> thibault
 // ----------------------------CRUD User------------------------------------
 
 router.route('/user/create')
