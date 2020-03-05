@@ -13,7 +13,7 @@
 
         <div class="collapsible-header">
             <div>
-                <span class="title">{{title}}</span>
+                <span class="title">{{_id}}</span>
                 <p>{{content}}</p>
                 <a class="circle right addCom">Voir les commentaires<i class="fas fa-chevron-circle-down ml-5"></i></a>
             </div>
@@ -24,18 +24,22 @@
             <span class="title">Commentaire</span>
 
             <ul class="collection"> 
+                {{#if dbArticle._id = Coms.article_id}}
+
                 {{#each ../Coms}}
                 <li class="collection-item avatar">
                     <i class="material-icons circle">folder</i>
-                    <span class="title">{{username}}<span class="date">{{createDate}}</span></span>
+                    <span class="title">{{_id}}<span class="date">{{createDate}}</span></span>
 
                     <p>
                         <i class="fas fa-quote-left"></i>
-                        {{content}}
+                        {{article_id}}
                         <i class="fas fa-quote-right"></i>
                     </p>
                 </li>
                 {{/each}}
+                {{else}}
+                {{/if}}
             </ul>
         
         </div>
