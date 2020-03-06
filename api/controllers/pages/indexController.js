@@ -12,37 +12,26 @@ module.exports = {
             dbAllUser = await User.find({}),
             dbArticle = await Article.find({})
 
-        let dbArticleVerif = [];
+        // let dbArticleVerif = [];
 
         for (i = 0; i < dbArticle.length; i++) {
 
 
             let totalUser = dbAllUser.length,
-                resultat = dbArticle[i].articleVerified / totalUser * 100
-            console.log(resultat);
+                pourcentage = dbArticle[i].articleVerified / totalUser * 100,
+                resultat = totalUser * 20 / 100 
 
-            if (dbArticle[i].articleVerified >= resultat) {
-                dbArticleVerif.push(this)
 
+            // console.log(`${resultat}` + " " + `${pourcentage}`);
+
+            if ( pourcentage >= resultat ) {
+
+                // let dbArticleVerif = await Article.find({})
+               console.log(this);
+               
             }
 
         }
-
-
-        // if (a === resultat) {
-
-        //     let 
-
-        // }
-
-
-
-        console.log(dbArticleVerif);
-
-
-
-
-        // console.log(dbArticle);
 
         res.render('index', {
 
