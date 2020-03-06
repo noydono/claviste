@@ -139,29 +139,7 @@ app.engine('hbs', hbs({
 }));
 
 
- // Warning: untested code
- Handlebars.registerHelper('each_upto', function (arr, limit) {
-                          
 
-
-       return console.log(arrlimit);
-        
-
-
-    // return console.log(arr.forEach((a) => {
-        
-        
-    //     if(a.article_id === limit){
-    //         console.log('same');
-            
-    //     }else{
-    //         console.log('not same');
-            
-    //     }
-    
-    // }));
-      
-});
 
 
 app.use('/', ROUTER)

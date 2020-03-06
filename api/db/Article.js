@@ -17,7 +17,17 @@ var ArticleSchema = new mongoose.Schema({
         type: Number,
         default: 0
 
-    }
+    }, commentaire: [
+        {
+            article_id: String,
+            username: String,
+            content: String,
+            createDate: {
+                type: Date,
+                default: new Date()
+            }
+        }
+    ]
 
 
 });

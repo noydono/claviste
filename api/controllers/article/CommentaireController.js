@@ -1,53 +1,58 @@
- // Toujour Commenter
+// Toujour Commenter
 /**
  * Controller ...
  * 
  */
 
-const Com = require('../../db/Commentaire')
+const Article = require('../../db/Article')
 
 module.exports = {
 
-        addCom: async (req, res) => {
+    addCom: async (req, res) => {
 
-            console.log('add Com');
-            
-
-
-            Com.create({
-
+        console.log('add Com');
+        const dbArticle = await Article.find({ _id: req.params.id }),
+            recup = {
                 createDate: new Date(),
                 article_id: req.params.id,
                 username: req.session.username || req.session.lastname + " " + req.session.firstname,
                 content: req.body.content,
-                
-            }, (err, post) => {
 
-                if(err){
-                    console.log(err);
-                }else{
+            }
 
-                    res.redirect('back')
-
+        Article.findOneAndUpdate(
+            {_id: req.params.id},
+            {$push : {commentaire : recup}},
+            function (error, success) {
+                if (error) {
+                    console.log(error);
+                } else {
+                    console.log(success);
                 }
-
-            })
+            });
             
-           
-
-        },
-        DelCom: async (req, res) => {
-
-                const dbCom = await Com.findById({ _id: req.params.id })
-                dbCom.deleteOne({ _id: req.params.id })
-                res.redirect('/')
-
             
 
 
 
-        }
+
+        res.redirect('/')
+
+
+
+    },
+    DelCom: async (req, res) => {
+
+        const dbCom = await Com.findById({ _id: req.params.id })
+        dbCom.deleteOne({ _id: req.params.id })
+        res.redirect('/')
+
+
+
+
 
     }
+
+}
 
 
