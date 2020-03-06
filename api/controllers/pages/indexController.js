@@ -11,11 +11,35 @@ module.exports = {
         const dbUser = await User.findById(req.session.userId),
             dbAllUser = await User.find({}),
             dbArticle = await Article.find({})
-            // dbArticleVerif = await Article.find({articleVerified : Number })
 
-        let totalUser = dbAllUser.length;
+        let dbArticleVerif = [];
 
-        console.log(dbArticle.articleVerified);
+        for (i = 0; i < dbArticle.length; i++) {
+
+
+            let totalUser = dbAllUser.length,
+                resultat = dbArticle[i].articleVerified / totalUser * 100
+            console.log(resultat);
+
+            if (dbArticle[i].articleVerified >= resultat) {
+                dbArticleVerif.push(this)
+
+            }
+
+        }
+
+
+        // if (a === resultat) {
+
+        //     let 
+
+        // }
+
+
+
+        console.log(dbArticleVerif);
+
+
 
 
         // console.log(dbArticle);
