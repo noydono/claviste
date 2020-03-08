@@ -11,32 +11,15 @@ module.exports = {
         const dbUser = await User.findById(req.session.userId),
             dbAllUser = await User.find({}),
             dbArticle = await Article.find({})
+            ArticleReverse = dbArticle.reverse()
+console.log(req.session);
 
-        // let dbArticleVerif = [];
-
-        for (i = 0; i < dbArticle.length; i++) {
-
-
-            let totalUser = dbAllUser.length,
-                pourcentage = dbArticle[i].articleVerified / totalUser * 100,
-                resultat = totalUser * 20 / 100 
-
-
-            // console.log(`${resultat}` + " " + `${pourcentage}`);
-
-            if ( pourcentage >= resultat ) {
-
-                // let dbArticleVerif = await Article.find({})
-               console.log(this);
-               
-            }
-
-        }
 
         res.render('index', {
 
-            dbArticle,
+            dbArticle : ArticleReverse,
             dbUser,
+            dbAllUser,
             passwordNotSame: req.flash('passwordNotSame'),
             registerPwdErr: req.flash('registerPwdErr'),
             emailNotUnique: req.flash('emailNotUnique')

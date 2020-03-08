@@ -7,8 +7,7 @@
             <label for="input_text">recherche</label>
           </div>
         </li>
-        <li><a href="#!">two</a></li>
-        <li><a href="#!">three</a></li>
-        <li><a href="#!">four</a></li>
-        <li><a href="#!">five</a></li>
+        {{#each dbUser.like}}
+        <li><a href="#!">{{article_id}}</a></li>
+        {{/each}}
     </ul>

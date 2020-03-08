@@ -32,12 +32,21 @@ var UserSchema = new mongoose.Schema({
         default:'user'
     },
     passwordVerif: String,
-    img: String,
-    avatarImg: String,
-    nameImg: String,
-    avatarName: String
-  
 
+    cover: {
+        type:String,
+        default:'/public/img/coverDefault.jpeg'
+    } ,
+    
+    avatarImg: String,
+    avatarName: String,
+    like:[
+        {
+
+        article_id:String,
+        title : String
+
+    }]
 });
 
 // chiffrée le mot de passe

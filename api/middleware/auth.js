@@ -1,10 +1,13 @@
 module.exports = (req, res, next) => {
 
-    if (req.session.id) {
+    if (!req.session.userId) {
+        console.log('vous n\'avez pas de compte');
+        
+         res.redirect('/')  
 
-        return res.redirect('/')  
-
+    }else{
+      next()  
     }
-next()
+
 
 }

@@ -19,7 +19,8 @@ module.exports = {
             img: `/public/uploads/${req.file.filename}`,
             nameImg: req.file.filename,
             createDate: new Date(),
-            commentaire : []
+            commentaire : [],
+            like : []
 
         }, (err, post) => {
 
@@ -40,9 +41,8 @@ module.exports = {
 
         console.log('update article');
 
-        const dbArticle = await Article.findById(req.params.id)
-
-        pathImg = path.resolve('public/uploads/' + dbArticle.nameImg)
+        const dbArticle = await Article.findById(req.params.id),
+            pathImg = path.resolve('public/uploads/' + dbArticle.nameImg)
 
 
         if (!req.file) {
@@ -101,8 +101,6 @@ module.exports = {
         }
 
     },
-
-
     delete: async (req, res) => {
 
         const dbArticle = await Article.findById(req.params.id)
@@ -146,6 +144,24 @@ module.exports = {
         console.log(coucou.deletedCount);
         res.redirect('/')
 
+
+    },
+    addVerif: async (req,res) => {
+
+       const dbArticle = await Article.findById(req.params.id),
+        articleAdd = dbArticle.articleVerified + 1;
+
+        Article.findByIdAndUpdate(req.params.id, { articleVerified : articleAdd}, (err,post) => {
+
+            if(err){
+                console.log(err);
+                
+            }else{
+                res.redirect('back')
+            }
+        })
+        console.log("coucou" + " " + articleAdd);
+        
 
     }
 }

@@ -9,32 +9,82 @@ const User = require('../../db/User'),
 module.exports = {
 
 
-    update: async (req, res) => {
+        update: async (req, res) => {
 
-        const query = await User.find({
+            console.log('update article');
 
-            _id: req.params.id
-        })
+            const dbUser = await User.findById(req.session.userId),
+                pathImg = path.resolve('public/uploads/' + dbUser.avatarName)
 
-        User.findByIdAndUpdate(query, {
-                status: req.body.status,
-                isAdmin: req.body.isAdmin,
-                isVerified: req.body.isVerified,
-                isBan: req.body.isBan,
-            },
-            (err, post) => {
-                if (err) {
-                    console.log(err);
+            console.log(dbUser);
+            
 
-                    res.redirect('/')
+            if (req.body.password !== req.body.passwordVerif) {
+
+                console.log('error password')
+
+                req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
+                res.render('index')
+
+            } else {
+
+                console.log('password OK')
+                if (!req.file) {
+
+                    User.findByIdAndUpdate(req.session.userId, {
+
+                        username: req.body.username,
+                        email: req.body.email,
+                        passwordVerif: req.body.passwordVerif
+
+                    }, (err, post) => {
+
+                        if (err) {
+                            console.log('article nest pas post ' + err);
+
+                        } else {
+                            console.log('article crée');
+
+                            res.redirect('back')
+                        }
+                    })
+
                 } else {
-                    console.log('update ');
 
-                    res.redirect('/admin')
+                    fs.unlink(pathImg,
+                        (err) => {
+                            if (err) {
+                                console.log(err)
+                            } else {
+
+                                console.log('File Deleted.')
+
+                                User.findByIdAndUpdate(req.session.userId, {
+
+                                    username: req.body.username,
+                                    email: req.body.email,
+                                    passwordVerif: req.body.passwordVerif,
+                                    img: `/public/uploads/${req.file.filename}`,
+                                    nameImg: req.file.filename
 
 
+                                }, (err, post) => {
+
+                                    if (err) {
+                                        console.log('article nest pas post ' + err);
+
+                                    } else {
+                                        console.log('article crée');
+
+                                        res.redirect('back')
+                                    }
+                                })
+                            }
+
+                        })
                 }
-            })
-    }
+            }
 
-}
+        }
+    
+    }

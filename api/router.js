@@ -16,18 +16,20 @@ const indexController = require('./controllers/pages/indexController'),
     adminController = require('./controllers/pages/adminController'),
     multer = require ('../config/Multer-config'),
     MonCompteController = require('./controllers/user/monComptecontroller'),
-    CommentaireController = require('./controllers/article/CommentaireController')
+    CommentaireController = require('./controllers/article/CommentaireController'),
+    ContactController = require('./controllers/contact/contactController')
 /*
  *  middleware
  * * * * * */
-const isAdmin = require('./middleware/isAdmin')
+const isAdmin = require('./middleware/isAdmin'),
+    auth = require('./middleware/auth')
 
 /*
  *  Route
  * * * * * */
 router.route('/')
     .get(indexController.get)
-//---------------------------------CRUD Article-------------------------
+//--------------------------------Article-------------------------
 
 router.route('/article/create')
     .post(multer,ArticleController.create)
@@ -41,11 +43,17 @@ router.route('/article/delete/:id')
 router.route('/article/deleteAll')
     .post(ArticleController.deleteAll)
 
-// ----------------------------CRUD Commentaire------------------------------------
+router.route('/article/verif/:id')
+    .post(ArticleController.addVerif)
+
+// ---------------------------- Commentaire & like------------------------------------
 
 router.route('/commentaire/create/:id')
-    .post(CommentaireController.addCom)
-// ----------------------------CRUD User------------------------------------
+    .post(auth,CommentaireController.addCom)
+
+router.route('/like/create/:id')
+    .post(auth,CommentaireController.addLike)
+// ---------------------------- User------------------------------------
 
 router.route('/user/create')
     .post(multer,UserController.create)
@@ -58,11 +66,19 @@ router.route('/user/logout')
 
 router.route('/User/update/:id')
     .post(multer,UserController.update)
-router.route('moncompte/update')
+
+router.route('/moncompte/update')
     .post(multer,MonCompteController.update)
-// ----------------------------layout Admin------------------------------------
+
+
+router.route('/verify/:id')
+    .get(UserController.verifMail)
+// ---------------------------- Admin------------------------------------
 router.route('/admin')
 .get(adminController.get)
+// ---------------------------- Contact------------------------------------
+router.route('/contact/create')
+    .post(ContactController.create)
 
 
 module.exports = router

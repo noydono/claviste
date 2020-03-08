@@ -1,52 +1,37 @@
 <!-- Modal Structure -->
 <div id="modalContact" class="modal bottom-sheet modal-fixed-footer">
-
-
-  
-
-    <div class="modal-content center-align">
-        <span class="title">Contact</span>
-
-        <div class="row">
-            <div class="input-field col s2">
-                <select>
-                    <option value="" disabled selected>Choose your option</option>
-                    <option value="1">Web&Master</option>
-                    <option value="2">TheClaviste</option>
-                </select>
+    <form action="/contact/create" method="POST">
+        <div class="modal-content center-align">
+            <span class="title">Contact</span>
+            <div class="row">
+                <div class="input-field col s2">
+                    <select name="destinataire" required>
+                        <option value="" disabled selected>Votre destinataire</option>
+                        <option value="Web&Master">Web&Master</option>
+                        <option value="TheClaviste">TheClaviste</option>
+                    </select>
+                </div>
+                <div class="input-field col s10">
+                    <input id="sujetContact" type="text" class="validate" name="sujet" required>
+                    <label for="sujetContact">sujet</label>
+                </div>
             </div>
-
-            <div class="input-field col s10">
-                <input id="titre" type="text" class="validate">
-                <label for="titre">Titre</label>
+            <div class="row">
+                <div class="input-field col s12">
+                    <input id="emailContact" type="text" class="validate" name="email" required>
+                    <label for="emailContact">Email</label>
+                </div>
             </div>
-
+            <div class="row">
+                <div class="input-field col s12">
+                    <textarea id="textareaContact" class="materialize-textarea" name="content" required></textarea>
+                    <label for="textareaContact">Textarea</label>
+                </div>
+            </div>
         </div>
-
-        <div class="row">
-
-
-            <div class="input-field col s12">
-                <input id="email" type="text" class="validate">
-                <label for="email">Email</label>
-            </div>
-
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn left">Close</a>
+            <button type="submit" href="#!" class="modal-close waves-effect waves-green btn">Agree</button >
         </div>
-
-        <div class="row">
-
-            <div class="input-field col s12">
-                <textarea id="textarea1" class="materialize-textarea"></textarea>
-                <label for="textarea1">Textarea</label>
-            </div>
-
-
-        </div>
-
-
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-close waves-effect waves-green btn left">Close</a>
-        <a href="#!" class="modal-close waves-effect waves-green btn">Agree</a>
-    </div>
+    </form>
 </div>

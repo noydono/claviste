@@ -27,7 +27,13 @@ var ArticleSchema = new mongoose.Schema({
                 default: new Date()
             }
         }
-    ]
+    ],like:[
+        {
+
+        userId:String
+
+    }
+]
 
 
 });

@@ -11,19 +11,26 @@
 
 
         <ul class="collection">
-{{#each dbArticle}}
+            {{#each dbArticle}}
+            {{#if (filterAVerif this ../dbAllUser)}}
+
+            <form action="/article/verif/{{_id}}" method="post">
             <li class="collection-item avatar">
                 <img src="{{img}}" alt="clavier mécanique" class="circle">
-                <span class="title">{{title}} <span class="date">par {{author}} le {{createDate}}</span></span>                
-                
+                <span class="title">{{title}} <span class="date">par {{author}} le {{createDate}}</span></span>
                 <p>
                     <i class="fas fa-quote-left"></i>
                     {{content}}
                     <i class="fas fa-quote-right"></i>
                 </p>
+                <div class="right-align mt-10">
+                    <button type="submit" class="waves-effect waves-light btn">Verifer l'article</button>
+                </div>
             </li>
-{{/each}}
-            
+            </form>
+
+            {{/if}}
+            {{/each}}
         </ul>
 
     </div>
