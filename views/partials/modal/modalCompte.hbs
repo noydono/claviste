@@ -12,7 +12,7 @@
         {{!-- <p>{{passwordNotSame}}<br>{{registerPwdErr}}<br>{{emailNotUnique}}</p> --}}
       </div>
 
-
+{{#if isVerified}}
       <div class="col s12">
 
         <div class="row">
@@ -57,12 +57,17 @@
 
 
       </div>
+{{else}}
+        <h2 class="title">Vous n'est pas verifier </h2>
+  
+    <button type="submit" name="verifmail" value="verifmail"> verifier mon mail</button>  
 
+{{/if}}
     </div>
 
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn left">Close</a>
-      <button type="submit" class="modal-close waves-effect waves-light btn">S'inscrire</button>
+      <button name="moncompte" value="moncompte" type="submit" class="modal-close waves-effect waves-light btn">S'inscrire</button>
     </div>
 
 

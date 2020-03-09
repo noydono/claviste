@@ -5,17 +5,12 @@ Handlebars.registerHelper('filter30', function (a, b) {
 
 
     let pourcentage = a.articleVerified / b.length * 100,
-        limitVerif = a.articleVerified * 20 / 100
+        limitVerif = b.length * 20 / 100
 
-    if (pourcentage < limitVerif || a.articleVerified == 0) {
+    if (pourcentage >= limitVerif) {
 
-
-    } else if (pourcentage >= limitVerif) {
-
-        let numberCom =  a.commentaire.length
-        return this && numberCom;
-         
-
+        return this ;
+    
     }
 });
 // helper pour limit l'affichage si l'article n'a pas assez de verif
@@ -23,15 +18,12 @@ Handlebars.registerHelper('filterAVerif', function (a, b) {
 
 
     let pourcentage = a.articleVerified / b.length * 100,
-        limitVerif = a.articleVerified * 20 / 100
+        limitVerif = b.length * 20 / 100
 
     if (pourcentage < limitVerif || a.articleVerified == 0) {
 
         return this;
-
-
-    } else if (pourcentage >= limitVerif) {
-
+        
     }
 });
 

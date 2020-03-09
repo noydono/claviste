@@ -5,7 +5,8 @@
  */
 
 const Article = require('../../db/Article'),
-    User = require('../../db/User')
+    User = require('../../db/User'),
+    format = require('date-format');
 
 module.exports = {
 
@@ -13,24 +14,28 @@ module.exports = {
 
         console.log('add Com');
         const dbArticle = await Article.find({
-                _id: req.params.id
-            }),
+            _id: req.params.id
+        }),
+        dateLe = format.asString('dd-MM-yyyy', new Date()),
+        dateA = format.asString('hh:mm:ss', new Date()),
             recup = {
-                createDate: new Date(),
+
+                dateLe: dateLe,
+                dateA: dateA,
                 article_id: req.params.id,
                 username: req.session.username || req.session.lastname + " " + req.session.firstname,
                 content: req.body.content,
-                avatar: req.session.avatar
+                avatarImg: req.session.avatarImg
 
             }
 
         Article.findOneAndUpdate({
-                _id: req.params.id
-            }, {
-                $push: {
-                    commentaire: recup
-                }
-            },
+            _id: req.params.id
+        }, {
+            $push: {
+                commentaire: recup
+            }
+        },
             function (error, success) {
                 if (error) {
                     console.log(error);
@@ -57,32 +62,39 @@ module.exports = {
 
 
     },
+
     addLike: async (req, res) => {
 
 
-        const test = await Article.find({
-            _id: req.params.id
-        })
+        const dbUser = await User.findById(req.session.userId),
+            ldLike = dbUser.like,
+            valLike = ldLike.filter((a) => {
+
+                return a.article_id === req.params.id
+
+            })
+        console.log(valLike.length);
+
+        if (valLike.length === 0) {
 
 
-
-        Article.findByIdAndUpdate(req.params.id, {
+            Article.findByIdAndUpdate(req.params.id, {
                 $push: {
                     like: {
                         userId: req.session.userId
                     }
                 }
-            },
-            function (error, success) {
+            }, (error, success) => {
                 if (error) {
 
                     console.log(error);
                 } else {
-                    
+
 
                 }
             });
-        User.findOneAndUpdate({
+
+            User.findOneAndUpdate({
                 _id: req.session.userId
             }, {
                 $push: {
@@ -90,18 +102,23 @@ module.exports = {
                         article_id: req.params.id
                     }
                 }
-            },
-            function (error, success) {
+            }, (error, success) => {
                 if (error) {
 
                     console.log(error);
                 } else {
-                    
+
                 }
             });
+            res.redirect('/')
 
+        } else {
 
-        res.redirect('/')
+            console.log('vous avez deja liker cette article');
+            req.flash('likeErr', 'vous avez deja like cette article')
+            res.redirect('/')
+
+        }
 
     }
 

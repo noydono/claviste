@@ -17,7 +17,8 @@ const indexController = require('./controllers/pages/indexController'),
     multer = require ('../config/Multer-config'),
     MonCompteController = require('./controllers/user/monComptecontroller'),
     CommentaireController = require('./controllers/article/CommentaireController'),
-    ContactController = require('./controllers/contact/contactController')
+    ContactController = require('./controllers/contact/contactController'),
+    nodmailercontroller = require('./controllers/nodemailer/nodemailerController')
 /*
  *  middleware
  * * * * * */
@@ -46,13 +47,16 @@ router.route('/article/deleteAll')
 router.route('/article/verif/:id')
     .post(ArticleController.addVerif)
 
-// ---------------------------- Commentaire & like------------------------------------
+// ---------------------------- Commentaire & like ------------------------------------
 
 router.route('/commentaire/create/:id')
     .post(auth,CommentaireController.addCom)
 
 router.route('/like/create/:id')
     .post(auth,CommentaireController.addLike)
+
+
+
 // ---------------------------- User------------------------------------
 
 router.route('/user/create')
@@ -70,9 +74,8 @@ router.route('/User/update/:id')
 router.route('/moncompte/update')
     .post(multer,MonCompteController.update)
 
-
 router.route('/verify/:id')
-    .get(UserController.verifMail)
+    .get(nodmailercontroller.verifMail)
 // ---------------------------- Admin------------------------------------
 router.route('/admin')
 .get(adminController.get)

@@ -6,10 +6,7 @@ var ArticleSchema = new mongoose.Schema({
     title: String,
     content: String,
     author: String,
-    createDate: {
-        type: Date,
-        default: new Date()
-    },
+    date: String,
     img: String,
     nameImg: String,
     articleVerified: {
@@ -19,13 +16,12 @@ var ArticleSchema = new mongoose.Schema({
 
     }, commentaire: [
         {
+            avatarImg:String,
             article_id: String,
             username: String,
             content: String,
-            createDate: {
-                type: Date,
-                default: new Date()
-            }
+            dateLe: String,
+            dateA: String,
         }
     ],like:[
         {

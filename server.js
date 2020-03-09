@@ -76,17 +76,19 @@ app.use('*', (req, res, next) => {
 
         if (req.session.status === 'user') {
 
+            if (req.session.isVerified === true) {
+
+                if (req.session.isAdmin === true) {
 
 
-            if (req.session.isAdmin === true) {
 
+                    res.locals.isAdmin = req.session.isAdmin
 
+                }
 
-                res.locals.isAdmin = req.session.isAdmin
-
+                res.locals.isVerified = req.session.isVerified
+                
             }
-
-
             res.locals.user = req.session.status
 
         }

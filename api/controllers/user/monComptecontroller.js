@@ -4,20 +4,36 @@
 const User = require('../../db/User'),
     bcrypt = require('bcrypt'),
     path = require('path'),
-    fs = require('fs')
+    fs = require('fs'),
+    nodemailer = require('nodemailer'),
+    keys = require('../../../config/keys'),
+    transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        service: 'gmail',
+        port: '587',
+        secure: false,
+        auth: {
+            user: "noytest.test@gmail.com",
+            pass: keys.mdpMailer
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    })
+
 
 module.exports = {
 
 
-        update: async (req, res) => {
+    update: async (req, res) => {
 
-            console.log('update article');
+        console.log('update Mon Compte');
 
-            const dbUser = await User.findById(req.session.userId),
-                pathImg = path.resolve('public/uploads/' + dbUser.avatarName)
+        const dbUser = await User.findById(req.session.userId),
+            pathImg = path.resolve('public/uploads/' + dbUser.avatarName)
 
-            console.log(dbUser);
-            
+
+        if (req.body.moncompte === "moncompte") {
 
             if (req.body.password !== req.body.passwordVerif) {
 
@@ -84,7 +100,36 @@ module.exports = {
                         })
                 }
             }
+        } else if (req.body.verifMail = 'verifMail') {
 
+        
+            rand = Math.floor((Math.random() * 100) + 54)
+            host = req.get('host')
+            link = "http://" + req.get('host') + "/verify/" + rand
+            mailOptions = {
+                from: 'noytest.test@gmail.com',
+                to: dbUser.email,
+                subject: "The Clavist Email de Verification",
+                rand: rand,
+                html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+            }
+
+            console.log(mailOptions)
+
+            transporter.sendMail(mailOptions, (err, res, next) => {
+                if (err) {
+                    console.log(err)
+                    res.end('err')
+                } else {
+                    console.log("Message Envoyer")
+                    next()
+                }
+            })
+
+            res.redirect('/')
         }
-    
+
+
     }
+
+}

@@ -12,8 +12,8 @@ module.exports = {
             dbAllUser = await User.find({}),
             dbArticle = await Article.find({})
             ArticleReverse = dbArticle.reverse()
-console.log(req.session);
-
+        console.log(req.session);
+        
 
         res.render('index', {
 

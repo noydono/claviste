@@ -141,7 +141,6 @@ module.exports = {
                 });
             }
         }); 
-        console.log(coucou.deletedCount);
         res.redirect('/')
 
 
@@ -160,8 +159,6 @@ module.exports = {
                 res.redirect('back')
             }
         })
-        console.log("coucou" + " " + articleAdd);
         
-
     }
 }
