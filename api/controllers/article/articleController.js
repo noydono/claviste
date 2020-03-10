@@ -1,5 +1,7 @@
-const Article = require('../../db/Article')
-path = require('path'),
+const Article = require('../../db/Article'),
+    ArticleVerif = require('../../db/ArticleVerif'),
+    User = require('../../db/User'),
+    path = require('path'),
     fs = require('fs')
 
 
@@ -9,7 +11,7 @@ module.exports = {
 
         console.log("creation d'article");
         console.log(req.file);
-        
+
 
         Article.create({
 
@@ -19,8 +21,8 @@ module.exports = {
             img: `/public/uploads/${req.file.filename}`,
             nameImg: req.file.filename,
             createDate: new Date(),
-            commentaire : [],
-            like : []
+            signal:[]
+
 
         }, (err, post) => {
 
@@ -124,41 +126,123 @@ module.exports = {
             }
         })
     },
-    deleteAll: async (req, res) => {
+    // deleteAll: async (req, res) => {
 
-        const coucou = await Article.deleteMany({});
-        // `0` if no docs matched the filter, number of docs deleted otherwise
-       
+    //     const coucou = await Article.deleteMany({});
+    //     // `0` if no docs matched the filter, number of docs deleted otherwise
 
-        const directory = 'public/uploads/';
 
-        fs.readdir(directory, (err, files) => {
-            if (err) throw err;
+    //     const directory = 'public/uploads/';
 
-            for (const file of files) {
-                fs.unlink(path.join(directory, file), err => {
-                    if (err) throw err;
+    //     fs.readdir(directory, (err, files) => {
+    //         if (err) throw err;
+
+    //         for (const file of files) {
+    //             fs.unlink(path.join(directory, file), err => {
+    //                 if (err) throw err;
+    //             });
+    //         }
+    //     }); 
+    //     res.redirect('/')
+
+
+    // },
+    addVerif: async (req, res) => {
+
+        const dbArticle = await Article.findById(req.params.id),
+            dbUser = await User.find({}),
+            articleAdd = dbArticle.articleVerified + 1;
+
+        let pourcentage = articleAdd / dbUser.length * 100,
+            limitVerif = dbUser.length * 20 / 100
+
+
+        if (req.body.verif === 'verif') {
+
+            Article.findByIdAndUpdate(req.params.id, {
+                articleVerified: articleAdd
+            }, (err, post) => {
+
+                if (err) {
+
+                    console.log(err);
+
+                } else {
+
+                    if (pourcentage >= limitVerif) {
+
+                        ArticleVerif.create({
+
+                            title: dbArticle.title,
+                            content: dbArticle.content,
+                            author: dbArticle.author,
+                            img: dbArticle.img,
+                            nameImg: dbArticle.nameImg,
+                            createDate: new Date(),
+                            commentaire: [],
+                            like: []
+
+                        }, (err, post) => {
+
+                            if (err) {
+                                console.log(err);
+                                res.redirect('back')
+
+                            } else {
+
+                                Article.findByIdAndRemove(req.params.id, (err) => {
+
+                                    if (err) {
+                                        console.log(err);
+                                        res.redirect('back')
+                                    } else {
+                                        console.log('larticle et supprimer et verifer');
+
+                                        res.redirect('back')
+                                    }
+                                })
+                            }
+
+                        })
+
+                    } else {
+
+
+                    }
+                }
+            })
+
+        } else if (req.body.signal === 'signal') {
+
+            
+
+            Article.findByIdAndUpdate(
+                req.params.id
+            , {
+                $push: {
+
+                    signal: {userId:req.session.userId}
+
+                }
+            },
+                function (error, success) {
+
+                    if (error) {
+
+                        console.log(error);
+
+                    } else {
+
+                        console.log(success);
+                        res.redirect('/')
+
+                    }
                 });
-            }
-        }); 
-        res.redirect('/')
 
 
-    },
-    addVerif: async (req,res) => {
+        }
 
-       const dbArticle = await Article.findById(req.params.id),
-        articleAdd = dbArticle.articleVerified + 1;
 
-        Article.findByIdAndUpdate(req.params.id, { articleVerified : articleAdd}, (err,post) => {
 
-            if(err){
-                console.log(err);
-                
-            }else{
-                res.redirect('back')
-            }
-        })
-        
     }
 }

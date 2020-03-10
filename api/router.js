@@ -41,8 +41,8 @@ router.route('/article/update/:id')
 router.route('/article/delete/:id')
     .post(ArticleController.delete)
 
-router.route('/article/deleteAll')
-    .post(ArticleController.deleteAll)
+// router.route('/article/deleteAll')
+//     .post(ArticleController.deleteAll)
 
 router.route('/article/verif/:id')
     .post(ArticleController.addVerif)

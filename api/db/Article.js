@@ -14,22 +14,14 @@ var ArticleSchema = new mongoose.Schema({
         type: Number,
         default: 0
 
-    }, commentaire: [
-        {
-            avatarImg:String,
-            article_id: String,
-            username: String,
-            content: String,
-            dateLe: String,
-            dateA: String,
-        }
-    ],like:[
-        {
+    },
+    signal: [{
 
-        userId:String
+        userId: String
+    
 
-    }
-]
+    }]
+    
 
 
 });

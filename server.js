@@ -16,7 +16,7 @@ const express = require('express'),
  *   api
  * * * * * */
 const ROUTER = require('./api/router'),
-    keys = require('./config/keys'),
+    keys = require('./config/keys')
     Helper = require('./api/helper/helperHbs')
 
 /*

@@ -1,10 +1,5 @@
-// Toujour Commenter
-/**
- * Controller ...
- * 
- */
 
-const Article = require('../../db/Article'),
+const ArticleVerif = require('../../db/ArticleVerif'),
     User = require('../../db/User'),
     format = require('date-format');
 
@@ -13,7 +8,7 @@ module.exports = {
     addCom: async (req, res) => {
 
         console.log('add Com');
-        const dbArticle = await Article.find({
+        const dbArticleVerif = await ArticleVerif.find({
             _id: req.params.id
         }),
         dateLe = format.asString('dd-MM-yyyy', new Date()),
@@ -29,7 +24,7 @@ module.exports = {
 
             }
 
-        Article.findOneAndUpdate({
+        ArticleVerif.findOneAndUpdate({
             _id: req.params.id
         }, {
             $push: {
@@ -78,7 +73,7 @@ module.exports = {
         if (valLike.length === 0) {
 
 
-            Article.findByIdAndUpdate(req.params.id, {
+            ArticleVerif.findByIdAndUpdate(req.params.id, {
                 $push: {
                     like: {
                         userId: req.session.userId

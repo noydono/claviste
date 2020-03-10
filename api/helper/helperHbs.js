@@ -1,18 +1,6 @@
 const Handlebars = require('handlebars');
 
-// helper pour limit l'affichage par rapport au nombre de verification
-Handlebars.registerHelper('filter30', function (a, b) {
 
-
-    let pourcentage = a.articleVerified / b.length * 100,
-        limitVerif = b.length * 20 / 100
-
-    if (pourcentage >= limitVerif) {
-
-        return this ;
-    
-    }
-});
 // helper pour limit l'affichage si l'article n'a pas assez de verif
 Handlebars.registerHelper('filterAVerif', function (a, b) {
 
@@ -26,6 +14,7 @@ Handlebars.registerHelper('filterAVerif', function (a, b) {
         
     }
 });
+// helper pour  l'affichage du nombre de com
 
 Handlebars.registerHelper('com', function (a) {
 
@@ -33,6 +22,8 @@ Handlebars.registerHelper('com', function (a) {
     return comInt
 
 });
+// helper pour  l'affichage du nombre de like
+
 Handlebars.registerHelper('like', function (a) {
 
     let likeInt = a.like.length
@@ -42,3 +33,5 @@ Handlebars.registerHelper('like', function (a) {
 
 
 module.exports = Handlebars
+
+

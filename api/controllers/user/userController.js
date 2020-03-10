@@ -130,7 +130,7 @@ module.exports = {
                 });
 
             } else {
-
+                res.redirect('back')
                 console.log('pas existant dans la db');
 
             }
