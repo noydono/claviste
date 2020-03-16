@@ -14,7 +14,7 @@ module.exports = {
             dbArticle = await Article.find({}),
             dbArticleVerif = await ArticleVerif.find({}),
             ArticleReverse = dbArticle.reverse(),
-            ArticleVerifReverse = dbArticleVerif.reverse().slice(0, 5)
+            ArticleVerifReverse = dbArticleVerif.reverse()
 
 
             
