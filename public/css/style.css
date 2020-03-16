@@ -3281,6 +3281,7 @@ input[type=range] + .thumb {
 }
 
 .portfolio {
+  margin: 20px;
   display: grid;
   grid-gap: 5px;
   position: relative;
