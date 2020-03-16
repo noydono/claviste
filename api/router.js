@@ -19,6 +19,7 @@ const indexController = require('./controllers/pages/indexController'),
     CommentaireController = require('./controllers/article/CommentaireController'),
     ContactController = require('./controllers/contact/contactController'),
     nodmailercontroller = require('./controllers/nodemailer/nodemailerController')
+
 /*
  *  middleware
  * * * * * */
@@ -60,6 +61,7 @@ router.route('/like/create/:id')
 // ---------------------------- User------------------------------------
 
 router.route('/user/create')
+    .get(UserController.getInscription)
     .post(multer,UserController.create)
 
 router.route('/user/login')

@@ -1,21 +1,20 @@
 <div class="container">
     <div class="row mt-30">
-        <div class="col s8 ">
-            <h1 class="title">Dernier Article</h1>
-
+        <div class="col s12 ">
+            <span class="title">Dernier Article</span>
+            <div class="underline-home"></div>
             <div class="portfolio">
 
                 {{#each dbArticleVerif}}
 
                 <div class="bloc">
+                    
                     <img src="{{img}}" alt="">
                     <div class="bloc-title">
-                        <div class=" truncate title ml-10">
-                            {{title}}
-                            <span class="author right mt-5 mr-10">par {{author}}
-                            </span>
-                        </div>
-
+                        <a href="/article/{{_id}}" class=" truncate title ml-10" style="width: 85%;" >{{title}}
+                        </a>
+                        <a href="/article/{{_id}}" class="author mt-5 mr-10">voir +
+                        </a>
                     </div>
                 </div>
 
@@ -39,7 +38,7 @@
 
         </div>
 
-        <div class="col s3 hide-on-med-and-down">
+        {{!-- <div class="col s3 hide-on-med-and-down">
             <h1 class="title">Qui suis-je</h1>
 
             <div class="card ">
@@ -63,7 +62,7 @@
 
                 </div>
             </div>
-        </div>
+        </div> --}}
 
     </div>
 </div>

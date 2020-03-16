@@ -14,7 +14,12 @@ const User = require('../../db/User'),
 var rand, mailOptions, host, link;
 
 module.exports = {
-
+    getInscription:(req,res) => {
+        console.log('coucou')
+        res.render('InCoAr',{
+            layout: 'InCoAr'
+        })
+    },
     create: async (req, res) => {
 
         console.log('create user');
@@ -50,7 +55,7 @@ module.exports = {
                         if (err) {
     
                             console.log(err);
-                            res.render('index')
+                            res.redirect('/')
     
                         } res.redirect('/') 
                     })
