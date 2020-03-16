@@ -3,15 +3,28 @@
     <form action="/contact/create" method="POST">
         <div class="modal-content center-align">
             <span class="title">Contact</span>
-            <div class="row">
-                <div class="input-field col s2">
+
+            <div class="row show-on-small hide-on-large-only">
+
+                <div class="input-field col s12">
                     <select name="destinataire" required>
                         <option value="" disabled selected>Votre destinataire</option>
                         <option value="Web&Master">Web&Master</option>
                         <option value="TheClaviste">TheClaviste</option>
                     </select>
                 </div>
-                <div class="input-field col s10">
+            </div>
+
+
+            <div class="row">
+                <div class="input-field col s2 hide-on-small-only">
+                    <select name="destinataire" required>
+                        <option value="" disabled selected>Votre destinataire</option>
+                        <option value="Web&Master">Web&Master</option>
+                        <option value="TheClaviste">TheClaviste</option>
+                    </select>
+                </div>
+                <div class="input-field col s12 l10">
                     <input id="sujetContact" type="text" class="validate" name="sujet" required>
                     <label for="sujetContact">sujet</label>
                 </div>
@@ -31,7 +44,7 @@
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn left">Close</a>
-            <button type="submit" href="#!" class="modal-close waves-effect waves-green btn">Agree</button >
+            <button type="submit" href="#!" class="modal-close waves-effect waves-green btn">Agree</button>
         </div>
     </form>
 </div>

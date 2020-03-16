@@ -11,7 +11,7 @@ const express = require('express'),
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     flash = require('connect-flash'),
-    port = 4000
+    port = 3000
 /*
  *   api
  * * * * * */

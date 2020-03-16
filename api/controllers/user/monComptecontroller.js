@@ -33,7 +33,7 @@ module.exports = {
             pathImg = path.resolve('public/uploads/' + dbUser.avatarName)
 
 
-        if (req.body.moncompte === "moncompte") {
+        if (req.body.moncompteNoVerif === "moncompteNoVerif") {
 
             if (req.body.password !== req.body.passwordVerif) {
 
