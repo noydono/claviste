@@ -1,4 +1,5 @@
-<header class="white valign-wrapper" style="height: 200Px;">
+<header class="white valign-wrapper" style="height:300Px;">
+
     {{>sidebar/header}}
     {{>sidebar/button}}
     {{>sidebar/sidebar}}
@@ -7,7 +8,17 @@
 
 <main>
 
-    {{>parallax/indexParallax}}   
+    <nav id="main-menu-container">
+        <div id="main-menu" class="nav-wrapper">
+            <ul id="nav-mobile" class="hide-on-med-and-down">
+                <li><a href="sass.html" class="author">Sass</a></li>
+                <li><a href="badges.html" class="author">Components</a></li>
+                <li><a href="collapsible.html" class="author">JavaScript</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    {{>parallax/indexParallax}}
 
 </main>
 
@@ -17,3 +28,17 @@
 
 </footer>
 
+<script>
+
+    $("document").ready(function ($) {
+        var nav = $('#main-menu-container');
+
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                nav.addClass("f-nav");
+            } else {
+                nav.removeClass("f-nav");
+            }
+        });
+    });
+</script>

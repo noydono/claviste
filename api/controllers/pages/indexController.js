@@ -14,11 +14,8 @@ module.exports = {
             dbArticle = await Article.find({}),
             dbArticleVerif = await ArticleVerif.find({}),
             ArticleReverse = dbArticle.reverse(),
-            ArticleVerifReverse = dbArticleVerif.reverse()
-
-
+            ArticleVerifReverse = dbArticleVerif.reverse().slice(0,4)
             
-
             console.log(req.session);
 
         res.render('index', {
