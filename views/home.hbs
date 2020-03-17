@@ -1,13 +1,14 @@
 <header class="white valign-wrapper" style="height:300Px;">
 
-    {{>sidebar/header}}
-    {{>sidebar/sidebar}}
+    {{>home/header}}
+    {{>global/nav/sidebar}}
+
 
 </header>
 
 <main>
 
-    {{>sidebar/navmenu}}
+    {{>global/nav/navmenu}}
     {{>home/indexParallax}}
 
 </main>
@@ -17,18 +18,3 @@
     {{>home/footer}}
 
 </footer>
-
-<script>
-
-    $("document").ready(function ($) {
-        var nav = $('#main-menu-container');
-
-        $(window).scroll(function () {
-            if ($(this).scrollTop() > 300) {
-                nav.addClass("f-nav");
-            } else {
-                nav.removeClass("f-nav");
-            }
-        });
-    });
-</script>

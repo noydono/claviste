@@ -1,7 +1,8 @@
 
-
 <form action="user/logout" method="POST">
+
     <ul id="slide-out" class="sidenav">
+
         {{#if user}}
         <li>
             <div class="user-view">
@@ -44,7 +45,9 @@
         <li><a class="waves-effect waves-light btn modal-trigger" href="/user/login">Ce connecter</a></li>
 
         {{/if}}
+
     </ul>
+
 </form>
 
 
@@ -53,4 +56,3 @@
 {{>modal/modalContact}}
 {{>modal/modalCompte}}
 {{>modal/modalVerif}}
-{{>likeAndCom/dropLike}}
