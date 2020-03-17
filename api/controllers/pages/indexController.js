@@ -18,7 +18,7 @@ module.exports = {
             
             console.log(req.session);
 
-        res.render('index', {
+        res.render('home', {
 
             dbArticle: ArticleReverse,
             dbArticleVerif: ArticleVerifReverse,
