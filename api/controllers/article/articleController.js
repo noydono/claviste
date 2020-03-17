@@ -7,6 +7,11 @@ const Article = require('../../db/Article'),
 
 module.exports = {
 
+    single:(req,res)=> {
+
+        res.render('articleSingle')
+
+    },
     create: (req, res) => {
 
         console.log("creation d'article");

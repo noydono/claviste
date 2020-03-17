@@ -949,7 +949,7 @@ th {
   flex-direction: column;
   justify-content: center;
   margin-left: -12px;
-  min-height: 100vh !important;
+  min-height: 860px !important;
   min-width: 60vh !important;
   background-image: linear-gradient(to right,rgba(255, 255, 255, 0.185),$colorannex), url(/public/img/coverDefault.jpeg);
   background-position: left;
@@ -961,6 +961,6 @@ th {
   display:flex;
   flex-direction: column;
   justify-content: center;
-  min-height: 100vh !important;
+  height: 860px !important;
 
 }

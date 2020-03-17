@@ -47,6 +47,8 @@ router.route('/article/delete/:id')
 
 router.route('/article/verif/:id')
     .post(ArticleController.addVerif)
+router.route('/article/:id')
+    .get(ArticleController.single)
 
 // ---------------------------- Commentaire & like ------------------------------------
 
