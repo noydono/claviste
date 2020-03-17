@@ -949,18 +949,26 @@ th {
   flex-direction: column;
   justify-content: center;
   margin-left: -12px;
-  min-height: 860px !important;
+  min-height: 100vh !important;
   min-width: 60vh !important;
   background-image: linear-gradient(to right,rgba(255, 255, 255, 0.185),$colorannex), url(/public/img/coverDefault.jpeg);
   background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
-  
 }
+
 #inscription{
   display:flex;
   flex-direction: column;
   justify-content: center;
-  height: 860px !important;
+  min-height: 100vh !important;
+}
 
+
+
+#imgArticle{
+  right: 0;
+  padding: 100px 80px 100px 100px;
+  max-height: 100vh !important;
+  max-width:  100% !important; 
 }

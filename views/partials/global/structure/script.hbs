@@ -1,36 +1,59 @@
-<script src="https://kit.fontawesome.com/614db98f48.js" crossorigin="anonymous"></script>
-<script src="/public/materialize-src/js/bin/materialize.min.js"></script>
+    <script src="https://kit.fontawesome.com/614db98f48.js" crossorigin="anonymous"></script>
+    <script src="/public/materialize-src/js/bin/materialize.min.js"></script>
 
 <script>
+   
+  $(document).ready(function(){
+    $('.tooltipped').tooltip();
+  });
+        
 
     $(document).ready(function () {
-        $('.tooltipped').tooltip();
-
-        $('.carousel').carousel();
-
         $('.dropdown-trigger').dropdown({
-            closeOnClick: false
-        });
+            closeOnClick:false
+        })
+    });
 
+
+    $(document).ready(function () {
         $('.collapsible').collapsible({
-            accordion: true,
+            accordion:true,
         });
+    });
+    // Or with jQuery
 
+    $(document).ready(function () {
         $('.sidenav').sidenav({
             draggable: true
         });
+    });
 
+    // Or with jQuery
+
+    $(document).ready(function () {
         $('.modal').modal();
+    });
 
+    // Or with jQuery
+
+    $(document).ready(function () {
         $('.fixed-action-btn').floatingActionButton();
+    });
 
+    // Or with jQuery
+
+    $(document).ready(function () {
         $('select').formSelect();
+    });
 
+    // Or with jQuery
+
+    $(document).ready(function () {
+        $('.parallax').parallax();
     });
 
     $("document").ready(function ($) {
         var nav = $('#main-menu-container');
-
         $(window).scroll(function () {
             if ($(this).scrollTop() > 300) {
                 nav.addClass("f-nav");
@@ -39,5 +62,4 @@
             }
         });
     });
-
 </script>
