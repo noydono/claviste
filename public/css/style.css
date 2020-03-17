@@ -2144,7 +2144,7 @@
 }
 
 .colorannex {
-  background-color: #c2c1c1;
+  background-color: white;
 }
 
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -2587,7 +2587,7 @@ html {
 }
 
 body {
-  background-color: #c2c1c1;
+  background-color: white;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -3297,7 +3297,7 @@ input[type=range] + .thumb {
   grid-gap: 20px;
   position: relative;
   grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 48vh);
+  grid-template-rows: repeat(4, 50vh);
 }
 .portfolio :hover .bloc-title {
   height: 50PX !important;
@@ -3341,6 +3341,26 @@ input[type=range] + .thumb {
 .underline-home {
   padding: 1px;
   background-color: #BD757B;
+}
+
+#bg-image {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: -12px;
+  min-height: 100vh !important;
+  min-width: 60vh !important;
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.185), white), url(/public/img/coverDefault.jpeg);
+  background-position: left;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#inscription {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 100vh !important;
 }
 
 span.badge {
@@ -3440,7 +3460,6 @@ table span.badge {
 .row {
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: 20px;
 }
 .row:after {
   content: "";
@@ -5677,7 +5696,7 @@ small {
   line-height: 32px;
 }
 .card .card-action {
-  background-color: #c2c1c1;
+  background-color: white;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   position: relative;
   padding: 16px 24px;

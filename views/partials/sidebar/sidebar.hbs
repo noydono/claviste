@@ -33,8 +33,6 @@
             <a class="waves-effect waves-light btn modal-trigger" href="#modalVerif">article a verifier</a>
         </li>
 
-        <li><a class="waves-effect waves-light btn modal-trigger" href="#modalContact">nous-Contactez</a></li>
-
         <li>
             <button type="submit" class="waves-effect waves-light btn modal-trigger"
                 style="bottom: 8%; position:absolute;">Deconnection</button>
@@ -43,17 +41,15 @@
         {{else}}
 
         <li><a class="waves-effect waves-light btn" href="/user/create">m'inscrire</a></li>
-        <li><a class="waves-effect waves-light btn modal-trigger" href="#modalLogin">Ce connecter</a></li>
-        <li><a class="waves-effect waves-light btn modal-trigger" href="#modalContact">nous-Contactez</a></li>
+        <li><a class="waves-effect waves-light btn modal-trigger" href="/user/login">Ce connecter</a></li>
 
         {{/if}}
     </ul>
 </form>
 
 
-{{>modal/modalInscription}}
+
 {{>modal/modalCreate}}
-{{>modal/modalLogin}}
 {{>modal/modalContact}}
 {{>modal/modalCompte}}
 {{>modal/modalVerif}}

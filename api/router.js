@@ -65,6 +65,7 @@ router.route('/user/create')
     .post(multer,UserController.create)
 
 router.route('/user/login')
+    .get(UserController.getlogin)
     .post(UserController.login)
 
 router.route('/user/logout')

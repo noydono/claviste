@@ -1,0 +1,45 @@
+<!-- Modal Create -->
+<form action="login" method="POST">
+
+    <div class="container" id="inscription">
+        <div class="row ml-30">
+
+            <div class="col s12 center-align">
+                <span class="title">Connection</span>
+                <p class="red-text ">{{err}}</p>
+            </div>
+
+
+            <div class="col s12">
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="PseaudoConnection" type="text" class="validate " name="username" required>
+                        <label for="PseaudoConnection">Pseaudo</label>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="passwordVerifConnection" type="password" class="validate" name="passwordVerif"
+                            required>
+                        <label for="passwordVerifConnection">Mot de passe</label>
+                    </div>
+                </div>
+
+                <div class="row mt-20">
+                    <a href="#modalMpdNodemailer" class=" modal-close  modal-trigger"> mot de pass Oublier</a>
+                    <button type="submit" class=" waves-effect waves-light btn right">se Connecter</button>
+                </div>
+            </div>
+
+
+
+
+        </div>
+    </div>
+
+
+
+</form>
+{{>modal/modalMpdNodemailer}}

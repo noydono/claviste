@@ -14,9 +14,15 @@ const User = require('../../db/User'),
 var rand, mailOptions, host, link;
 
 module.exports = {
+    getlogin:(req,res) => {
+        console.log('coucou')
+        res.render('login',{
+            layout: 'InCoAr'
+        })
+    },
     getInscription:(req,res) => {
         console.log('coucou')
-        res.render('InCoAr',{
+        res.render('inscription',{
             layout: 'InCoAr'
         })
     },
