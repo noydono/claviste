@@ -56,7 +56,7 @@ a {
 }
 
 .addCom {
-  color: $soustitre;
+  color: $tex;
 
   &:hover {
     color: $titre;
@@ -84,9 +84,9 @@ a {
 
 /* 2dp elevation modified*/
 .z-depth-1 {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
-    0 3px 1px -2px rgba(0, 0, 0, 0.12),
-    0 1px 5px 0 rgba(0, 0, 0, 0.2);
+  // box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14),
+  //   0 3px 1px -2px rgba(0, 0, 0, 0.12),
+  //   0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 
 .z-depth-1-half {
@@ -948,10 +948,11 @@ th {
   display:flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-left: -12px;
   min-height: 100vh !important;
   min-width: 60vh !important;
-  background-image: linear-gradient(to right,rgba(255, 255, 255, 0.185),$colorannex), url(/public/img/coverDefault.jpeg);
+  background-image: linear-gradient(to right,rgba(255, 255, 255, 0.308),$colorannex), url(/public/img/coverDefault.jpeg);
   background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
@@ -967,8 +968,17 @@ th {
 
 
 #imgArticle{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   right: 0;
-  padding: 100px 80px 100px 100px;
-  max-height: 100vh !important;
+  padding-right: 50Px;
+  min-height: 100vh !important;
   max-width:  100% !important; 
+}
+
+
+
+.radius{
+  border-radius: 10px;
 }

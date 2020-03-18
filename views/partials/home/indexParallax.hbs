@@ -6,21 +6,17 @@
             <div class="portfolio">
 
                 {{#each dbArticleVerif}}
-
                 <div class="bloc">
-                    
+
                     <img src="{{img}}" alt="">
                     <div class="bloc-title">
-                        <a href="/article/{{_id}}" class=" truncate title ml-10" style="width: 85%;" >{{title}}
+                        <a href="/article/{{_id}}" class=" truncate title ml-10" style="width: 85%;">{{title}}
                         </a>
                         <a href="/article/{{_id}}" class="author mt-5 mr-10">voir +
                         </a>
                     </div>
                 </div>
-
                 {{/each}}
-
-
 
             </div>
             <ul class="pagination center-align">
@@ -37,93 +33,5 @@
             {{/each}}
 
         </div>
-
-        {{!-- <div class="col s3 hide-on-med-and-down">
-            <h1 class="title">Qui suis-je</h1>
-
-            <div class="card ">
-        <div class="card-content ">
-          <span class=" author">Noy_dono</span>
-          <p>actuellement en version 2.5. Je suis fan de streaming et de clavier custom.
-              Je te propose ici de venir pour partager tes connaisance sur le sujet
-          </p>
-        </div>
-        
-      </div>
-
-            <h1 class="title">Recherche</h1>
-            <div class="card ">
-                <div class="card-content ">
-                    <div class="input-field">
-                        <input id="first_name" type="text" class="validate">
-                        <label for="first_name">First Name</label>
-
-                    </div>
-
-                </div>
-            </div>
-        </div> --}}
-
     </div>
 </div>
-
-{{!-- {{#each dbArticleVerif}}
-
-
-<div class="parallax-container">
-
-    <div class="parallax">
-        <img src="{{img}}" alt="clavier Mécanique">
-    </div>
-    
-</div>
-
-<form action="/like/create/{{_id}}" method="POST">
-    <ul class="collapsible">
-        <li>
-
-            <div class="collapsible-header">
-                <div>
-                    <span class="title">{{title}}</span>
-                    <p>{{content}}</p>
-                    <a class="circle right addCom">Voir les commentaires<i
-                            class="fas fa-chevron-circle-down ml-5"></i></a>
-                </div>
-            </div>
-
-            <div class="collapsible-body">
-                <span class="title">Commentaire</span>
-                <ul class="collection">
-                    {{#each commentaire}}
-                    <li class="collection-item avatar">
-                        <img src="{{avatarImg}}" class="circle" alt=" clavier mecanique">
-                        <span class="title">{{username}}<span class="date"> le {{dateLe}} a {{dateA}}</span></span>
-                        <p>
-                            <i class="fas fa-quote-left"></i>
-                            {{content}}
-                            <i class="fas fa-quote-right"></i>
-                        </p>
-                    </li>
-                    {{/each}}
-                </ul>
-            </div>
-
-            <div class="colorannex " style=" height:50px; ">
-                <a class="left author ml-15 mt-5 mb-5">{{author}}</a>
-                <div class=" right-align">
-                    <a href="#modalCom{{_id}}" class="modal-trigger addCom btn-flat mt-10 ">
-                        {{#com this}}{{/com}}<i class="far fa-comment ml-5 mr-5" style="font-size: 25px;"></i>
-                    </a>
-                    <button class="addCom btn-flat mt-10 mr-10" type="submit">
-                        {{#like this}}{{/like}}<i class="far fa-heart ml-1  " style="font-size: 25px;"></i>
-                    </button>
-                </div>
-            </div>
-
-        </li>
-    </ul>
-</form>
-
-{{>modal/modalAddCommentaire}}
-{{/each}}
- --}}

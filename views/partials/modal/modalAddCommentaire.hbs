@@ -1,6 +1,6 @@
 <!-- Modal add commentaire-->
-<form action="/commentaire/create/{{_id}}" method="POST">
-    <div id="modalCom{{_id}}" class="modal bottom-sheet">
+<form action="/commentaire/create/{{dbArticleSingle._id}}" method="POST">
+    <div id="modalAddCom{{dbArticleSingle._id}}" class="modal  modal-fixed-footer" style="height: 30%;" >
 
 
         <div class="modal-content">
@@ -12,8 +12,8 @@
                 <form class="col s12">
                     <div class="row">
                         <div class="input-field col s12">
-                            <textarea id="textarea{{_id}}" class="materialize-textarea" name="content"></textarea>
-                            <label for="textarea{{_id}}">ICI c'est le texte</label>
+                            <textarea id="textarea{{dbArticleSingle._id}}" class="materialize-textarea" name="content"></textarea>
+                            <label for="textarea{{dbArticleSingle._id}}">ICI c'est le texte</label>
                         </div>
                     </div>
                 </form>

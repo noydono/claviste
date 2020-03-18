@@ -18,7 +18,8 @@ const indexController = require('./controllers/pages/indexController'),
     MonCompteController = require('./controllers/user/monComptecontroller'),
     CommentaireController = require('./controllers/article/CommentaireController'),
     ContactController = require('./controllers/contact/contactController'),
-    nodmailercontroller = require('./controllers/nodemailer/nodemailerController')
+    nodmailercontroller = require('./controllers/nodemailer/nodemailerController'),
+    ArticleSingleController = require('./controllers/article/articleSingleController')
 
 /*
  *  middleware
@@ -48,7 +49,7 @@ router.route('/article/delete/:id')
 router.route('/article/verif/:id')
     .post(ArticleController.addVerif)
 router.route('/article/:id')
-    .get(ArticleController.single)
+    .get(ArticleSingleController.get)
 
 // ---------------------------- Commentaire & like ------------------------------------
 
@@ -71,7 +72,7 @@ router.route('/user/login')
     .post(UserController.login)
 
 router.route('/user/logout')
-    .post(UserController.logout)
+    .get(UserController.logout)
 
 router.route('/User/update/:id')
     .post(multer,UserController.update)

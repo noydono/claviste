@@ -2140,11 +2140,23 @@
 }
 
 .soustitre {
-  color: #93B7C2;
+  color: #6497B0;
 }
 
 .colorannex {
-  background-color: white;
+  background-color: #d2e8f3;
+}
+
+.tex-text {
+  color: #253238;
+}
+
+.tex {
+  background-color: #253238;
+}
+
+.annex-text {
+  color: #d2e8f3;
 }
 
 /*! normalize.css v7.0.0 | MIT License | github.com/necolas/normalize.css */
@@ -2587,7 +2599,7 @@ html {
 }
 
 body {
-  background-color: white;
+  background-color: #d2e8f3;
   display: flex;
   min-height: 100vh;
   flex-direction: column;
@@ -2622,11 +2634,11 @@ a {
 .author {
   font-size: 25px;
   font-family: "Lobster Two";
-  color: #93B7C2;
+  color: #6497B0;
 }
 
 .addCom {
-  color: #93B7C2;
+  color: #253238;
 }
 .addCom:hover {
   color: #BD757B;
@@ -2647,10 +2659,6 @@ a {
 }
 
 /* 2dp elevation modified*/
-.z-depth-1, .sidenav, .collapsible, .dropdown-content, .btn-floating, .btn, .btn-small, .btn-large, .toast, .card, .card-panel, nav {
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
-}
-
 .z-depth-1-half, .btn-floating:hover, .btn:hover, .btn-small:hover, .btn-large:hover {
   box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.14), 0 1px 7px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -1px rgba(0, 0, 0, 0.2);
 }
@@ -3347,10 +3355,11 @@ input[type=range] + .thumb {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   margin-left: -12px;
   min-height: 100vh !important;
   min-width: 60vh !important;
-  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.185), white), url(/public/img/coverDefault.jpeg);
+  background-image: linear-gradient(to right, rgba(255, 255, 255, 0.308), #d2e8f3), url(/public/img/coverDefault.jpeg);
   background-position: left;
   background-repeat: no-repeat;
   background-size: cover;
@@ -3364,10 +3373,17 @@ input[type=range] + .thumb {
 }
 
 #imgArticle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   right: 0;
-  padding: 100px 80px 100px 100px;
-  max-height: 100vh !important;
+  padding-right: 50Px;
+  min-height: 100vh !important;
   max-width: 100% !important;
+}
+
+.radius {
+  border-radius: 10px;
 }
 
 span.badge {
@@ -5171,7 +5187,7 @@ table span.badge {
 
 nav {
   color: #fff;
-  background-color: rgba(255, 255, 255, 0.76);
+  background-color: #435964;
   width: 100%;
   height: 56px;
   line-height: 56px;
@@ -5703,7 +5719,7 @@ small {
   line-height: 32px;
 }
 .card .card-action {
-  background-color: white;
+  background-color: #d2e8f3;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   position: relative;
   padding: 16px 24px;
@@ -5712,7 +5728,7 @@ small {
   border-radius: 0 0 2px 2px;
 }
 .card .card-action a:not(.btn):not(.btn-small):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #93B7C2;
+  color: #6497B0;
   margin-right: 24px;
   transition: color 0.3s ease;
   text-transform: uppercase;
@@ -5993,7 +6009,7 @@ small {
 .btn, .btn-small, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #93B7C2;
+  background-color: #6497B0;
   text-align: center;
   letter-spacing: 0.5px;
   transition: background-color 0.2s ease-out;
@@ -6185,7 +6201,7 @@ button.btn-floating {
 .btn-flat {
   box-shadow: none;
   background-color: transparent;
-  color: #93B7C2;
+  color: #6497B0;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -6459,7 +6475,7 @@ body.keyboard-focused .dropdown-content li:focus {
 
 .modal.modal-fixed-footer {
   padding: 0;
-  height: 60%;
+  height: 50%;
 }
 .modal.modal-fixed-footer .modal-content {
   position: absolute;
@@ -6479,7 +6495,7 @@ body.keyboard-focused .dropdown-content li:focus {
   bottom: -100%;
   margin: 0;
   width: 100%;
-  max-height: 55%;
+  max-height: 40%;
   border-radius: 0;
   will-change: bottom, opacity;
 }
@@ -7934,7 +7950,7 @@ input[type=range]::-ms-thumb {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #fff;
+  background-color: #d2e8f3;
   z-index: 999;
   overflow-y: auto;
   will-change: transform;

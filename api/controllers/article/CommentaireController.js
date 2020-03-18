@@ -50,7 +50,7 @@ module.exports = {
         dbCom.deleteOne({
             _id: req.params.id
         })
-        res.redirect('/')
+        res.redirect('back')
 
 
 
@@ -62,6 +62,7 @@ module.exports = {
 
 
         const dbUser = await User.findById(req.session.userId),
+            dbArticleVerif = await ArticleVerif.findById(req.params.id)
             ldLike = dbUser.like,
             valLike = ldLike.filter((a) => {
 
@@ -94,7 +95,8 @@ module.exports = {
             }, {
                 $push: {
                     like: {
-                        article_id: req.params.id
+                        article_id: req.params.id,
+                        title: dbArticleVerif.title
                     }
                 }
             }, (error, success) => {
@@ -105,7 +107,7 @@ module.exports = {
 
                 }
             });
-            res.redirect('/')
+            res.redirect('back')
 
         } else {
 

@@ -72,7 +72,7 @@ module.exports = {
 
                     console.log('error password')
                     req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
-                    res.render('index')
+                    res.redirect('back')
     
                 } else {
                     console.log('password OK')
@@ -88,9 +88,9 @@ module.exports = {
                         if (err) {
     
                             console.log(err);
-                            res.render('index')
+                            res.redirect('back')
     
-                        } res.redirect('/') 
+                        } res.redirect('back') 
                     })
                     }
             }
