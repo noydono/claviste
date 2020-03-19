@@ -19,7 +19,9 @@ const indexController = require('./controllers/pages/indexController'),
     CommentaireController = require('./controllers/article/CommentaireController'),
     ContactController = require('./controllers/contact/contactController'),
     nodmailercontroller = require('./controllers/nodemailer/nodemailerController'),
-    ArticleSingleController = require('./controllers/article/articleSingleController')
+    ArticleSingleController = require('./controllers/article/articleSingleController'),
+    ArticleVerifController= require('./controllers/article/articleVerifController')
+    
 
 /*
  *  middleware
@@ -46,10 +48,17 @@ router.route('/article/delete/:id')
 // router.route('/article/deleteAll')
 //     .post(ArticleController.deleteAll)
 
-router.route('/article/verif/:id')
-    .post(ArticleController.addVerif)
 router.route('/article/:id')
     .get(ArticleSingleController.get)
+
+router.route('/listVerifArticle')
+    .get(ArticleVerifController.get)
+
+router.route('/VerifArticle/:id')
+    .get(ArticleVerifController.getSingle)
+    .post(ArticleVerifController.addVerif)
+
+
 
 // ---------------------------- Commentaire & like ------------------------------------
 
@@ -58,7 +67,6 @@ router.route('/commentaire/create/:id')
 
 router.route('/like/create/:id')
     .post(auth,CommentaireController.addLike)
-
 
 
 // ---------------------------- User------------------------------------
@@ -74,18 +82,23 @@ router.route('/user/login')
 router.route('/user/logout')
     .get(UserController.logout)
 
-router.route('/User/update/:id')
-    .post(multer,UserController.update)
+//--------------------------Mon Compte----------------------------------
 
-router.route('/moncompte/update')
+router.route('/moncompte')
+    .get(MonCompteController.get)
     .post(multer,MonCompteController.update)
 
+
 router.route('/verify/:id')
-    .get(nodmailercontroller.verifMail)
+.get(nodmailercontroller.verifMail)
+
 // ---------------------------- Admin------------------------------------
+
 router.route('/admin')
 .get(adminController.get)
+
 // ---------------------------- Contact------------------------------------
+
 router.route('/contact/create')
     .post(ContactController.create)
 

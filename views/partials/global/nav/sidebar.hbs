@@ -6,7 +6,7 @@
         {{#if user}}
         <li>
             <div class="user-view">
-                <div style="float:right; font-size:25px"><a href="#modalCompte{{dbUser._id}}"
+                <div style="float:right; font-size:25px"><a href="/monCompte"
                         class="annex-text modal-trigger"><i class="fas fa-cog"></i></a></div>
 
                 <div class="background">
@@ -31,7 +31,7 @@
             <a class="waves-effect waves-light btn modal-trigger" href="#modalCreate">Crée un article</a>
         </li>
         <li>
-            <a class="waves-effect waves-light btn modal-trigger" href="#modalVerif">article a verifier</a>
+            <a class="waves-effect waves-light btn modal-trigger" href="/listVerifArticle">article a verifier</a>
         </li>
 
         <li>
@@ -50,10 +50,7 @@
 
 {{!-- </form> --}}
 
-
 {{>global/nav/dropLike}}
-{{>modal/modalCreate}}
-{{>modal/modalContact}}
-{{>modal/modalCompte}}
-{{>modal/modalVerif}}
+{{>modal/modalCreate}} 
+
 

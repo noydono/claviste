@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="row mt-30">
+        <div class="col s12 ">
+            <span class="title">Article a verifier</span>
+            <div class="underline-home"></div>
+            <div class="portfolio">
+
+                {{#each dbArticle}}
+                <div class="bloc">
+
+                    <img src="{{img}}" alt="">
+                    <div class="bloc-title">
+                        <a href="/VerifArticle/{{_id}}" class=" truncate title ml-10" style="width: 85%;">{{title}}
+                        </a>
+                        <a href="/VerifArticle/{{_id}}" class="author mt-5 mr-10">voir +
+                        </a>
+                    </div>
+                </div>
+                {{/each}}
+
+            </div>
+            <ul class="pagination center-align">
+                <li class="disabled"><a href="#!"><i class="material-icons">chevron_left</i></a></li>
+                <li class="active"><a href="#!">1</a></li>
+                <li class="waves-effect"><a href="#!">2</a></li>
+                <li class="waves-effect"><a href="#!">3</a></li>
+                <li class="waves-effect"><a href="#!">4</a></li>
+                <li class="waves-effect"><a href="#!">5</a></li>
+                <li class="waves-effect"><a href="#!"><i class="material-icons">chevron_right</i></a></li>
+            </ul>
+            
+
+        </div>
+    </div>
+</div>

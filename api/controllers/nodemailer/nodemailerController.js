@@ -25,7 +25,6 @@ module.exports = {
                 console.log("email is verified")
                 // res.end("<h1>Email " + mailOptions.to + " is been Successfully verified")
 
-
                 User.findByIdAndUpdate(userID._id, {
 
                     isVerified: 'true',
@@ -43,12 +42,12 @@ module.exports = {
                         console.log('pwd same ');
                         req.session.userId = user._id
                         req.session.username = user.username,
-                            req.session.email = user.email,
-                            req.session.isAdmin = user.isAdmin,
-                            req.session.isVerified = user.isVerified,
-                            req.session.isBan = user.isBan,
-                            req.session.status = user.status,
-                            req.session.avatarImg = user.avatarImg
+                        req.session.email = user.email,
+                        req.session.isAdmin = user.isAdmin,
+                        req.session.isVerified = user.isVerified,
+                        req.session.isBan = user.isBan,
+                        req.session.status = user.status,
+                        req.session.avatarImg = user.avatarImg
 
                         res.redirect('/')
 

@@ -3372,7 +3372,27 @@ input[type=range] + .thumb {
   min-height: 100vh !important;
 }
 
+#imgArticleVerif {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  right: 0;
+  padding-right: 50Px;
+  min-height: 100vh !important;
+  max-width: 100% !important;
+}
+
 #imgArticle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  right: 0;
+  padding-right: 50Px;
+  min-height: 100vh !important;
+  max-width: 100% !important;
+}
+
+#MonCompte {
   display: flex;
   flex-direction: column;
   justify-content: center;

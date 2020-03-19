@@ -1,0 +1,34 @@
+<header class="white valign-wrapper" style="height:300Px;">
+
+    {{>home/header}}
+    {{>global/nav/sidebar}}
+
+
+</header>
+
+<main>
+
+    {{>global/nav/navmenu}}
+    {{>Article/listArticle}}
+
+</main>
+
+<footer class="page-footer">
+
+    {{>home/footer}}
+
+</footer>
+
+
+<script>
+    $("document").ready(function ($) {
+        var nav = $('#main-menu-container');
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                nav.addClass("f-nav");
+            } else {
+                nav.removeClass("f-nav");
+            }
+        });
+    });
+</script>

@@ -9,12 +9,12 @@ module.exports = {
         const dbUser = await User.findById(req.session.userId)
              dbAllUser = await User.find({}),
             dbArticle = await Article.find({}),
-            dbArticleSingle = await ArticleVerif.findById(req.params.id),
+            dbArticleVerifSingle = await ArticleVerif.findById(req.params.id),
             ArticleReverse = dbArticle.reverse()
 
-        res.render('articleSingle', {
+        res.render('articleVerifSingle', {
 
-            dbArticleSingle : dbArticleSingle,
+            dbArticleSingle : dbArticleVerifSingle,
             dbArticle: ArticleReverse,
             dbUser,
             dbAllUser
