@@ -4,18 +4,18 @@
 
       <div class="col s12 center-align">
        
-        <p>{{passwordNotSame}}<br>{{registerPwdErr}}<br>{{emailNotUnique}}</p>
+        {{!-- <p>{{passwordNotSame}}<br>{{registerPwdErr}}<br>{{emailNotUnique}}</p> --}}
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="PseaudoMonCompte" type="text" class="validate " name="username" >
+            <input id="PseaudoMonCompte" type="text" class="validate " name="username">
             <label for="PseaudoMonCompte">{{dbUser.username}}</label>
           </div>
         </div>
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="emailMonCompte" type="email" class="validate" name="email" >
+            <input id="emailMonCompte" type="email" class="validate" name="email">
             <label for="emailMonCompte">{{dbUser.email}}</label>
           </div>
         </div>
@@ -35,8 +35,6 @@
       </div>
 
 
-
-    
     <a href="#modalMpdNodemailer" class="modal-trigger waves-effect waves-green btn left ml-11">Modifier Le Mot de passe</a>
     <button name="moncompte" value="moncompte" type="submit" class="mr-11 waves-effect waves-green waves-light btn right">enregister les modifications</button>
     

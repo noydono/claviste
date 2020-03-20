@@ -999,3 +999,9 @@ th {
 .radius{
   border-radius: 10px;
 }
+
+#bg{
+  background-image: url(/public/img/coverDefault.jpeg);
+  background-position: center;
+  background-size: cover;
+}

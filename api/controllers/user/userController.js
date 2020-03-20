@@ -17,13 +17,18 @@ module.exports = {
     getlogin:(req,res) => {
         console.log('coucou')
         res.render('login',{
-            layout: 'InCoAr'
+            layout: 'InCoAr',
+            passLog: req.flash('passLog'),
+            notUser: req.flash('notUser'),
+            
+
         })
     },
     getInscription:(req,res) => {
         console.log('coucou')
         res.render('inscription',{
-            layout: 'InCoAr'
+            layout: 'InCoAr',
+            
         })
     },
     create: async (req, res) => {
@@ -128,21 +133,25 @@ module.exports = {
                             req.session.status = user.status,
                             req.session.avatarImg = user.avatarImg
 
+                            req.flash('welcome',"M.toast({html: 'bonjour'})")
+
                         res.redirect('/')
 
                     } else {
 
                         console.log('mauvais mot de passe ');
-                        req.flash('passwordNotSame', 'votre mot de passe ou votre pseaudo ne sont pas valide')
+                        req.flash('passLog', 'mot de pass incorect')
                         res.redirect('back')
 
                     }
 
                 });
 
-            } else {
-                res.redirect('back')
+            } else { 
+
                 console.log('pas existant dans la db');
+                req.flash('notUser', 'c\ette utilisateur n\'existe pas ')
+                res.redirect('back')
 
             }
 

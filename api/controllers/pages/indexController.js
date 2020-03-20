@@ -25,9 +25,7 @@ module.exports = {
             dbArticleVerif: ArticleVerifReverse,
             dbUser,
             dbAllUser,
-            passwordNotSame: req.flash('passwordNotSame'),
-            registerPwdErr: req.flash('registerPwdErr'),
-            emailNotUnique: req.flash('emailNotUnique')
+            
 
         })
     }
