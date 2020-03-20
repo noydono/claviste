@@ -133,7 +133,6 @@ module.exports = {
                             req.session.status = user.status,
                             req.session.avatarImg = user.avatarImg
 
-                            req.flash('welcome',"M.toast({html: 'bonjour'})")
 
                         res.redirect('/')
 

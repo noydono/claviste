@@ -1,14 +1,13 @@
 
-<form action="monCompte" method="POST" enctype="multipart/form-data">
+<form action="monCompte" method="post" enctype="multipart/form-data">
   
 
       <div class="col s12 center-align">
        
-        {{!-- <p>{{passwordNotSame}}<br>{{registerPwdErr}}<br>{{emailNotUnique}}</p> --}}
 
         <div class="row">
           <div class="input-field col s12">
-            <input id="PseaudoMonCompte" type="text" class="validate " name="username">
+            <input id="PseaudoMonCompte" type="text" name="username">
             <label for="PseaudoMonCompte">{{dbUser.username}}</label>
           </div>
         </div>
@@ -20,7 +19,6 @@
           </div>
         </div>
       </div>
-
 
       <div class="col s12">
         <div class="file-field input-field">
@@ -36,7 +34,8 @@
 
 
     <a href="#modalMpdNodemailer" class="modal-trigger waves-effect waves-green btn left ml-11">Modifier Le Mot de passe</a>
-    <button name="moncompte" value="moncompte" type="submit" class="mr-11 waves-effect waves-green waves-light btn right">enregister les modifications</button>
+    <button type="submit" class="mr-11 waves-effect waves-green waves-light btn right">enregister les modifications</button>
     
-{{>modal/modalMpdNodemailer}}
 </form>
+
+{{>modal/modalMpdNodemailer}}

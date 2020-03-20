@@ -3,18 +3,18 @@
     {{>home/header}}
     {{>global/nav/sidebar}}
 
-  <a onclick="M.toast({html: 'bienvenue'})" class="btn">Toast!</a>
+    
 </header>
 
 <main>
 
     {{>global/nav/navmenu}}
     {{>home/indexParallax}}
-  
+
 
 </main>
 
-  <footer class="page-footer">
+<footer class="page-footer">
 
     {{>home/footer}}
 
@@ -22,8 +22,12 @@
 
 
 <script>
-
-   
+    
+ window.onload = function login (){
+    var toastHTML = '<span> bienvenue {{dbUser.username}} </span>';
+    M.toast({html: toastHTML});
+}
+    
 
     $("document").ready(function ($) {
         var nav = $('#main-menu-container');
