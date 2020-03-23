@@ -29,16 +29,17 @@ module.exports = {
 
             if (err) {
                 console.log('article nest pas post ' + err);
+                req.flash('ArticleErr', '.')
+                res.redirect('/')
 
             } else {
                 console.log('article crée');
-
+                req.flash('ArticleC','.')
                 res.redirect('/')
             }
 
         })
     },
-
 
     update: async (req, res) => {
 
@@ -126,27 +127,5 @@ module.exports = {
 
             }
         })
-    },
-    // deleteAll: async (req, res) => {
-
-    //     const coucou = await Article.deleteMany({});
-    //     // `0` if no docs matched the filter, number of docs deleted otherwise
-
-
-    //     const directory = 'public/uploads/';
-
-    //     fs.readdir(directory, (err, files) => {
-    //         if (err) throw err;
-
-    //         for (const file of files) {
-    //             fs.unlink(path.join(directory, file), err => {
-    //                 if (err) throw err;
-    //             });
-    //         }
-    //     }); 
-    //     res.redirect('/')
-
-
-    // },
-    
+    } 
 }

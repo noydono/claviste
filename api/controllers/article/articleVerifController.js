@@ -30,6 +30,7 @@ module.exports = {
         res.render('articleSingle', {
             dbArticle,
             dbUser,
+            addVerif:req.flash('addVerif')
         })
     },
     addVerif: async (req, res) => {
@@ -70,8 +71,10 @@ module.exports = {
                     }, (err, post) => {
 
                         if (err) {
+
                             console.log(err);
                             res.redirect('/')
+
                         } else {
 
                             Article.findByIdAndRemove(req.params.id, (err) => {
@@ -81,6 +84,7 @@ module.exports = {
                                     res.redirect('/')
                                 } else {
                                     console.log('larticle et supprimer et verifer');
+                                    req.flash('addVerifPost','.')
                                     res.redirect('/')
                                 }
                             })
@@ -89,8 +93,11 @@ module.exports = {
                     })
 
                 } else {
+
                     console.log('article na pas assez de verif');
-                    res.redirect('/')
+                    req.flash('addVerif','.')
+                    res.redirect('back')
+
                 }
             }
         })

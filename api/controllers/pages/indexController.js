@@ -24,9 +24,28 @@ module.exports = {
             dbArticle: ArticleReverse,
             dbArticleVerif: ArticleVerifReverse,
             dbUser,
-            dbAllUser,
+            dbAllUser,                
+            emailUErr : req.flash('emailUErr'),
+            emailU : req.flash('emailU'),            
+            usernameErr : req.flash('usernameErr'),
+            usernameU : req.flash('usernameU'),
+            usernameEmailErr : req.flash('usernameEmailErr'),
+            usernameEmailU : req.flash('usernameEmailU'),
+            fileErr : req.flash('fileErr'),
+            fileU : req.flash('fileU'),
+            fileEmailErr : req.flash('fileEmailErr'),
+            fileEmailU : req.flash('fileEmailU'),
+            fileUsernameErr : req.flash('fileUsernameErr'),
+            fileUsernameU : req.flash('fileUsernameU'),
+            fileUsernameEmailErr : req.flash('fileUsernameEmailErr'),
+            fileUsernameEmailU : req.flash('fileUsernameEmailU'),
+            login : req.flash('login'),
+            inscription : req.flash('inscription'),
+            ArticleErr : req.flash('ArticleErr'),
+            ArticleC : req.flash('ArticleC'),
+            addVerifPost : req.flash('addVerifPost'),
+            verifOk: req.flash('verifOk')
             
-
         })
     }
 

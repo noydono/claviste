@@ -38,8 +38,8 @@ module.exports = {
                     console.log(success);
                 }
             });
-
-        res.redirect('/')
+        req.flash('addCom','.')
+        res.redirect('back')
 
     },
     DelCom: async (req, res) => {
@@ -52,14 +52,8 @@ module.exports = {
         })
         res.redirect('back')
 
-
-
-
-
     },
-
     addLike: async (req, res) => {
-
 
         const dbUser = await User.findById(req.session.userId),
             dbArticleVerif = await ArticleVerif.findById(req.params.id)
@@ -69,10 +63,10 @@ module.exports = {
                 return a.article_id === req.params.id
 
             })
+
         console.log(valLike.length);
 
         if (valLike.length === 0) {
-
 
             ArticleVerif.findByIdAndUpdate(req.params.id, {
                 $push: {
@@ -103,17 +97,20 @@ module.exports = {
                 if (error) {
 
                     console.log(error);
+
                 } else {
 
                 }
             });
-            res.redirect('back')
+
+            req.flash('addLike','.');
+            res.redirect('back');
 
         } else {
 
             console.log('vous avez deja liker cette article');
-            req.flash('likeErr', 'vous avez deja like cette article')
-            res.redirect('/')
+            req.flash('likeErr', '.');
+            res.redirect('back');
 
         }
 

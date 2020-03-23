@@ -1,9 +1,8 @@
 const User = require('../../db/User'),
     bcrypt = require('bcrypt'),
     path = require('path'),
-    fs = require('fs')
-   
-
+    fs = require('fs'),    
+    nodemailer = require('nodemailer')
 module.exports = {
 
     
@@ -11,10 +10,7 @@ module.exports = {
 
         const userID = await User.findOne({ email: mailOptions.to }),
             query = { _id: userID._id }
-
-
-
-
+       
         if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
 
 
@@ -27,7 +23,7 @@ module.exports = {
 
                 User.findByIdAndUpdate(userID._id, {
 
-                    isVerified: 'true',
+                    isVerified: true,
 
                 }, (err, user) => {
 
@@ -44,13 +40,12 @@ module.exports = {
                         req.session.username = user.username,
                         req.session.email = user.email,
                         req.session.isAdmin = user.isAdmin,
-                        req.session.isVerified = user.isVerified,
+                        req.session.isVerified = true,
                         req.session.isBan = user.isBan,
                         req.session.status = user.status,
                         req.session.avatarImg = user.avatarImg
-
+                        req.flash('verifOk','.')
                         res.redirect('/')
-
 
                     }
                 })
@@ -63,10 +58,7 @@ module.exports = {
             }
 
         } else {
-
             res.end("<h1> source inconuue</h1>")
-
-
         }
 
     }

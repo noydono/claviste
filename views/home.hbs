@@ -3,7 +3,7 @@
     {{>home/header}}
     {{>global/nav/sidebar}}
 
-    
+
 </header>
 
 <main>
@@ -21,14 +21,10 @@
 </footer>
 
 
-<script>
-    
- window.onload = function login (){
-    var toastHTML = '<span> bienvenue {{dbUser.username}} </span>';
-    M.toast({html: toastHTML});
-}
-    
+{{>flash/update}}
 
+
+<script>
     $("document").ready(function ($) {
         var nav = $('#main-menu-container');
         $(window).scroll(function () {
