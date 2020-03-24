@@ -6,88 +6,178 @@ const User = require('../../db/User'),
     path = require('path'),
     fs = require('fs'),
     nodemailer = require('nodemailer'),
-    keys = require('../../../config/keys')
+    keys = require('../../../config/keys'),
 
-
-
-
-var rand, mailOptions, host, link;
+    transporter = nodemailer.createTransport({
+        host: "smtp.gmail.com",
+        service: 'gmail',
+        port: '587',
+        secure: false,
+        auth: {
+            user: "noytest.test@gmail.com",
+            pass: keys.mdpMailer
+        },
+        tls: {
+            rejectUnauthorized: false
+        }
+    })
 
 module.exports = {
+    getlogin: (req, res) => {
+        console.log('coucou')
+        res.render('login', {
+            layout: 'InCoAr',
+            passLog: req.flash('passLog'),
+            notUser: req.flash('notUser'),
 
+
+        })
+    },
+    getInscription: (req, res) => {
+        console.log('coucou')
+        res.render('inscription', {
+            layout: 'InCoAr',
+
+        })
+    },
     create: async (req, res) => {
 
         console.log('create user');
 
-       
+
         const mail = await User.findOne({
             email: req.body.email
         })
 
         if (!mail) {
-            if(req.file){
+            if (req.file) {
 
                 if (req.body.password !== req.body.passwordVerif) {
 
                     console.log('error password')
                     req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
                     res.render('index')
-    
+
                 } else {
+
                     console.log('password OK')
-    
                     User.create({
-    
+
                         username: req.body.username,
                         email: req.body.email,
                         passwordVerif: req.body.passwordVerif,
                         avatarImg: `/public/uploads/${req.file.filename}`,
                         avatarName: req.file.filename
-    
-    
-                    }, (err, user) => {
-    
-                        if (err) {
-    
-                            console.log(err);
-                            res.render('index')
-    
-                        } res.redirect('/') 
-                    })
-                    }
 
-            }else{
+
+                    }, (err, user) => {
+
+                        if (err) {
+
+                            console.log(err);
+                            res.redirect('/')
+
+                        } else {
+
+                            console.log(req.get('host'));
+
+                            rand = Math.floor((Math.random() * 100) + 54)
+                            host = req.get('host')
+                            link = "http://" + req.get('host') + "/verify/" + rand
+                            mailOptions = {
+                                from: 'noytest.test@gmail.com',
+                                to: dbUser.email,
+                                subject: "The Clavist Email de Verification",
+                                rand: rand,
+                                html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+                            }
+
+                            console.log(mailOptions)
+
+                            transporter.sendMail(mailOptions, (err, res, next) => {
+
+
+                                if (err) {
+                                    console.log(err)
+                                    res.redirect('back')
+                                } else {
+                                    console.log("Message Envoyer")
+                                    req.flash('inscription', '.')
+                                    res.redirect('/')
+                                }
+                            })
+
+
+
+
+                        }
+                    })
+                }
+
+            } else {
                 if (req.body.password !== req.body.passwordVerif) {
 
                     console.log('error password')
                     req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
-                    res.render('index')
-    
+                    res.redirect('back')
+
                 } else {
                     console.log('password OK')
-    
+
                     User.create({
-    
+
                         username: req.body.username,
                         email: req.body.email,
                         passwordVerif: req.body.passwordVerif
-    
+
                     }, (err, user) => {
-    
+
                         if (err) {
-    
+
                             console.log(err);
-                            res.render('index')
-    
-                        } res.redirect('/') 
+                            res.redirect('back')
+
+                        } else {
+                            console.log(req.get('host'));
+
+                            rand = Math.floor((Math.random() * 100) + 54)
+                            host = req.get('host')
+                            link = "http://" + req.get('host') + "/verify/" + rand
+                            mailOptions = {
+                                from: 'noytest.test@gmail.com',
+                                to: req.body.email,
+                                subject: "The Clavist Email de Verification",
+                                rand: rand,
+                                html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+                            }
+
+                            console.log(mailOptions)
+
+                            transporter.sendMail(mailOptions, (err, res, next) => {
+
+
+                                if (err) {
+
+                                    console.log(err)
+                                    res.redirect('back')
+
+                                } else {
+
+                                    console.log("Message Envoyer")
+                                    next()
+
+
+                                }
+
+                            })
+
+                            req.flash('inscription', '.')
+                            res.redirect('/')
+                        }
                     })
-                    }
+                }
             }
-            
-
-
-            }
-
+        }
     },
     login: async (req, res) => {
 
@@ -100,7 +190,6 @@ module.exports = {
 
 
         User.findOne(dbUser, (err, user) => {
-
 
             if (user) {
 
@@ -117,12 +206,13 @@ module.exports = {
                             req.session.status = user.status,
                             req.session.avatarImg = user.avatarImg
 
+                        req.flash('login', '.')
                         res.redirect('/')
 
                     } else {
 
                         console.log('mauvais mot de passe ');
-                        req.flash('passwordNotSame', 'votre mot de passe ou votre pseaudo ne sont pas valide')
+                        req.flash('passLog', 'mot de pass incorrect')
                         res.redirect('back')
 
                     }
@@ -130,17 +220,14 @@ module.exports = {
                 });
 
             } else {
-                res.redirect('back')
+
                 console.log('pas existant dans la db');
+                req.flash('notUser', 'cette utilisateur n\'existe pas ')
+                res.redirect('back')
 
             }
 
-
-
         })
-
-
-
 
     },
     logout: (req, res) => {
@@ -160,11 +247,11 @@ module.exports = {
         })
 
         User.findByIdAndUpdate(query, {
-            status: req.body.status,
-            isAdmin: req.body.isAdmin,
-            isVerified: req.body.isVerified,
-            isBan: req.body.isBan,
-        },
+                status: req.body.status,
+                isAdmin: req.body.isAdmin,
+                isVerified: req.body.isVerified,
+                isBan: req.body.isBan,
+            },
             (err, post) => {
                 if (err) {
                     console.log(err);
@@ -179,6 +266,6 @@ module.exports = {
                 }
             })
     },
-    
+
 
 }

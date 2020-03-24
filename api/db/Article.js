@@ -19,11 +19,8 @@ var ArticleSchema = new mongoose.Schema({
 
         userId: String
     
-
     }]
     
-
-
 });
 
 const Article = mongoose.model('Article', ArticleSchema);

@@ -18,7 +18,11 @@ const indexController = require('./controllers/pages/indexController'),
     MonCompteController = require('./controllers/user/monComptecontroller'),
     CommentaireController = require('./controllers/article/CommentaireController'),
     ContactController = require('./controllers/contact/contactController'),
-    nodmailercontroller = require('./controllers/nodemailer/nodemailerController')
+    nodmailercontroller = require('./controllers/nodemailer/nodemailerController'),
+    ArticleSingleController = require('./controllers/article/articleSingleController'),
+    ArticleVerifController= require('./controllers/article/articleVerifController')
+    
+
 /*
  *  middleware
  * * * * * */
@@ -44,10 +48,19 @@ router.route('/article/delete/:id')
 // router.route('/article/deleteAll')
 //     .post(ArticleController.deleteAll)
 
-router.route('/article/verif/:id')
-    .post(ArticleController.addVerif)
+router.route('/article/:id')
+    .get(ArticleSingleController.get)
 
-// ---------------------------- Commentaire & like ------------------------------------
+router.route('/listVerifArticle')
+    .get(ArticleVerifController.get)
+
+router.route('/VerifArticle/:id')
+    .get(ArticleVerifController.getSingle)
+    .post(ArticleVerifController.addVerif)
+
+
+
+// ---------------------------- Commentaire & like ---------------------
 
 router.route('/commentaire/create/:id')
     .post(auth,CommentaireController.addCom)
@@ -60,26 +73,53 @@ router.route('/like/create/:id')
 // ---------------------------- User------------------------------------
 
 router.route('/user/create')
+    .get(UserController.getInscription)
     .post(multer,UserController.create)
 
 router.route('/user/login')
+    .get(UserController.getlogin)
     .post(UserController.login)
 
 router.route('/user/logout')
-    .post(UserController.logout)
+    .get(UserController.logout)
 
-router.route('/User/update/:id')
-    .post(multer,UserController.update)
 
-router.route('/moncompte/update')
+//--------------------------Mon Compte----------------------------------
+
+router.route('/moncompte')
+    .get(MonCompteController.get)
     .post(multer,MonCompteController.update)
 
+
+//--------------------------nodemailer verif----------------------------
+
 router.route('/verify/:id')
-    .get(nodmailercontroller.verifMail)
-// ---------------------------- Admin------------------------------------
+.get(nodmailercontroller.verifMail)
+
+// envoye du mail de mdp oublier
+router.route('/mdpOublier/send')
+.post(nodmailercontroller.postMpdOublier)
+
+// redirige apres le click du lien du mail 
+router.route('/mdpOublier/:id')
+.get(nodmailercontroller.getMpdOublier)
+
+// update du mdp
+router.route('/updateMdp/:id')
+.get(nodmailercontroller.getputmdpOublier)
+.post(nodmailercontroller.putMdpOublier)
+
+
+
+
+// ---------------------------- Admin-----------------------------------
+
 router.route('/admin')
 .get(adminController.get)
-// ---------------------------- Contact------------------------------------
+
+
+// ---------------------------- Contact---------------------------------
+
 router.route('/contact/create')
     .post(ContactController.create)
 

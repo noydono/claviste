@@ -7,6 +7,7 @@ const Article = require('../../db/Article'),
 
 module.exports = {
 
+    
     create: (req, res) => {
 
         console.log("creation d'article");
@@ -28,16 +29,17 @@ module.exports = {
 
             if (err) {
                 console.log('article nest pas post ' + err);
+                req.flash('ArticleErr', '.')
+                res.redirect('/')
 
             } else {
                 console.log('article crée');
-
+                req.flash('ArticleC','.')
                 res.redirect('/')
             }
 
         })
     },
-
 
     update: async (req, res) => {
 
@@ -125,124 +127,5 @@ module.exports = {
 
             }
         })
-    },
-    // deleteAll: async (req, res) => {
-
-    //     const coucou = await Article.deleteMany({});
-    //     // `0` if no docs matched the filter, number of docs deleted otherwise
-
-
-    //     const directory = 'public/uploads/';
-
-    //     fs.readdir(directory, (err, files) => {
-    //         if (err) throw err;
-
-    //         for (const file of files) {
-    //             fs.unlink(path.join(directory, file), err => {
-    //                 if (err) throw err;
-    //             });
-    //         }
-    //     }); 
-    //     res.redirect('/')
-
-
-    // },
-    addVerif: async (req, res) => {
-
-        const dbArticle = await Article.findById(req.params.id),
-            dbUser = await User.find({}),
-            articleAdd = dbArticle.articleVerified + 1;
-
-        let pourcentage = articleAdd / dbUser.length * 100,
-            limitVerif = dbUser.length * 20 / 100
-
-
-        if (req.body.verif === 'verif') {
-
-            Article.findByIdAndUpdate(req.params.id, {
-                articleVerified: articleAdd
-            }, (err, post) => {
-
-                if (err) {
-
-                    console.log(err);
-
-                } else {
-
-                    if (pourcentage >= limitVerif) {
-
-                        ArticleVerif.create({
-
-                            title: dbArticle.title,
-                            content: dbArticle.content,
-                            author: dbArticle.author,
-                            img: dbArticle.img,
-                            nameImg: dbArticle.nameImg,
-                            createDate: new Date(),
-                            commentaire: [],
-                            like: []
-
-                        }, (err, post) => {
-
-                            if (err) {
-                                console.log(err);
-                                res.redirect('back')
-
-                            } else {
-
-                                Article.findByIdAndRemove(req.params.id, (err) => {
-
-                                    if (err) {
-                                        console.log(err);
-                                        res.redirect('back')
-                                    } else {
-                                        console.log('larticle et supprimer et verifer');
-
-                                        res.redirect('back')
-                                    }
-                                })
-                            }
-
-                        })
-
-                    } else {
-
-
-                    }
-                }
-            })
-
-        } else if (req.body.signal === 'signal') {
-
-            
-
-            Article.findByIdAndUpdate(
-                req.params.id
-            , {
-                $push: {
-
-                    signal: {userId:req.session.userId}
-
-                }
-            },
-                function (error, success) {
-
-                    if (error) {
-
-                        console.log(error);
-
-                    } else {
-
-                        console.log(success);
-                        res.redirect('/')
-
-                    }
-                });
-
-
-        }
-
-
-
-    }
+    } 
 }

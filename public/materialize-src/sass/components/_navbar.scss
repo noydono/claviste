@@ -15,7 +15,7 @@ nav {
 
   color: $navbar-font-color;
   @extend .z-depth-1;
-  background-color: $primary-color;
+  background-color: #435964;
   width: 100%;
   height: $navbar-height-mobile;
   line-height: $navbar-line-height-mobile;
@@ -205,4 +205,25 @@ nav {
   .navbar-fixed {
     height: $navbar-height;
   }
+}
+
+.f-nav {
+  /* To fix main menu container */
+  z-index: 1;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+}
+
+#main-menu-container {
+  text-align: center;
+  /* Assuming your main layout is centered */
+}
+
+
+#main-menu {
+  display: inline-block;
+  width: 1024px;
+  /* Your menu's width */
 }

@@ -38,8 +38,8 @@ module.exports = {
                     console.log(success);
                 }
             });
-
-        res.redirect('/')
+        req.flash('addCom','.')
+        res.redirect('back')
 
     },
     DelCom: async (req, res) => {
@@ -50,28 +50,23 @@ module.exports = {
         dbCom.deleteOne({
             _id: req.params.id
         })
-        res.redirect('/')
-
-
-
-
+        res.redirect('back')
 
     },
-
     addLike: async (req, res) => {
 
-
         const dbUser = await User.findById(req.session.userId),
+            dbArticleVerif = await ArticleVerif.findById(req.params.id)
             ldLike = dbUser.like,
             valLike = ldLike.filter((a) => {
 
                 return a.article_id === req.params.id
 
             })
+
         console.log(valLike.length);
 
         if (valLike.length === 0) {
-
 
             ArticleVerif.findByIdAndUpdate(req.params.id, {
                 $push: {
@@ -94,24 +89,28 @@ module.exports = {
             }, {
                 $push: {
                     like: {
-                        article_id: req.params.id
+                        article_id: req.params.id,
+                        title: dbArticleVerif.title
                     }
                 }
             }, (error, success) => {
                 if (error) {
 
                     console.log(error);
+
                 } else {
 
                 }
             });
-            res.redirect('/')
+
+            req.flash('addLike','.');
+            res.redirect('back');
 
         } else {
 
             console.log('vous avez deja liker cette article');
-            req.flash('likeErr', 'vous avez deja like cette article')
-            res.redirect('/')
+            req.flash('likeErr', '.');
+            res.redirect('back');
 
         }
 

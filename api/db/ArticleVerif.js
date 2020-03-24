@@ -21,7 +21,8 @@ var ArticleVerifSchema = new mongoose.Schema({
     ],like:[
         {
 
-        userId:String
+        userId:String,
+        title:String
 
     }
 ]

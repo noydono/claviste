@@ -1,0 +1,13 @@
+ <!-- Dropdown Structure -->
+    <ul id='dropdown{{dbUser._id}}' class='dropdown-content'>
+        
+       <li>
+           <div class="input-field col s6">
+            <input id="input_text" type="text" data-length="10">
+            <label for="input_text">recherche</label>
+          </div>
+        </li>
+        {{#each dbUser.like}}
+        <li><a href="/article/{{article_id}}" class="truncate">{{title}}</a></li>
+        {{/each}}
+    </ul>
