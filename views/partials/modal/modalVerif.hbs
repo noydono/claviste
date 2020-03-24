@@ -1,0 +1,40 @@
+<!-- Modal read commentaire-->
+<div id="modalVerif" class="modal bottom-sheet modal-fixed-footer ">
+    <div class="modal-content ">
+
+        <div class="row center-align">
+            <span class="title " style="margin-top: 10px; margin-bottom:25px;">Article A verifier
+            </span>
+        </div>
+
+
+
+        <ul class="collection">
+            {{#each dbArticle}}
+            {{#if (filterAVerif this ../dbAllUser)}}
+            <form action="/article/verif/{{_id}}" method="post">
+                <li class="collection-item avatar" style="border-bottom: 1px solid #e0e0e0;">
+                    <img src="{{img}}" alt="clavier mécanique" class="circle">
+                    <span class="title">{{title}} <span class="date">par {{author}} le {{createDate}}</span></span>
+                    <p>
+                        <i class="fas fa-quote-left"></i>
+                        {{content}}
+                        <i class="fas fa-quote-right"></i>
+                    </p>
+                    <div class="right-align mt-10">
+                        <button type="submit" value="verif" name="verif" class="waves-effect waves-light btn">Verifer l'article</button>
+                        <button type="submit" value="signal" name="signal" class="waves-effect waves-light btn red">signaler</button>
+                    </div>
+                </li>
+            </form>
+
+            {{/if}}
+            {{/each}}
+        </ul>
+
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn left">Close</a>
+        <a href="#!" class="modal-close waves-effect waves-green btn">Agree</a>
+    </div>
+</div>
