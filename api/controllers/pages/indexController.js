@@ -45,7 +45,8 @@ module.exports = {
             ArticleC : req.flash('ArticleC'),
             addVerifPost : req.flash('addVerifPost'),
             verifOk: req.flash('verifOk'),
-            mdpOublierC : req.flash('mdpOublierC')
+            mdpOublierC : req.flash('mdpOublierC'),
+            
             
         })
     }

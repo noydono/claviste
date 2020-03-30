@@ -12,28 +12,32 @@ const storage = multer.diskStorage({
   },
   filename: (req, file, callback) => {
 
-
     callback(null, Date.now() + '-' + file.originalname);
+    
   }
+
 });
 
-module.exports = multer({
+
+const uploads = multer({
   storage: storage,
   limits: {
-    fileSize: 1 * 2500 * 2500,
-    files: 1
+      fileSize: 1 * 4098 * 4098,
+      files: 5
   },
   fileFilter: (req, file, cb) => {
-    if (
-      file.mimetype === "image/png" ||
-      file.mimetype === "image/jpg" ||
-      file.mimetype === "image/gif" ||
-      file.mimetype === "image/jpeg"
-    ) {
-      cb(null, true)
-    } else {
-      cb(null, false)
-      cb(new Error('Le fichier doit être au format png, jpg, jpeg ou gif.'))
-    }
+      if (
+          file.mimetype === "image/png" ||
+          file.mimetype === "image/jpg" ||
+          file.mimetype === "image/gif" ||
+          file.mimetype === "image/jpeg"
+      ) {
+          cb(null, true)
+      } else {
+          cb(null, false)
+          cb(new Error('Le fichier doit être au format png, jpg, jpeg ou gif.'))
+      }
   }
-}).single('img');
+})
+ 
+module.exports = uploads

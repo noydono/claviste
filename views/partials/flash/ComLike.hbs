@@ -38,3 +38,13 @@
     }
 </script>
 {{/if}}
+
+{{#if verifErr}}
+<script>
+
+    window.onload = function login() {
+        var toastHTML = '<span>vous avez deja verifier cette article</span>';
+        M.toast({ html: toastHTML });
+    }
+</script>
+{{/if}}

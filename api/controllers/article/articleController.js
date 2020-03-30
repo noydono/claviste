@@ -7,20 +7,36 @@ const Article = require('../../db/Article'),
 
 module.exports = {
 
-    
+
     create: (req, res) => {
 
         console.log("creation d'article");
-        console.log(req.file);
+        let arrFiles = []
 
+        for (i = 0; i < req.files.length; i++) {
+            
+           
+                
+
+            arrFiles.push({ 
+
+                img : '/' + req.files[i].path,
+                nameImg : req.files[i].filename
+
+             })
+            
+            console.log(arrFiles);
+
+        }
 
         Article.create({
 
             title: req.body.title,
             content: req.body.content,
             author: req.body.author,
-            img: `/public/uploads/${req.file.filename}`,
-            nameImg: req.file.filename,
+            cover: arrFiles[0].img,
+            nameCover:  arrFiles[0].nameImg,
+            callery: arrFiles,
             createDate: new Date(),
             signal:[]
 
@@ -40,7 +56,6 @@ module.exports = {
 
         })
     },
-
     update: async (req, res) => {
 
         console.log('update article');
@@ -127,5 +142,5 @@ module.exports = {
 
             }
         })
-    } 
+    }
 }

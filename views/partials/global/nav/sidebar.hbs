@@ -1,9 +1,9 @@
 
 {{!-- <form action="user/logout" method="POST"> --}}
-
     <ul id="slide-out" class="sidenav">
 
         {{#if user}}
+
         <li>
             <div class="user-view">
                 <div style="float:right; font-size:25px"><a href="/monCompte"
@@ -18,9 +18,13 @@
 
             </div>
         </li>
+
         {{#if isAdmin}}
+
         <li><a class="waves-effect waves-light btn modal-trigger" href="/admin">Administration</a></li>
+
         {{else}}
+
         {{/if}}
 
         <li>
@@ -33,18 +37,23 @@
         <li>
             <a class="waves-effect waves-light btn modal-trigger" href="/listVerifArticle">article a verifier</a>
         </li>
+        <li><a class="waves-effect waves-light btn hide-on-large-only" href="/">Acceuil</a></li>
 
         <li>
             <a href="/user/logout" class="waves-effect waves-light btn modal-trigger"
-                style="bottom: 8%; position:absolute;">Deconnection</a>
+                style="bottom: 8%;">Deconnection</a>
         </li>
 
         {{else}}
 
         <li><a class="waves-effect waves-light btn" href="/user/create">m'inscrire</a></li>
         <li><a class="waves-effect waves-light btn modal-trigger" href="/user/login">Ce connecter</a></li>
+        <li><a class="waves-effect waves-light btn hide-on-large-only" href="/">Acceuil</a></li>
 
+ 
         {{/if}}
+
+
 
     </ul>
 
@@ -52,5 +61,7 @@
 
 {{>global/nav/dropLike}}
 {{>modal/modalCreate}} 
+{{>modal/modalContact}}
+{{>legal/rgpd}}
 
 

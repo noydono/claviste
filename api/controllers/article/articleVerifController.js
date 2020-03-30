@@ -30,7 +30,8 @@ module.exports = {
         res.render('articleSingle', {
             dbArticle,
             dbUser,
-            addVerif:req.flash('addVerif')
+            verifErr: req.flash('verifErr'),
+            addVerif: req.flash('addVerif')
         })
     },
     addVerif: async (req, res) => {
@@ -38,95 +39,114 @@ module.exports = {
         console.log('dans l\'ajoute de verif');
 
         const dbArticle = await Article.findById(req.params.id),
-            dbUser = await User.find({})
+            dbUserVerif = await User.find({}),
+            dbUser = await User.findById(req.session.userId),
+            recup = {
+                article_id: req.params.id
+            }
+                                //17               
+        let pourcentage = dbArticle.articleVerified / dbUserVerif.length * 100,
+            limitVerif = dbUserVerif.length * 20 / 100,
+            verifUser = dbUser.verif,
+            arrVerif = verifUser.filter((a) => {
 
+                return a.article_id === req.params.id
 
-        let pourcentage = dbArticle.articleVerified / dbUser.length * 100,
-            limitVerif = dbUser.length * 20 / 100
+            })
 
+            console.log(dbUser.length);
+            
 
-        Article.findByIdAndUpdate(req.params.id, {
-            articleVerified: dbArticle.articleVerified + 1
-        }, (err, post) => {
+        if (arrVerif.length === 0) {
+            Article.findByIdAndUpdate(req.params.id, {
 
-            if (err) {
+                articleVerified: dbArticle.articleVerified + 1
 
-                console.log(err);
+            }, (err, post) => {
 
-            } else {
+                if (err) {
 
-                if (pourcentage > limitVerif) {
-
-                    ArticleVerif.create({
-
-                        title: dbArticle.title,
-                        content: dbArticle.content,
-                        author: dbArticle.author,
-                        img: dbArticle.img,
-                        nameImg: dbArticle.nameImg,
-                        createDate: new Date(),
-                        commentaire: [],
-                        like: []
-
-                    }, (err, post) => {
-
-                        if (err) {
-
-                            console.log(err);
-                            res.redirect('/')
-
-                        } else {
-
-                            Article.findByIdAndRemove(req.params.id, (err) => {
-
-                                if (err) {
-                                    console.log(err);
-                                    res.redirect('/')
-                                } else {
-                                    console.log('larticle et supprimer et verifer');
-                                    req.flash('addVerifPost','.')
-                                    res.redirect('/')
-                                }
-                            })
-                        }
-
-                    })
+                    console.log(err);
 
                 } else {
 
-                    console.log('article na pas assez de verif');
-                    req.flash('addVerif','.')
-                    res.redirect('back')
+                    User.findOneAndUpdate({
+
+                            _id: req.session.userId
+
+                        }, {
+
+                            $push: {
+                                verif: recup
+                            }
+
+                        }, (error, success) => {
+
+                            if (error) {
+
+                                console.log(error);
+
+                            } else {
+
+                                console.log(success);
+                            
+                                if (pourcentage > limitVerif) {
+
+                                    ArticleVerif.create({
+
+                                        title: dbArticle.title,
+                                        content: dbArticle.content,
+                                        author: dbArticle.author,
+                                        cover: dbArticle.callery[0].img,
+                                        nameCover: dbArticle.callery[0].nameImg,
+                                        callery: dbArticle.callery,
+                                        createDate: new Date(),
+                                        commentaire: [],
+                                        like: []
+
+                                    }, (err, post) => {
+
+                                        if (err) {
+
+                                            console.log(err);
+                                            res.redirect('/')
+
+                                        } else {
+
+                                            Article.findByIdAndRemove(req.params.id, (err) => {
+
+                                                if (err) {
+                                                    console.log(err);
+                                                    res.redirect('/')
+                                                } else {
+                                                    console.log('larticle et supprimer et verifer');
+                                                    req.flash('addVerifPost', '.')
+                                                    res.redirect('/')
+                                                }
+                                            })
+                                        }
+
+                                    })
+
+                                } else {
+
+                                    console.log('article na pas assez de verif');
+                                    req.flash('addVerif', '.')
+                                    res.redirect('back')
+
+                                }
+
+                            }
+                        });
+
 
                 }
-            }
-        })
+            })
 
-        // else if (req.body.signal === 'signal') {
-
-        //     Article.findByIdAndUpdate(
-        //         req.params.id, {
-        //             $push: {
-
-        //                 signal: {
-        //                     userId: req.session.userId
-        //                 }
-
-        //             }
-        //         },
-        //         function (error, success) {
-
-        //             if (error) {
-
-        //                 console.log(error);
-
-        //             } else {
-
-        //                 console.log(success);
-        //                 res.redirect('/')
-
-        //             }
-        //         });
-        // }
+        } else {
+            console.log('vous avez dejaverifier cette article');
+            req.flash('verifErr', '.');
+            res.redirect('back');
+        }
     }
 }

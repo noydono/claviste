@@ -1,20 +1,26 @@
-const Article = require('../../db/Article')
+const Article = require('../../db/Article'),
+    ArticleVerif = require('../../db/ArticleVerif'),
     User = require('../../db/User')
-module.exports ={
+
+module.exports = {
 
 
-    get: async (req,res)=> {
-
-        
-        
-        const dbArticle = await Article.find({}) 
-        const dbUser = await User.find({}) 
-        const adminUser = req.session.username 
+    get: async (req, res) => {
 
 
-        res.render('admin',{
+
+        const dbArticle = await Article.find({}),
+        dbArticleVerif = await ArticleVerif.find({})
+         dbUser = await User.find({}),
+        adminUser = req.session.username
+            
+
+
+
+
+        res.render('admin', {
             layout: 'admin',
-            dbArticle,
+            dbArticleVerif,
             adminUser,
             dbUser
         })

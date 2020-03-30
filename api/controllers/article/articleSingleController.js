@@ -11,6 +11,7 @@ module.exports = {
             dbArticle = await Article.find({}),
             dbArticleVerifSingle = await ArticleVerif.findById(req.params.id),
             ArticleReverse = dbArticle.reverse()
+            
 
         res.render('articleVerifSingle', {
 

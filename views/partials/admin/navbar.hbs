@@ -1,8 +1,35 @@
-<nav>
-    <div class="nav-wrapper ">
-    <a href="/" class="brand-logo ">Espace D'aministatrion de {{adminUser}}</a>
-        <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+<nav id="main-menu-container">   
+
+    <div id="main-menu" class="nav-wrapper">
+        <span class="title left">Bienvenue dans votre espace <span class="author">{{adminUser}}</span> </span>
+      <a href="#" data-target="slide-out" class="sidenav-trigger"><i class="material-icons">menu</i></a>
+
+       <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+            <li>
+                <a href="/" class="author">Acceuil</a>
+            </li>
+
+            <li>
+                <a href="#" data-target="slide-out" class="sidenav-trigger author show-on-large waves-effect waves-light ">
+                    <i class="material-icons">menu</i>
+                </a>
+            </li>
+
         </ul>
     </div>
-</nav>
+  </nav>
 
+<script>
+    $("document").ready(function ($) {
+        var nav = $('#main-menu-container');
+        $(window).scroll(function () {
+            if ($(this).scrollTop() > 300) {
+                nav.addClass("f-nav");
+            } else {
+                nav.removeClass("f-nav");
+            }
+        });
+    });
+</script>

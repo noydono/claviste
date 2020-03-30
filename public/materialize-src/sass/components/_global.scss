@@ -869,12 +869,8 @@ th {
 
 .portfolio {
   margin: 20px;
-  display: grid;
-  grid-gap: 20px;
   position: relative;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 50vh);
-
+  
   & :hover{
     .bloc-title{
      height: 50PX !important;
@@ -886,9 +882,9 @@ th {
 
     position: relative;
     background-color: rgb(84, 84, 87);
-
-
-
+    height: 30vh;
+    margin: 10px;
+  
     & img {
 
       width: 100%;
@@ -910,34 +906,13 @@ th {
       left: 0;
       width: 100%;
       background-color: rgba(44, 43, 43, 0.692);
-
       height: 0;
     }
 
   }
 
-  & :nth-child(1n) {
-    grid-column: span 2;
-
-  }
-
 }
 
-@media screen and (max-width: 900px) {
-
-  .portfolio :nth-child(1n) {
-    grid-column: span 4;
-    
-  }
-  
-}
-
-@media screen and (max-width: 600px) {
-  .portfolio :nth-child(1n) {
-    grid-column: span 4;
-    
-  }
-}
 
 .underline-home{
   padding: 1px;
@@ -950,6 +925,8 @@ th {
   justify-content: center;
   align-items: center;
   margin-left: -12px;
+  padding-right: 100px;
+  padding-left: 100px;
   min-height: 100vh !important;
   min-width: 60vh !important;
   background-image: linear-gradient(to right,rgba(255, 255, 255, 0.308),$colorannex), url(/public/img/coverDefault.jpeg);
@@ -962,6 +939,8 @@ th {
   display:flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 100px;
+  padding-left: 100px;
   min-height: 100vh !important;
 }
 
@@ -972,9 +951,10 @@ th {
   flex-direction: column;
   justify-content: center;
   right: 0;
-  padding-right: 50Px;
+  padding-right: 100px;
+  padding-left: 100px;
   min-height: 100vh !important;
-  max-width:  100% !important; 
+  max-width:  65% !important; 
 }
 
 #imgArticle{
@@ -982,7 +962,8 @@ th {
   flex-direction: column;
   justify-content: center;
   right: 0;
-  padding-right: 50Px;
+  padding-right: 100px;
+  padding-left: 100px;
   min-height: 100vh !important;
   max-width:  100% !important; 
 }

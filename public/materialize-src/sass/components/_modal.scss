@@ -4,7 +4,6 @@
   }
 
   @extend .z-depth-5;
-
   display: none;
   position: fixed;
   left: 0;
@@ -19,7 +18,9 @@
   will-change: top, opacity;
 
   @media #{$medium-and-down} {
-   width: 80%;
+   bottom: 70px;
+   width: 100%;
+   height: 100% !important;
   }
 
   h1,h2,h3,h4 {

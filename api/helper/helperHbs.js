@@ -26,7 +26,6 @@ Handlebars.registerHelper('verif', function (a) {
 });
 
 
-
 module.exports = Handlebars
 
 

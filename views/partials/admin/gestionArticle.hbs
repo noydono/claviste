@@ -5,11 +5,11 @@
         <h2>List des Article</h2>
 
         <ul class="collection ">
-            {{#each dbArticle}}
-            <li class="collection-item avatar">
+            {{#each dbArticleVerif}}
+            <li class="collection-item avatar" style="min-height: 150px;">
 
                 <form action="article/delete/{{_id}}" method="POST">
-                    <img src="{{img}}" alt="" class="circle">
+                    <img src="{{cover}}" alt="" class="circle">
                     <span class="title">{{title}}</span>
                     <p style="margin-top: 5px;">{{content}}</p><br>
                     <p>publié par {{author}}</p>

@@ -3301,11 +3301,7 @@ input[type=range] + .thumb {
 
 .portfolio {
   margin: 20px;
-  display: grid;
-  grid-gap: 20px;
   position: relative;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(4, 50vh);
 }
 .portfolio :hover .bloc-title {
   height: 50PX !important;
@@ -3314,6 +3310,8 @@ input[type=range] + .thumb {
 .portfolio .bloc {
   position: relative;
   background-color: #545457;
+  height: 30vh;
+  margin: 10px;
 }
 .portfolio .bloc img {
   width: 100%;
@@ -3332,20 +3330,7 @@ input[type=range] + .thumb {
   background-color: rgba(44, 43, 43, 0.692);
   height: 0;
 }
-.portfolio :nth-child(1n) {
-  grid-column: span 2;
-}
 
-@media screen and (max-width: 900px) {
-  .portfolio :nth-child(1n) {
-    grid-column: span 4;
-  }
-}
-@media screen and (max-width: 600px) {
-  .portfolio :nth-child(1n) {
-    grid-column: span 4;
-  }
-}
 .underline-home {
   padding: 1px;
   background-color: #BD757B;
@@ -3357,6 +3342,8 @@ input[type=range] + .thumb {
   justify-content: center;
   align-items: center;
   margin-left: -12px;
+  padding-right: 100px;
+  padding-left: 100px;
   min-height: 100vh !important;
   min-width: 60vh !important;
   background-image: linear-gradient(to right, rgba(255, 255, 255, 0.308), #d2e8f3), url(/public/img/coverDefault.jpeg);
@@ -3369,6 +3356,8 @@ input[type=range] + .thumb {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding-right: 100px;
+  padding-left: 100px;
   min-height: 100vh !important;
 }
 
@@ -3377,9 +3366,10 @@ input[type=range] + .thumb {
   flex-direction: column;
   justify-content: center;
   right: 0;
-  padding-right: 50Px;
+  padding-right: 100px;
+  padding-left: 100px;
   min-height: 100vh !important;
-  max-width: 100% !important;
+  max-width: 65% !important;
 }
 
 #imgArticle {
@@ -3387,7 +3377,8 @@ input[type=range] + .thumb {
   flex-direction: column;
   justify-content: center;
   right: 0;
-  padding-right: 50Px;
+  padding-right: 100px;
+  padding-left: 100px;
   min-height: 100vh !important;
   max-width: 100% !important;
 }
@@ -5395,7 +5386,6 @@ nav .input-field label.active i {
   position: fixed;
   left: 0;
   top: 0;
-  width: 100%;
 }
 
 #main-menu-container {
@@ -5405,7 +5395,6 @@ nav .input-field label.active i {
 
 #main-menu {
   display: inline-block;
-  width: 1024px;
   /* Your menu's width */
 }
 
@@ -6459,7 +6448,9 @@ body.keyboard-focused .dropdown-content li:focus {
 }
 @media only screen and (max-width : 992px) {
   .modal {
-    width: 80%;
+    bottom: 70px;
+    width: 100%;
+    height: 100% !important;
   }
 }
 .modal h1, .modal h2, .modal h3, .modal h4 {
@@ -8089,6 +8080,11 @@ input[type=range]::-ms-thumb {
   padding-bottom: 16px;
   font-weight: 400;
 }
+@media only screen and (max-width : 992px) {
+  .sidenav {
+    width: 60%;
+  }
+}
 
 .drag-target {
   height: 100%;
@@ -8688,6 +8684,8 @@ input[type=range]::-ms-thumb {
   right: 0;
   bottom: 0;
   margin: 0;
+  z-index: 2;
+  bottom: 60px;
 }
 .slider .indicators .indicator-item {
   display: inline-block;
@@ -8696,12 +8694,12 @@ input[type=range]::-ms-thumb {
   height: 16px;
   width: 16px;
   margin: 0 12px;
-  background-color: #e0e0e0;
+  background-color: #6497B0;
   transition: background-color 0.3s;
   border-radius: 50%;
 }
 .slider .indicators .indicator-item.active {
-  background-color: #4CAF50;
+  background-color: #BD757B;
 }
 
 .carousel {

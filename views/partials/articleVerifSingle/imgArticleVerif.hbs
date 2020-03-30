@@ -1,3 +1,10 @@
-<img src="{{dbArticleSingle.img}}" height="100%" width="100%" alt="">
-
-
+<div class="slider mb-20">
+    <ul class="slides">
+        {{#each dbArticleSingle.callery}}
+        <li>
+            <img src="{{img}}" height="100%" width="100%">
+        </li>
+        {{/each}}
+    </ul>
+    {{>articleVerifSingle/com}}
+</div>

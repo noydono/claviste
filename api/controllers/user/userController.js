@@ -26,18 +26,17 @@ module.exports = {
     getlogin: (req, res) => {
         console.log('coucou')
         res.render('login', {
-            layout: 'InCoAr',
             passLog: req.flash('passLog'),
             notUser: req.flash('notUser'),
-
-
+            
         })
     },
     getInscription: (req, res) => {
         console.log('coucou')
         res.render('inscription', {
-            layout: 'InCoAr',
-
+            usernameNotUnique: req.flash('usernameNotUnique'),
+            emailNotUnique: req.flash('emailNotUnique'),
+            registerPwdErr: req.flash('registerPwdErr'),
         })
     },
     create: async (req, res) => {
@@ -49,8 +48,15 @@ module.exports = {
             email: req.body.email
         })
 
+        const userName = await User.findOne({
+            username: req.body.username
+        })
+
         if (!mail) {
-            if (req.file) {
+
+            if(!userName){
+
+                if (req.file) {
 
                 if (req.body.password !== req.body.passwordVerif) {
 
@@ -86,7 +92,7 @@ module.exports = {
                             link = "http://" + req.get('host') + "/verify/" + rand
                             mailOptions = {
                                 from: 'noytest.test@gmail.com',
-                                to: dbUser.email,
+                                to: req.body.email,
                                 subject: "The Clavist Email de Verification",
                                 rand: rand,
                                 html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
@@ -177,6 +183,19 @@ module.exports = {
                     })
                 }
             }
+
+            }else{
+
+                console.log('username not unique');
+                req.flash('usernameNotUnique','le pseaudo et deja utiliser')
+                res.redirect('back')
+            }
+
+        }else{
+            console.log('email et deja utiliser');
+            req.flash('emailNotUnique', 'email est deja utiliser')
+            res.redirect('back')
+            
         }
     },
     login: async (req, res) => {

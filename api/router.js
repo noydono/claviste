@@ -4,8 +4,8 @@
 
 const express = require('express'),
     router = express.Router()
-    // multer = require('../config/Multer-config')
-    
+// multer = require('../config/Multer-config')
+
 /*
  *  controllers
  * * * * * */
@@ -14,14 +14,15 @@ const indexController = require('./controllers/pages/indexController'),
     ArticleController = require('./controllers/article/articleController'),
     UserController = require('./controllers/user/userController'),
     adminController = require('./controllers/pages/adminController'),
-    multer = require ('../config/Multer-config'),
+    multer = require('../config/Multer-config'),
     MonCompteController = require('./controllers/user/monComptecontroller'),
     CommentaireController = require('./controllers/article/CommentaireController'),
     ContactController = require('./controllers/contact/contactController'),
     nodmailercontroller = require('./controllers/nodemailer/nodemailerController'),
     ArticleSingleController = require('./controllers/article/articleSingleController'),
-    ArticleVerifController= require('./controllers/article/articleVerifController')
-    
+    ArticleVerifController = require('./controllers/article/articleVerifController'),
+    mentionLegalController = require('./controllers/legal/mentionLegalController')
+
 
 /*
  *  middleware
@@ -37,10 +38,10 @@ router.route('/')
 //--------------------------------Article-------------------------
 
 router.route('/article/create')
-    .post(multer,ArticleController.create)
+    .post(multer.array('imgArticle', 5), ArticleController.create)
 
 router.route('/article/update/:id')
-    .post(multer,ArticleController.update)
+    .post(multer.array('imgArticle'), ArticleController.update)
 
 router.route('/article/delete/:id')
     .post(ArticleController.delete)
@@ -63,10 +64,10 @@ router.route('/VerifArticle/:id')
 // ---------------------------- Commentaire & like ---------------------
 
 router.route('/commentaire/create/:id')
-    .post(auth,CommentaireController.addCom)
+    .post(auth, CommentaireController.addCom)
 
 router.route('/like/create/:id')
-    .post(auth,CommentaireController.addLike)
+    .post(auth, CommentaireController.addLike)
 
 
 
@@ -74,7 +75,7 @@ router.route('/like/create/:id')
 
 router.route('/user/create')
     .get(UserController.getInscription)
-    .post(multer,UserController.create)
+    .post(multer.single('img'), UserController.create)
 
 router.route('/user/login')
     .get(UserController.getlogin)
@@ -88,26 +89,26 @@ router.route('/user/logout')
 
 router.route('/moncompte')
     .get(MonCompteController.get)
-    .post(multer,MonCompteController.update)
+    .post(multer.single('img'), MonCompteController.update)
 
 
 //--------------------------nodemailer verif----------------------------
 
 router.route('/verify/:id')
-.get(nodmailercontroller.verifMail)
+    .get(nodmailercontroller.verifMail)
 
 // envoye du mail de mdp oublier
 router.route('/mdpOublier/send')
-.post(nodmailercontroller.postMpdOublier)
+    .post(nodmailercontroller.postMpdOublier)
 
 // redirige apres le click du lien du mail 
 router.route('/mdpOublier/:id')
-.get(nodmailercontroller.getMpdOublier)
+    .get(nodmailercontroller.getMpdOublier)
 
 // update du mdp
 router.route('/updateMdp/:id')
-.get(nodmailercontroller.getputmdpOublier)
-.post(nodmailercontroller.putMdpOublier)
+    .get(nodmailercontroller.getputmdpOublier)
+    .post(nodmailercontroller.putMdpOublier)
 
 
 
@@ -115,13 +116,17 @@ router.route('/updateMdp/:id')
 // ---------------------------- Admin-----------------------------------
 
 router.route('/admin')
-.get(adminController.get)
+    .get(adminController.get)
 
 
 // ---------------------------- Contact---------------------------------
 
 router.route('/contact/create')
     .post(ContactController.create)
+
+    // -------------------------Mentions legal---------------------------
+router.route('/mentionLegal')
+    .get(mentionLegalController.get)
 
 
 module.exports = router

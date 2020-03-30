@@ -11,6 +11,7 @@ var UserSchema = new mongoose.Schema({
 
     },
     email: {
+        
         type: String,
         unique: true, 
            //l'email ne doit etre identique aux autres utilisateurs
@@ -45,6 +46,12 @@ var UserSchema = new mongoose.Schema({
 
         article_id:String,
         title : String
+
+    }],
+    verif:[
+        {
+
+        article_id:String,
 
     }]
 });

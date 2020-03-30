@@ -70,6 +70,8 @@
     right: 0;
     bottom: 0;
     margin: 0;
+    z-index: 2;
+    bottom: 60px;
 
     .indicator-item {
       display: inline-block;
@@ -78,13 +80,13 @@
       height: 16px;
       width: 16px;
       margin: 0 12px;
-      background-color: $slider-bg-color-light;
+      background-color: $soustitre;
 
       transition: background-color .3s;
       border-radius: 50%;
 
       &.active {
-        background-color: $slider-indicator-color;
+        background-color: $titre;
       }
     }
   }

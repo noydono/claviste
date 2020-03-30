@@ -7,8 +7,12 @@ var ArticleSchema = new mongoose.Schema({
     content: String,
     author: String,
     date: String,
-    img: String,
-    nameImg: String,
+    cover:String,
+    nameCover:String,
+    callery: [{
+        nameImg : String,
+        img : String
+    }],
     articleVerified: {
 
         type: Number,
@@ -20,6 +24,7 @@ var ArticleSchema = new mongoose.Schema({
         userId: String
     
     }]
+   
     
 });
 

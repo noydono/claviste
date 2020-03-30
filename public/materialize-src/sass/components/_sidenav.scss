@@ -138,6 +138,10 @@
       font-weight: 400;
     }
   }
+  @media #{$medium-and-down} {
+    width: 60%;
+
+   }
 }
 
 
