@@ -1,0 +1,23 @@
+<div class="container">
+    <div class="row mt-30">
+
+        <span class="title">Article a verifier</span>
+        <div class="underline-home"></div>
+        <div class="portfolio">
+            {{#each dbArticle}}
+            <div class="col s12 m6 l6" >
+                <div class="bloc">
+                    <img src="{{cover}}" alt="clavier mécanique">
+                    <div class="bloc-title">
+                        <a href="/VerifArticle/{{_id}}" class=" truncate title ml-10" style="width: 85%;">{{title}}
+                        </a>
+                        <a href="/VerifArticle/{{_id}}" class="author mt-5 mr-10">voir +
+                        </a>
+                    </div>
+                </div>
+            </div>
+            {{/each}}
+
+        </div>
+    </div>
+</div>

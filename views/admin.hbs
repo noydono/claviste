@@ -1,0 +1,37 @@
+
+{{>admin/navbar}}
+
+<div class="admin-tab" onload="test">
+
+  <div id="overview" class="col s12 white">{{>admin/overview}}</div>
+  <div id="editUser" class="col s12">{{>admin/editUser}}</div>
+  <div id="listUser" class="col s12">{{>admin/listUser}}</div>
+  <div id="editArticle" class="col s12">{{>admin/editArticle}}</div>
+  <div id="listArticle" class="col s12">{{>admin/listArticle}}</div>
+  <div id="editArticleVerif" class="col s12">{{>admin/editArticleVerif}}</div>
+  <div id="listArticleVerif" class="col s12">{{>admin/listArticleVerif}}</div>
+
+</div>
+
+
+
+<script>
+
+  const editUser = document.getElementById('editUser'),
+    listUser = document.getElementById('listUser'),
+    editArticle = document.getElementById('editArticle'),
+    listArticle = document.getElementById('listArticle'),
+    editArticleVerif = document.getElementById('editArticleVerif'),
+    listArticleVerif = document.getElementById('listArticleVerif')
+
+  editUser.style.display="none";
+  listUser.style.display="none";
+  editArticle.style.display="none";
+  listArticle.style.display="none";
+  editArticleVerif.style.display="none";
+  listArticleVerif.style.display="none";
+
+  
+
+
+</script>

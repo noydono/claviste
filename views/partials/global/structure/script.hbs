@@ -1,0 +1,36 @@
+<script src="https://kit.fontawesome.com/614db98f48.js" crossorigin="anonymous"></script>
+<script src="/public/materialize-src/js/bin/materialize.min.js"></script>
+ 
+<script>
+
+
+    $(document).ready(function () {
+
+        $('.tooltipped').tooltip();
+
+        $('.dropdown-trigger').dropdown({
+            closeOnClick: false
+        });
+
+        $('.materialboxed').materialbox();
+        $('.collapsible').collapsible({
+            accordion: true,
+        });
+
+        $('.sidenav').sidenav({
+            draggable: true
+        });
+
+        $('.modal').modal();
+
+        $('.fixed-action-btn').floatingActionButton();
+
+        $('select').formSelect();
+
+        $('.parallax').parallax();
+        
+        $('.slider').slider({
+            height : 700
+        });
+    });
+</script>
