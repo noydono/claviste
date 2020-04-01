@@ -1,1 +1,56 @@
-<h1>listUSer</h1>
+<div class="row mt-30 mr-30">
+    <div class="col s12 m12">
+        <div class="card ">
+            <div class="card-content ">
+                <span class="card-title">Liste des utilisateurs</span>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col s12 m12 mt-30">
+        <div class="card ">
+            <div class="card-content ">
+                <table class="responsive-table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Username</th>
+                            <th>Dernier activiter</th>
+                            <th>Verifier</th>
+                            <th>role</th>
+                            <th>status</th>
+                            <th>edit</th>
+                            <th>view</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        {{#each dbUser}}
+                        <tr>
+                            <td>{{_id}}</td>
+                            <td>{{username}}</td>
+                            <td>12/14/123</td>
+                            <td>{{isVerified}}</td>
+                            <td>{{status}}</td>
+                            <td>
+                                <span class="chip green lighten-5">
+                                    <span class="green-text">Active</span>
+                                </span>
+                                <span class="chip yellow lighten-5">
+                                    <span class="yellow-text">banni</span>
+                                </span>
+                                <span class="chip red lighten-5">
+                                    <span class="red-text">fermé</span>
+                                </span>
+                            </td>
+                            <td><a href=""><i class="fas fa-pen"></i></a></td>
+                            <td><a><i class="fas fa-eye"></i></a></td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

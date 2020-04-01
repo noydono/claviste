@@ -9,7 +9,7 @@
   height: calc(100% + 60px);
   height: -moz-calc(100%); //Temporary Firefox Fix
   padding-bottom: 60px;
-  background-color: $colorannex;
+  background-color: white;
   z-index: 999;
   overflow-y: auto;
   will-change: transform;
@@ -28,6 +28,13 @@
 
   .collapsible {
     margin: 0;
+  }
+  & .underline-nav {
+    padding: 1px;
+    background-color: rgb(160, 160, 160);
+  }
+  & .title{
+    font-size: 25px;
   }
 
 

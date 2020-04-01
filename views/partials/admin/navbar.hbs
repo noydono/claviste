@@ -4,11 +4,11 @@
     <ul class="sidenav sidenav-collapsible leftside-navigation collapsible sidenav-fixed menu-shadow tabs" id="slide-out"
         data-menu="menu-navigation" data-collapsible="menu-accordion">
 
-
             <li>
-                <div class="user-view no-padding tex center-align">
+                <div class="user-view no-padding center-align">
 
                     <span class="title">Espace d'aministration</span>
+                    <div class="underline-nav"></div>
 
                 </div>
             </li>
@@ -35,11 +35,11 @@
 {{!-- gestion User --}}
             <li class="navigation-header mt-10 mb-10"><a class="navigation-header-text no-padding ml-5"><span class="title">
                     Gestion User</span></a>
-            <div class="underline-home mt-5"></div>
+            <div class="underline-nav"></div>
             </li>
-            <li class="bold "><a class="waves-effect waves-cyan " onclick="listUser()" href="#"><i class="fas fa-th-list"  style="font-size: 20px;"></i><span class="menu-title">list</span></a>
+            <li class="bold "><a class="waves-effect waves-cyan " id="listUser" href="#"><i class="fas fa-th-list"  style="font-size: 20px;"></i><span class="menu-title">list</span></a>
             </li>
-            <li class="bold "><a class="waves-effect waves-cyan " onclick="editUser()" href="#"><i class="fas fa-user-edit"
+            <li class="bold "><a class="waves-effect waves-cyan " id="editUser" href="#"><i class="fas fa-user-edit"
                     style="font-size: 20px;"></i><span class="menu-title">edit</span></a>
             </li>
 
@@ -47,11 +47,11 @@
 {{!-- gestion article verifier --}}
              <li class="navigation-header mt-10 mb-10"><a class="navigation-header-text no-padding ml-5"><span class="title">
                     Gestion article Verifier</span> </a>
-                <div class="underline-home mt-5"></div>
+                <div class="underline-nav"></div>
             </li>
-            <li class="bold "><a class="waves-effect waves-cyan " onclick="listArticleVerif()" href="#"><i class="fas fa-th-list"  style="font-size: 20px;"></i><span class="menu-title">list</span></a>
+            <li class="bold "><a class="waves-effect waves-cyan " id="listArticleVerif" href="#"><i class="fas fa-th-list"  style="font-size: 20px;"></i><span class="menu-title">list</span></a>
             </li>
-            <li class="bold "><a class="waves-effect waves-cyan " onclick="editArticleVerif()"  href="#"><i class="fas fa-edit"
+            <li class="bold "><a class="waves-effect waves-cyan " id="editArticleVerif"  href="#"><i class="fas fa-edit"
                     style="font-size: 20px;"></i><span class="menu-title">edit</span></a>
             </li>
 
@@ -60,11 +60,11 @@
 {{!-- gestion article --}}
             <li class="navigation-header mt-10 mb-10"><a class="navigation-header-text no-padding ml-5"><span class="title">
                     Gestion article</span> </a>
-            <div class="underline-home mt-5"></div>
+            <div class="underline-nav"></div>
             </li>
-            <li class="bold "><a class="waves-effect waves-cyan " onclick="listArticle()" href="#"><i class="fas fa-th-list"  style="font-size: 20px;"></i><span class="menu-title">list</span></a>
+            <li class="bold "><a class="waves-effect waves-cyan " id="listArticle" href="#"><i class="fas fa-th-list"  style="font-size: 20px;"></i><span class="menu-title">list</span></a>
             </li>
-            <li class="bold "><a class="waves-effect waves-cyan " onclick="editArticle()" href="#"><i class="fas fa-edit"
+            <li class="bold "><a class="waves-effect waves-cyan " id="editArticle" href="#"><i class="fas fa-edit"
                     style="font-size: 20px;"></i><span class="menu-title">edit</span></a>
             </li>
 

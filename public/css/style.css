@@ -7971,7 +7971,7 @@ input[type=range]::-ms-thumb {
   height: calc(100% + 60px);
   height: -moz-calc(100%);
   padding-bottom: 60px;
-  background-color: #d2e8f3;
+  background-color: white;
   z-index: 999;
   overflow-y: auto;
   will-change: transform;
@@ -7986,6 +7986,13 @@ input[type=range]::-ms-thumb {
 }
 .sidenav .collapsible {
   margin: 0;
+}
+.sidenav .underline-nav {
+  padding: 1px;
+  background-color: #a0a0a0;
+}
+.sidenav .title {
+  font-size: 25px;
 }
 .sidenav li {
   float: none;
