@@ -21,7 +21,7 @@ module.exports = {
             dbArticle = await Article.find({}),
             ArticleReverse = dbArticle.reverse()
 
-        res.render('monCompte', {
+        res.render('user/monCompte', {
             dbArticle: ArticleReverse,
             dbUser,
             dbAllUser

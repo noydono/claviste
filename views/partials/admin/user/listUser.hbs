@@ -1,0 +1,92 @@
+<div class="mt-30 center-align"><span class="title">Liste Utilisateur</span></div>
+
+<div class="row mt-30">
+    <div class="col s12 m12 mt-20 white center-align">
+
+        <div class="card">
+            <div class="card-content">
+                <div class="input-field col s12 m3">
+                    <select class="">
+                        <option value="" data-icon="images/sample-1.jpg" selected>tous</option>
+                        <option value="" data-icon="images/office.jpg">oui</option>
+                        <option value="" data-icon="images/yuna.jpg">non</option>
+                    </select>
+                    <label>Verifier</label>
+
+                </div>
+
+                <div class="input-field col s12 m3">
+                    <select class="icons">
+                        <option value="" data-icon="images/sample-1.jpg" class="left" selected>tous</option>
+                        <option value="" data-icon="images/office.jpg" class="left">user</option>
+                        <option value="" data-icon="images/yuna.jpg" class="left">staff</option>
+                    </select>
+                    <label>Role</label>
+                </div>
+
+                <div class="input-field col s12 m3">
+                    <select class="icons">
+                        <option value="" data-icon="images/sample-1.jpg" class="left" selected>tous</option>
+                        <option value="" data-icon="images/office.jpg" class="left">actif</option>
+                        <option value="" data-icon="images/yuna.jpg" class="left">banni</option>
+                        <option value="" data-icon="images/yuna.jpg" class="left">fermé</option>
+                    </select>
+                    <label>Status</label>
+                </div>
+
+                <div class="col s12 m3 pt-20">
+                    <button type="submit" class="waves-effect waves-light btn-small"
+                        style="width: 100%;">filtré</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<div class="row s12 m12 mt-30">
+    <div class="card ">
+        <div class="card-content ">
+            <table class="responsive-table">
+                <thead>
+                    <tr>
+                        <th>Id</th>
+                        <th>Pseaudo</th>
+                        <th>Date de creation</th>
+                        <th>Dernier activiter</th>
+                        <th>Verifier</th>
+                        <th>role</th>
+                        <th>status</th>
+                        <th>edit</th>
+                    </tr>
+                </thead>
+
+                <tbody id="status">
+                    {{#each dbUser}} 
+                    
+                    <tr>
+                        <td name="id">{{_id}}</td>
+                        <td>{{username}}</td>
+                        <td>12/14/123</td>
+                        <td>12/14/123</td>
+                        <td>{{isVerified}}</td>
+                        <td>{{role}}</td>
+                        <td class="spanstatus">
+                            <span class="chip green lighten-5">
+                                <span class="green-text ">{{status}}</span>
+                            </span>
+                        </td>
+                       
+                <form action="/admin/list/user/{{_id}}" method="post">
+                    <td><button class="btn-flat" name="edit" value="edit" type="submit"><i class="fas fa-pen"></i></button></td>
+                 </form>
+                    </tr>
+                   
+                    {{/each}}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+

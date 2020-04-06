@@ -3404,7 +3404,8 @@ input[type=range] + .thumb {
 }
 
 .admin-tab {
-  margin-left: 25%;
+  margin-left: 22%;
+  margin-right: 2%;
 }
 
 span.badge {
@@ -7988,8 +7989,8 @@ input[type=range]::-ms-thumb {
   margin: 0;
 }
 .sidenav .underline-nav {
-  padding: 1px;
-  background-color: #a0a0a0;
+  padding: 0.4px;
+  background-color: #dfdddd;
 }
 .sidenav .title {
   font-size: 25px;

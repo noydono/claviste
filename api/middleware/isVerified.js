@@ -4,7 +4,7 @@ module.exports = (req, res, next) => {
 
         console.log('vous n\'avez pas de compte');
         req.flash('mdwVerif','.')
-        res.render('login')  
+        res.render('user/login')  
 
     } else{
 

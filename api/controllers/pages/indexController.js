@@ -19,7 +19,7 @@ module.exports = {
             
             console.log(req.session);
 
-        res.render('home', {
+        res.render('articleVerif/home', {
 
             dbArticle: ArticleReverse,
             dbArticleVerif: ArticleVerifReverse,

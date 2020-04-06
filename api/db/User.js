@@ -24,11 +24,11 @@ var UserSchema = new mongoose.Schema({
         type:Boolean,
         default:false
     },
-    isBan:{
-        type:Boolean,
-        default:false
-    },
     status:{
+        type:String,
+        default:'active'
+    },
+    role:{
         type:String,
         default:'user'
     },

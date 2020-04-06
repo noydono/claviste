@@ -74,7 +74,7 @@ app.use('*', (req, res, next) => {
     if (res.locals.user = req.session.userId) {
 
 
-        if (req.session.status === 'user') {
+        if (req.session.role === 'user') {
 
             if (req.session.isVerified === true) {
 
@@ -89,7 +89,7 @@ app.use('*', (req, res, next) => {
                 res.locals.isVerified = req.session.isVerified
                 
             }
-            res.locals.user = req.session.status
+            res.locals.user = req.session.role
 
         }
 

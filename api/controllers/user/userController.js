@@ -25,15 +25,15 @@ const User = require('../../db/User'),
 module.exports = {
     getlogin: (req, res) => {
         console.log('coucou')
-        res.render('login', {
+        res.render('user/login', {
             passLog: req.flash('passLog'),
             notUser: req.flash('notUser'),
-            
+
         })
     },
     getInscription: (req, res) => {
         console.log('coucou')
-        res.render('inscription', {
+        res.render('user/inscription', {
             usernameNotUnique: req.flash('usernameNotUnique'),
             emailNotUnique: req.flash('emailNotUnique'),
             registerPwdErr: req.flash('registerPwdErr'),
@@ -54,148 +54,151 @@ module.exports = {
 
         if (!mail) {
 
-            if(!userName){
+            if (!userName) {
 
                 if (req.file) {
 
-                if (req.body.password !== req.body.passwordVerif) {
+                    if (req.body.password !== req.body.passwordVerif) {
 
-                    console.log('error password')
-                    req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
-                    res.render('index')
+                        console.log('error password')
+                        req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
+                        res.redirect('/')
 
+                    } else {
+
+                        console.log('password OK')
+                        User.create({
+
+                            username: req.body.username,
+                            email: req.body.email,
+                            passwordVerif: req.body.passwordVerif,
+                            avatarImg: `/public/uploads/${req.file.filename}`,
+                            avatarName: req.file.filename
+
+
+                        }, (err, user) => {
+
+                            if (err) {
+
+                                console.log(err);
+                                res.redirect('/')
+
+                            } else {
+
+                                console.log(req.get('host'));
+
+                                rand = Math.floor((Math.random() * 100) + 54)
+                                host = req.get('host')
+                                link = "http://" + req.get('host') + "/verify/" + rand
+                                mailOptions = {
+                                    from: 'noytest.test@gmail.com',
+                                    to: req.body.email,
+                                    subject: "The Clavist Email de Verification",
+                                    rand: rand,
+                                    html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+                                }
+
+                                console.log(mailOptions)
+
+                                transporter.sendMail(mailOptions, (err, res, next) => {
+
+
+                                    if (err) {
+                                        console.log(err)
+                                        res.redirect('back')
+                                    } else {
+                                        console.log("Message Envoyer")
+                                        next()
+
+                                    }
+                                })
+
+
+
+
+                            }
+                        })
+                    }
+                    req.flash('inscription', '.')
+                    res.redirect('/')
                 } else {
+                    if (req.body.password !== req.body.passwordVerif) {
 
-                    console.log('password OK')
-                    User.create({
+                        console.log('error password')
+                        req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
+                        res.redirect('back')
 
-                        username: req.body.username,
-                        email: req.body.email,
-                        passwordVerif: req.body.passwordVerif,
-                        avatarImg: `/public/uploads/${req.file.filename}`,
-                        avatarName: req.file.filename
+                    } else {
+                        console.log('password OK')
+
+                        User.create({
+
+                            username: req.body.username,
+                            email: req.body.email,
+                            passwordVerif: req.body.passwordVerif
+
+                        }, (err, user) => {
+
+                            if (err) {
+
+                                console.log(err);
+                                res.redirect('back')
+
+                            } else {
+                                console.log(req.get('host'));
+
+                                rand = Math.floor((Math.random() * 100) + 54)
+                                host = req.get('host')
+                                link = "http://" + req.get('host') + "/verify/" + rand
+                                mailOptions = {
+                                    from: 'noytest.test@gmail.com',
+                                    to: req.body.email,
+                                    subject: "The Clavist Email de Verification",
+                                    rand: rand,
+                                    html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+                                }
+
+                                console.log(mailOptions)
+
+                                transporter.sendMail(mailOptions, (err, res, next) => {
 
 
-                    }, (err, user) => {
+                                    if (err) {
 
-                        if (err) {
+                                        console.log(err)
+                                        res.redirect('back')
 
-                            console.log(err);
-                            res.redirect('/')
+                                    } else {
 
-                        } else {
+                                        console.log("Message Envoyer")
+                                        next()
 
-                            console.log(req.get('host'));
+                                    }
 
-                            rand = Math.floor((Math.random() * 100) + 54)
-                            host = req.get('host')
-                            link = "http://" + req.get('host') + "/verify/" + rand
-                            mailOptions = {
-                                from: 'noytest.test@gmail.com',
-                                to: req.body.email,
-                                subject: "The Clavist Email de Verification",
-                                rand: rand,
-                                html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
+                                })
+
                             }
 
-                            console.log(mailOptions)
+                        })
 
-                            transporter.sendMail(mailOptions, (err, res, next) => {
+                    }
 
-
-                                if (err) {
-                                    console.log(err)
-                                    res.redirect('back')
-                                } else {
-                                    console.log("Message Envoyer")
-                                    req.flash('inscription', '.')
-                                    res.redirect('/')
-                                }
-                            })
-
-
-
-
-                        }
-                    })
                 }
+                req.flash('inscription', '.')
+                res.redirect('/')
 
             } else {
-                if (req.body.password !== req.body.passwordVerif) {
-
-                    console.log('error password')
-                    req.flash('registerPwdErr', 'vaut deux mpd ne sont pas les mếme')
-                    res.redirect('back')
-
-                } else {
-                    console.log('password OK')
-
-                    User.create({
-
-                        username: req.body.username,
-                        email: req.body.email,
-                        passwordVerif: req.body.passwordVerif
-
-                    }, (err, user) => {
-
-                        if (err) {
-
-                            console.log(err);
-                            res.redirect('back')
-
-                        } else {
-                            console.log(req.get('host'));
-
-                            rand = Math.floor((Math.random() * 100) + 54)
-                            host = req.get('host')
-                            link = "http://" + req.get('host') + "/verify/" + rand
-                            mailOptions = {
-                                from: 'noytest.test@gmail.com',
-                                to: req.body.email,
-                                subject: "The Clavist Email de Verification",
-                                rand: rand,
-                                html: "Hello,<br> Please Click on the link to verify your email.<br><a href=" + link + ">Click here to verify</a>"
-                            }
-
-                            console.log(mailOptions)
-
-                            transporter.sendMail(mailOptions, (err, res, next) => {
-
-
-                                if (err) {
-
-                                    console.log(err)
-                                    res.redirect('back')
-
-                                } else {
-
-                                    console.log("Message Envoyer")
-                                    next()
-
-
-                                }
-
-                            })
-
-                            req.flash('inscription', '.')
-                            res.redirect('/')
-                        }
-                    })
-                }
-            }
-
-            }else{
 
                 console.log('username not unique');
-                req.flash('usernameNotUnique','le pseaudo et deja utiliser')
+                req.flash('usernameNotUnique', 'le pseaudo et deja utiliser')
                 res.redirect('back')
             }
 
-        }else{
+        } else {
             console.log('email et deja utiliser');
             req.flash('emailNotUnique', 'email est deja utiliser')
             res.redirect('back')
-            
+
         }
     },
     login: async (req, res) => {
@@ -222,8 +225,9 @@ module.exports = {
                             req.session.isAdmin = user.isAdmin,
                             req.session.isVerified = user.isVerified,
                             req.session.isBan = user.isBan,
-                            req.session.status = user.status,
+                            req.session.role = user.role,
                             req.session.avatarImg = user.avatarImg
+                        req.session.status = user.status
 
                         req.flash('login', '.')
                         res.redirect('/')
@@ -257,34 +261,6 @@ module.exports = {
             res.redirect('/')
         })
 
-    },
-    update: async (req, res) => {
-
-        const query = await User.find({
-
-            _id: req.params.id
-        })
-
-        User.findByIdAndUpdate(query, {
-                status: req.body.status,
-                isAdmin: req.body.isAdmin,
-                isVerified: req.body.isVerified,
-                isBan: req.body.isBan,
-            },
-            (err, post) => {
-                if (err) {
-                    console.log(err);
-
-                    res.redirect('/')
-                } else {
-                    console.log('update ');
-
-                    res.redirect('/admin')
-
-
-                }
-            })
-    },
-
+    }
 
 }

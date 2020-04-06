@@ -10,19 +10,21 @@ module.exports = {
 
 
         const dbArticle = await Article.find({}),
-        dbArticleVerif = await ArticleVerif.find({})
-         dbUser = await User.find({}),
+        dbArticleVerif = await ArticleVerif.find({}),
+        ArticleReverse = dbArticle.reverse(),
+        ArticleVerifReverse = dbArticleVerif.reverse()
+        dbUser = await User.find({}),
         adminUser = req.session.username
             
 
 
 
 
-        res.render('admin', {
+        res.render('admin/admin', {
             layout: 'admin',
-            dbArticleVerif,
-            adminUser,
-            dbUser
+            dbArticle: ArticleReverse,
+            dbArticleVerif: ArticleVerifReverse,
+            adminUser
         })
     }
 }

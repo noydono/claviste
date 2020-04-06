@@ -101,7 +101,7 @@ module.exports = {
                             req.session.isAdmin = user.isAdmin,
                             req.session.isVerified = true,
                             req.session.isBan = user.isBan,
-                            req.session.status = user.status,
+                            req.session.role = user.role,
                             req.session.avatarImg = user.avatarImg
                         req.flash('verifOk', '.')
                         res.redirect('/')
@@ -155,7 +155,7 @@ module.exports = {
     },
     getputmdpOublier: (req, res) => {
     
-        res.render('mdpOublier')
+        res.render('/user/mdpOublier')
 
     },
     putMdpOublier: async (req, res) => {

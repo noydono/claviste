@@ -21,21 +21,34 @@ const indexController = require('./controllers/pages/indexController'),
     nodmailercontroller = require('./controllers/nodemailer/nodemailerController'),
     ArticleSingleController = require('./controllers/article/articleSingleController'),
     ArticleVerifController = require('./controllers/article/articleVerifController'),
-    mentionLegalController = require('./controllers/legal/mentionLegalController')
+    mentionLegalController = require('./controllers/legal/mentionLegalController'),
+    adminUserController = require('./controllers/admin/user/userController'),
+    adminArticleController = require('./controllers/admin/articleVerif/articleVerif'),
+    adminArticleVerifController = require('./controllers/admin/article/articleController'),
+    adminlistUserController = require('./controllers/admin/user/list'),
+    adminEditUserController = require('./controllers/admin/user/edit')
 
 
-/*
- *  middleware
- * * * * * */
+                    /* * * * * * * * * * * * * * * * * * * * * * * */
+                    /* * * * * * * *  middelware * * * * * * * * * */
+                    /* * * * * * * * * * * * * * * * * * * * * * * */
+
 const isAdmin = require('./middleware/isAdmin'),
     auth = require('./middleware/auth')
 
-/*
- *  Route
- * * * * * */
+                    /* * * * * * * * * * * * * * * * * * * * * * * */
+                    /* * * * * * * *  page * * * * * * * * * * * * */
+                    /* * * * * * * * * * * * * * * * * * * * * * * */
+
+
 router.route('/')
     .get(indexController.get)
-//--------------------------------Article-------------------------
+
+
+                    /* * * * * * * * * * * * * * * * * * * * * * * */
+                    /* * * * * * * *  Article * * * * * * * * * *  */
+                    /* * * * * * * * * * * * * * * * * * * * * * * */
+
 
 router.route('/article/create')
     .post(multer.array('imgArticle', 5), ArticleController.create)
@@ -45,9 +58,6 @@ router.route('/article/update/:id')
 
 router.route('/article/delete/:id')
     .post(ArticleController.delete)
-
-// router.route('/article/deleteAll')
-//     .post(ArticleController.deleteAll)
 
 router.route('/article/:id')
     .get(ArticleSingleController.get)
@@ -60,8 +70,9 @@ router.route('/VerifArticle/:id')
     .post(ArticleVerifController.addVerif)
 
 
-
-// ---------------------------- Commentaire & like ---------------------
+                        /* * * * * * * * * * * * * * * * * * * * * * * */
+                        /* * * * * * * *  Commentaire & like * * * * * */
+                        /* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/commentaire/create/:id')
     .post(auth, CommentaireController.addCom)
@@ -70,8 +81,9 @@ router.route('/like/create/:id')
     .post(auth, CommentaireController.addLike)
 
 
-
-// ---------------------------- User------------------------------------
+                        /* * * * * * * * * * * * * * * * * * * * * * * */
+                        /* * * * * * * *  User * * * * * * * * * * * * */
+                        /* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/user/create')
     .get(UserController.getInscription)
@@ -85,14 +97,23 @@ router.route('/user/logout')
     .get(UserController.logout)
 
 
-//--------------------------Mon Compte----------------------------------
+
+
+                        /* * * * * * * * * * * * * * * * * * * * * * * */
+                        /* * * * * * * *  Mon Compte * * * * * * * *  */
+                        /* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/moncompte')
     .get(MonCompteController.get)
     .post(multer.single('img'), MonCompteController.update)
 
 
-//--------------------------nodemailer verif----------------------------
+
+
+                        /* * * * * * * * * * * * * * * * * * * * * * * */
+                        /* * * * * * * *  nodemailer verif * * * * * * */
+                        /* * * * * * * * * * * * * * * * * * * * * * * */
+
 
 router.route('/verify/:id')
     .get(nodmailercontroller.verifMail)
@@ -112,19 +133,62 @@ router.route('/updateMdp/:id')
 
 
 
-
-// ---------------------------- Admin-----------------------------------
+/* * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * *  Admin * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/admin')
     .get(adminController.get)
 
+//-------------------- User -------------------
 
-// ---------------------------- Contact---------------------------------
+router.route('/admin/list/user')
+    .get(adminUserController.list)
+
+router.route('/admin/list/user/:id')
+    .post(adminlistUserController.listPost)
+    
+
+router.route('/admin/edit/user')
+    .get(adminUserController.edit)
+
+router.route('/admin/edit/user/:id')
+    .get(adminEditUserController.editId)
+
+//-----------------article----------------------
+
+router.route('/admin/list/article')
+    .get(adminArticleController.list)
+
+
+
+router.route('/admin/edit/article')
+    .get(adminArticleController.edit)
+
+//--------------articleVerif-----------------------
+
+router.route('/admin/list/articleVerif')
+    .get(adminArticleVerifController.list)
+
+
+
+router.route('/admin/edit/articleVerif')
+    .get(adminArticleVerifController.edit)
+
+
+                            /* * * * * * * * * * * * * * * * * * * * * * * */
+                            /* * * * * * * *  Contact * * * * * * * * * * * */
+                            /* * * * * * * * * * * * * * * * * * * * * * * */
+
 
 router.route('/contact/create')
     .post(ContactController.create)
 
-    // -------------------------Mentions legal---------------------------
+    
+                            /* * * * * * * * * * * * * * * * * * * * * * * */
+                            /* * * * * * * *  Mentions legal * * * * * * * */
+                            /* * * * * * * * * * * * * * * * * * * * * * * */
+
 router.route('/mentionLegal')
     .get(mentionLegalController.get)
 

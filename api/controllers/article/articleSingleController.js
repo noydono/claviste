@@ -13,7 +13,7 @@ module.exports = {
             ArticleReverse = dbArticle.reverse()
             
 
-        res.render('articleVerifSingle', {
+        res.render('articleVerif/single/articleVerifSingle', {
 
             dbArticleSingle : dbArticleVerifSingle,
             dbArticle: ArticleReverse,

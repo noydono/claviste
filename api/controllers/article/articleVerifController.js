@@ -14,7 +14,7 @@ module.exports = {
             dbArticle = await Article.find({}),
             ArticleReverse = dbArticle.reverse().slice(0, 8)
 
-        res.render('listArticle', {
+        res.render('article/listArticle', {
             dbArticle: ArticleReverse,
             dbUser
         })
@@ -27,7 +27,7 @@ module.exports = {
 
 
 
-        res.render('articleSingle', {
+        res.render('article/single/articleSingle', {
             dbArticle,
             dbUser,
             verifErr: req.flash('verifErr'),
