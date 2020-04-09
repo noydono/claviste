@@ -4,9 +4,14 @@ const ArticleVerif = require('../../../db/ArticleVerif'),
 
 module.exports = {
 
-    list: (req, res) => {
+    list: async (req, res) => {
 
-        res.render('admin/articleVerif/listArticleVerif')
+        const dbArticleVerif = await ArticleVerif.find({})
+
+        res.render('admin/articleVerif/listArticleVerif',{
+            dbArticleVerif :dbArticleVerif
+
+        })
 
     },
     view: (req, res) => {

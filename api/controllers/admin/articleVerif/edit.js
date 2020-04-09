@@ -7,11 +7,11 @@ module.exports = {
    
     
     editId: async (req, res) => {
-        const dbUser = await User.findById(req.params.id)
+        const dbArticleVerif = await ArticleVerif.findById(req.params.id)
 
         console.log('editId');
-        res.render('admin/user/editUser',{
-            dbUser: dbUser
+        res.render('admin/articleVerif/editArticleVerif',{
+            dbArticleVerif: dbArticleVerif
         })
 
     },

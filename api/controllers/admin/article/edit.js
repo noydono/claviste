@@ -10,7 +10,7 @@ module.exports = {
         const dbUser = await User.findById(req.params.id)
 
         console.log('editId');
-        res.render('admin/user/editUser',{
+        res.render('admin/article/editArticle',{
             dbUser: dbUser
         })
 

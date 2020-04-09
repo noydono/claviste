@@ -3408,6 +3408,10 @@ input[type=range] + .thumb {
   margin-right: 2%;
 }
 
+.displayNone {
+  display: none;
+}
+
 span.badge {
   min-width: 3rem;
   padding: 0 6px;

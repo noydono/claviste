@@ -1,1 +1,42 @@
-<h1>editerticleverif</h1>
+<div class="mt-30 center-align">
+    <span class="title">edit Utilisateur</span>
+</div>
+
+<div class="row">
+    <form class="col s12 m12 l12 card-panel mt-30">
+
+        <div class="row ml-20 mr-20 mt-20">
+            <div class="input-field col s12">
+                <input value="{{dbArticleVerif.title}}" id="titleArticleVerif" type="text" class="validate">
+                <label for="titleArticleVerif">Title</label>
+            </div>
+        </div>
+
+        <div class="row ml-20 mr-20">
+            <div class="input-field col s12">
+                <textarea id="contentArticleVerif" class="materialize-textarea">{{dbArticleVerif.content}}</textarea>
+                <label for="contentArticleVerif">content</label>
+            </div>
+        </div>
+
+        <div class="row ml-20 mr-20">
+            <div class="input-field col s12">
+                <input value="{{dbArticleVerif.author}}" id="authorArticleVerif" type="text" class="validate">
+                <label for="authorArticleVerif">author</label>
+            </div>
+        </div>
+
+        <div class="row ml-20 mr-20">
+            <div class="file-field input-field">
+                <div class="btn">
+                    <span>File</span>
+                    <input type="file"  multiple>
+                </div>
+                <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text" placeholder="Upload one or more files">
+                </div>
+            </div>
+        </div>
+
+    </form>
+</div>

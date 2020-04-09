@@ -1,12 +1,17 @@
 const ArticleVerif = require('../../../db/ArticleVerif'),
-        User = require('../../../db/User')
-  
+    Article = require('../../../db/Article'),
+    User = require('../../../db/User')
+
 
 module.exports = {
 
-    list: (req, res) => {
+    list: async (req, res) => {
 
-        res.render('admin/article/listArticle')
+        const dbArticle = await Article.find({})
+
+        res.render('admin/article/listArticle', {
+            dbArticle : dbArticle
+        })
 
     },
     view: (req, res) => {

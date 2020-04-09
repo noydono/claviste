@@ -23,10 +23,15 @@ const indexController = require('./controllers/pages/indexController'),
     ArticleVerifController = require('./controllers/article/articleVerifController'),
     mentionLegalController = require('./controllers/legal/mentionLegalController'),
     adminUserController = require('./controllers/admin/user/userController'),
-    adminArticleController = require('./controllers/admin/articleVerif/articleVerif'),
-    adminArticleVerifController = require('./controllers/admin/article/articleController'),
     adminlistUserController = require('./controllers/admin/user/list'),
-    adminEditUserController = require('./controllers/admin/user/edit')
+    adminEditUserController = require('./controllers/admin/user/edit'),
+    adminArticleController = require('./controllers/admin/article/articleController'),
+    adminlistArticleController = require('./controllers/admin/article/list'),
+    adminEditArticleController = require('./controllers/admin/article/edit'),
+    adminArticleVerifController = require('./controllers/admin/articleVerif/articleVerif'),
+    adminlistArticleVerifController = require('./controllers/admin/articleVerif/list'),
+    adminEditArticleVerifController = require('./controllers/admin/articleVerif/edit')
+    
 
 
                     /* * * * * * * * * * * * * * * * * * * * * * * */
@@ -148,46 +153,54 @@ router.route('/admin/list/user')
 router.route('/admin/list/user/:id')
     .post(adminlistUserController.listPost)
     
-
 router.route('/admin/edit/user')
     .get(adminUserController.edit)
 
 router.route('/admin/edit/user/:id')
     .get(adminEditUserController.editId)
 
+router.route('/admin/update/user/:id')
+    .post(adminEditUserController.post)
+
 //-----------------article----------------------
 
 router.route('/admin/list/article')
     .get(adminArticleController.list)
 
-
-
 router.route('/admin/edit/article')
     .get(adminArticleController.edit)
+
+router.route('/admin/list/article/:id')
+    .post(adminlistUserController.listPost)
 
 //--------------articleVerif-----------------------
 
 router.route('/admin/list/articleVerif')
     .get(adminArticleVerifController.list)
 
+router.route('/admin/list/articleVerif/:id')
+    .post(adminlistArticleVerifController.listPost)
+
+router.route('/admin/edit/articleVerif/:id')
+    .get(adminEditArticleVerifController.editId)
+
+router.route('/admin/update/articleVerif/:id')
+    .post(adminEditArticleVerifController.post)
 
 
-router.route('/admin/edit/articleVerif')
-    .get(adminArticleVerifController.edit)
 
-
-                            /* * * * * * * * * * * * * * * * * * * * * * * */
-                            /* * * * * * * *  Contact * * * * * * * * * * * */
-                            /* * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * *  Contact * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * */
 
 
 router.route('/contact/create')
     .post(ContactController.create)
 
     
-                            /* * * * * * * * * * * * * * * * * * * * * * * */
-                            /* * * * * * * *  Mentions legal * * * * * * * */
-                            /* * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * */
+/* * * * * * * *  Mentions legal * * * * * * * */
+/* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/mentionLegal')
     .get(mentionLegalController.get)

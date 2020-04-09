@@ -2,7 +2,7 @@
     <div class="col s12 m12">
         <div class="card ">
             <div class="card-content ">
-                <span class="card-title">Liste des Article</span>
+                <span class="card-title">Liste des Article verifier</span>
                 <p>I am a very simple card. I am good at containing small bits of information.
                     I am convenient because I require little markup to use effectively.</p>
             </div>
@@ -28,7 +28,13 @@
                             <td>{{_id}}</td>
                             <td>{{title}}</td>
                             <td>12/14/123</td>
-                            <td><a href=""><i class="fas fa-pen"></i></a></td>
+                            <form action="/admin/list/articleVerif/{{_id}}" method="post">
+                                <td>
+                                    <button class="btn-flat" name="edit" value="edit" type="submit">
+                                        <i class="fas fa-pen"></i>
+                                    </button>
+                                </td>
+                            </form>
                             <td><a><i class="fas fa-eye"></i></a></td>
                         </tr>
                         {{/each}}
