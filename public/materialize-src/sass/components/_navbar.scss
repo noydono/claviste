@@ -5,6 +5,7 @@ nav {
     .nav-wrapper {
       min-height: $navbar-height-mobile;
       height: auto;
+      
     }
 
     .nav-content {
@@ -15,7 +16,7 @@ nav {
 
   color: $navbar-font-color;
   @extend .z-depth-1;
-  background-color: #435964;
+  background-color: $tex;
   width: 100%;
   height: $navbar-height-mobile;
   line-height: $navbar-line-height-mobile;
@@ -217,12 +218,15 @@ nav {
 }
 
 #main-menu-container {
+  
   text-align: center;
   /* Assuming your main layout is centered */
 }
 
 
 #main-menu {
+  top: 300px;
   display: inline-block;
   /* Your menu's width */
 }
+

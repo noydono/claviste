@@ -1,5 +1,6 @@
 const ArticleVerif = require('../../../db/ArticleVerif'),
-        User = require('../../../db/User')
+        User = require('../../../db/User'),
+        format = require('date-format')
   
 
 module.exports = {
@@ -20,22 +21,24 @@ module.exports = {
         const id = req.params.id
 
 
-        User.findByIdAndUpdate(id,{
+        ArticleVerif.findByIdAndUpdate(id,{
 
-            username: req.body.username,
-            email:req.body.email,
-            role: req.body.role,
-            status:req.body.status
+            title: req.body.title,
+            content:req.body.content,
+            author: req.body.author,
+            activiteDate: format.asString('dd-MM-yyyy', new Date())
 
         },(err,post) => {
-            if (err){
 
+            if (err){
 
             }else{
 
-            res.redirect('/admin/list/user')
+            req.flash('ArticleVerifU', '.')
+            res.redirect('back')
 
             }
+
         }) 
     
 

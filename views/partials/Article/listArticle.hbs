@@ -1,23 +1,47 @@
 <div class="container">
     <div class="row mt-30">
-
-        <span class="title">Article a verifier</span>
-        <div class="underline-home"></div>
-        <div class="portfolio">
-            {{#each dbArticle}}
-            <div class="col s12 m6 l6" >
-                <div class="bloc">
-                    <img src="{{cover}}" alt="clavier mécanique">
-                    <div class="bloc-title">
-                        <a href="/VerifArticle/{{_id}}" class=" truncate title ml-10" style="width: 85%;">{{title}}
-                        </a>
-                        <a href="/VerifArticle/{{_id}}" class="author mt-5 mr-10">voir +
-                        </a>
-                    </div>
+        <h1 class="title center-align">Dernier Publication</h1>
+        
+        {{#each dbArticleReverseLast}}
+        <div class="col s12 m6  offset-m3 mt-20 ">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{cover}}">
+                    <span class="card-title">{{title}}</span>
+                </div>
+                <div class="card-content truncate">
+                    <p>{{content}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="/VerifArticle/{{_id}}">ecrit par {{author}}</a>
                 </div>
             </div>
-            {{/each}}
 
         </div>
+        {{/each}}
+    </div>
+    <div class="row mt-30">
+
+        <h1 class="title">Autre Publication a validé</h1>
+        
+
+        {{#each dbArticleReverse}}
+        <div class="col s12 m6 mt-20 mb-20">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{cover}}">
+                    <span class="card-title">{{title}}</span>
+                </div>
+                <div class="card-content truncate">
+                    <p>{{content}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="/VerifArticle/{{_id}}">ecrit par {{author}}</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        
+
     </div>
 </div>

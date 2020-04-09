@@ -22,14 +22,13 @@ var ArticleVerifSchema = new mongoose.Schema({
             dateLe: String,
             dateA: String,
         }
-    ],like:[
-        {
+    ],like:[{
 
         userId:String,
         title:String
 
-    }
-]
+    }],
+    activiteDate: String
 
 
 });

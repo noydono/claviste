@@ -1,4 +1,4 @@
-const ArticleVerif = require('../../../db/ArticleVerif'),
+const Article = require('../../../db/Article'),
         User = require('../../../db/User')
   
 
@@ -7,11 +7,11 @@ module.exports = {
    
     
     editId: async (req, res) => {
-        const dbUser = await User.findById(req.params.id)
+        const dbArticle = await Article.findById(req.params.id)
 
         console.log('editId');
         res.render('admin/article/editArticle',{
-            dbUser: dbUser
+            dbArticle: dbArticle
         })
 
     },
@@ -20,33 +20,26 @@ module.exports = {
         const id = req.params.id
 
 
-        User.findByIdAndUpdate(id,{
+        Article.findByIdAndUpdate(id,{
 
-            username: req.body.username,
-            email:req.body.email,
-            role: req.body.role,
-            status:req.body.status
+            title: req.body.title,
+            content:req.body.content,
+            author: req.body.author,
+            activiteDate: format.asString('dd-MM-yyyy', new Date())
 
         },(err,post) => {
-            if (err){
 
+            if (err){
 
             }else{
 
-            res.redirect('/admin/list/user')
+            req.flash('ArticleU', '.')
+            res.redirect('back')
 
             }
+
         }) 
     
-
-        
-
-
-        
-
-
-
-
     }
 
 }

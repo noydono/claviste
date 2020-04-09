@@ -15,14 +15,15 @@ module.exports = {
             dbArticle = await Article.find({}),
             dbArticleVerif = await ArticleVerif.find({}),
             ArticleReverse = dbArticle.reverse(),
-            ArticleVerifReverse = dbArticleVerif.reverse().slice(0,8)
+            ArticleVerifReverse = dbArticleVerif.reverse().slice(1,8)
+            ArticleVerifReverseLast = dbArticleVerif.slice(0,1)
             
             console.log(req.session);
 
         res.render('articleVerif/home', {
-
+            ArticleVerifReverseLast:ArticleVerifReverseLast,
             dbArticle: ArticleReverse,
-            dbArticleVerif: ArticleVerifReverse,
+            ArticleVerifReverse: ArticleVerifReverse,
             dbUser,
             dbAllUser,                
             emailUErr : req.flash('emailUErr'),

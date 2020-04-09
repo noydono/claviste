@@ -12,10 +12,12 @@ module.exports = {
 
         const dbUser = await User.findById(req.session.userId),
             dbArticle = await Article.find({}),
-            ArticleReverse = dbArticle.reverse().slice(0, 8)
+            ArticleReverse = dbArticle.reverse().slice(1, 8)
+            ArticleReverseLast = dbArticle.slice(0, 1)
 
         res.render('article/listArticle', {
-            dbArticle: ArticleReverse,
+            dbArticleReverse: ArticleReverse,
+            dbArticleReverseLast: ArticleReverseLast,
             dbUser
         })
 

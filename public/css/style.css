@@ -2136,11 +2136,11 @@
 }
 
 .titre {
-  color: #BD757B;
+  color: #2d3332;
 }
 
 .soustitre {
-  color: #6497B0;
+  color: #56D2e5;
 }
 
 .colorannex {
@@ -2148,11 +2148,11 @@
 }
 
 .tex-text {
-  color: #253238;
+  color: #2d3332;
 }
 
 .tex {
-  background-color: #253238;
+  background-color: #2d3332;
 }
 
 .annex-text {
@@ -2634,14 +2634,14 @@ a {
 .author {
   font-size: 25px;
   font-family: "Lobster Two";
-  color: #6497B0;
+  color: #56D2e5;
 }
 
 .addCom {
-  color: #253238;
+  color: #2d3332;
 }
 .addCom:hover {
-  color: #BD757B;
+  color: #2d3332;
   transition: 2s;
 }
 
@@ -2939,7 +2939,7 @@ ul.staggered-list li {
 .page-footer {
   padding-top: 20px;
   color: #fff;
-  background-color: #93B7C2;
+  background-color: #435964;
 }
 .page-footer .footer-copyright {
   overflow: hidden;
@@ -2949,7 +2949,7 @@ ul.staggered-list li {
   justify-content: space-between;
   padding: 10px 0px;
   color: rgba(255, 255, 255, 0.8);
-  background-color: rgba(51, 51, 51, 0.08);
+  background-color: #2d3332;
 }
 
 table,
@@ -3059,7 +3059,7 @@ table.responsive-table td {
 }
 .title {
   font-size: 35px;
-  color: #BD757B;
+  color: #2d3332;
   font-family: "Lobster Two";
 }
 
@@ -3297,43 +3297,6 @@ input[type=range] + .thumb {
 
 .no-padding {
   padding: 0 !important;
-}
-
-.portfolio {
-  margin: 20px;
-  position: relative;
-}
-.portfolio :hover .bloc-title {
-  height: 50PX !important;
-  transition: 0.5s;
-}
-.portfolio .bloc {
-  position: relative;
-  background-color: #545457;
-  height: 30vh;
-  margin: 10px;
-}
-.portfolio .bloc img {
-  width: 100%;
-  height: 100%;
-  display: block;
-}
-.portfolio .bloc .bloc-title {
-  overflow: hidden;
-  position: absolute;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background-color: rgba(44, 43, 43, 0.692);
-  height: 0;
-}
-
-.underline-home {
-  padding: 1px;
-  background-color: #BD757B;
 }
 
 #bg-image {
@@ -5213,7 +5176,7 @@ table span.badge {
 
 nav {
   color: #fff;
-  background-color: #435964;
+  background-color: #2d3332;
   width: 100%;
   height: 56px;
   line-height: 56px;
@@ -5403,6 +5366,7 @@ nav .input-field label.active i {
 }
 
 #main-menu {
+  top: 300px;
   display: inline-block;
   /* Your menu's width */
 }
@@ -5637,7 +5601,7 @@ small {
   font-size: 40px;
   font-family: "Lobster Two";
   font-weight: 300;
-  color: #BD757B;
+  color: #2d3332;
 }
 .card .card-title.activator {
   cursor: pointer;
@@ -5743,7 +5707,6 @@ small {
   line-height: 32px;
 }
 .card .card-action {
-  background-color: #d2e8f3;
   border-top: 1px solid rgba(160, 160, 160, 0.2);
   position: relative;
   padding: 16px 24px;
@@ -5752,7 +5715,7 @@ small {
   border-radius: 0 0 2px 2px;
 }
 .card .card-action a:not(.btn):not(.btn-small):not(.btn-large):not(.btn-large):not(.btn-floating) {
-  color: #6497B0;
+  color: #56D2e5;
   margin-right: 24px;
   transition: color 0.3s ease;
   text-transform: uppercase;
@@ -6033,7 +5996,7 @@ small {
 .btn, .btn-small, .btn-large {
   text-decoration: none;
   color: #fff;
-  background-color: #6497B0;
+  background-color: #56D2e5;
   text-align: center;
   letter-spacing: 0.5px;
   transition: background-color 0.2s ease-out;
@@ -6225,7 +6188,7 @@ button.btn-floating {
 .btn-flat {
   box-shadow: none;
   background-color: transparent;
-  color: #6497B0;
+  color: #56D2e5;
   cursor: pointer;
   transition: background-color 0.2s;
 }
@@ -8710,12 +8673,12 @@ input[type=range]::-ms-thumb {
   height: 16px;
   width: 16px;
   margin: 0 12px;
-  background-color: #6497B0;
+  background-color: #56D2e5;
   transition: background-color 0.3s;
   border-radius: 50%;
 }
 .slider .indicators .indicator-item.active {
-  background-color: #BD757B;
+  background-color: #2d3332;
 }
 
 .carousel {

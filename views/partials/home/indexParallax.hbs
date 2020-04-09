@@ -1,27 +1,51 @@
 <div class="container">
     <div class="row mt-30">
-
-        <span class="title">Dernier Article</span>
-        <div class="underline-home"></div>
-        <div class="portfolio">
-            {{#each dbArticleVerif}}
-            <div class="col s12 m6 l6" >
-                <div class="bloc">
-                    <img src="{{cover}}" alt="clavier mécanique">
-                    <div class="bloc-title">
-                        <a href="/article/{{_id}}" class=" truncate title ml-10" style="width: 85%;">{{title}}
-                        </a>
-                        <a href="/article/{{_id}}" class="author mt-5 mr-10">voir +
-                        </a>
-                    </div>
+        <h1 class="title center-align">Dernier Publication</h1>
+        
+        {{#each ArticleVerifReverseLast}}
+        <div class="col s12 m6  offset-m3 mt-20 ">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{cover}}">
+                    <span class="card-title">{{title}}</span>
+                </div>
+                <div class="card-content truncate">
+                    <p>{{content}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="/article/{{_id}}">ecrit par {{author}}</a>
                 </div>
             </div>
-            {{/each}}
-            {{#each dbArticleVerif}}
-            {{>modal/modalAddCommentaire}}
-            {{/each}}
 
         </div>
+        {{/each}}
+    </div>
+    <div class="row mt-30">
+
+        <h1 class="title">Autre Publication</h1>
+        
+
+        {{#each ArticleVerifReverse}}
+        <div class="col s12 m6 mt-20 mb-20">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{cover}}">
+                    <span class="card-title">{{title}}</span>
+                </div>
+                <div class="card-content truncate">
+                    <p>{{content}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="/article/{{_id}}">ecrit par {{author}}</a>
+                </div>
+            </div>
+        </div>
+        {{/each}}
+        {{#each dbArticleVerif}}
+        {{>modal/modalAddCommentaire}}
+        {{/each}}
+
+
 
     </div>
 </div>

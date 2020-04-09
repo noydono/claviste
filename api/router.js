@@ -143,49 +143,52 @@ router.route('/updateMdp/:id')
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/admin')
-    .get(adminController.get)
+    .get(isAdmin,adminController.get)
 
 //-------------------- User -------------------
 
 router.route('/admin/list/user')
-    .get(adminUserController.list)
+    .get(isAdmin,adminUserController.list)
 
 router.route('/admin/list/user/:id')
-    .post(adminlistUserController.listPost)
+    .post(isAdmin,adminlistUserController.listPost)
     
 router.route('/admin/edit/user')
-    .get(adminUserController.edit)
+    .get(isAdmin,adminUserController.edit)
 
 router.route('/admin/edit/user/:id')
-    .get(adminEditUserController.editId)
+    .get(isAdmin,adminEditUserController.editId)
 
 router.route('/admin/update/user/:id')
-    .post(adminEditUserController.post)
+    .post(isAdmin,adminEditUserController.post)
 
 //-----------------article----------------------
 
 router.route('/admin/list/article')
-    .get(adminArticleController.list)
-
-router.route('/admin/edit/article')
-    .get(adminArticleController.edit)
+    .get(isAdmin,adminArticleController.list)
 
 router.route('/admin/list/article/:id')
-    .post(adminlistUserController.listPost)
+    .post(isAdmin,adminlistArticleController.listPost)
+
+router.route('/admin/edit/article/:id')
+    .get(isAdmin,adminEditArticleController.editId)
+
+router.route('/admin/update/article/:id')
+    .post(isAdmin,adminEditArticleController.post)
 
 //--------------articleVerif-----------------------
 
 router.route('/admin/list/articleVerif')
-    .get(adminArticleVerifController.list)
+    .get(isAdmin,adminArticleVerifController.list)
 
 router.route('/admin/list/articleVerif/:id')
-    .post(adminlistArticleVerifController.listPost)
+    .post(isAdmin,adminlistArticleVerifController.listPost)
 
 router.route('/admin/edit/articleVerif/:id')
-    .get(adminEditArticleVerifController.editId)
+    .get(isAdmin,adminEditArticleVerifController.editId)
 
 router.route('/admin/update/articleVerif/:id')
-    .post(adminEditArticleVerifController.post)
+    .post(isAdmin,adminEditArticleVerifController.post)
 
 
 
