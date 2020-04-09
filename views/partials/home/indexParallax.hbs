@@ -3,20 +3,21 @@
         <h1 class="title center-align">Dernier Publication</h1>
         
         {{#each ArticleVerifReverseLast}}
+        <a href="/article/{{_id}}">
         <div class="col s12 m6  offset-m3 mt-20 ">
             <div class="card">
                 <div class="card-image">
                     <img src="{{cover}}">
-                    <span class="card-title">{{title}}</span>
+                    <span class="card-title tex-text">{{title}}</span>
                 </div>
-                <div class="card-content truncate">
+                <div class="card-content truncate tex-text">
                     <p>{{content}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="/article/{{_id}}">ecrit par {{author}}</a>
+                    <span>ecrit par {{author}}</span>
                 </div>
             </div>
-
+        </a>
         </div>
         {{/each}}
     </div>
@@ -26,19 +27,21 @@
         
 
         {{#each ArticleVerifReverse}}
+        <a href="/article/{{_id}}">
         <div class="col s12 m6 mt-20 mb-20">
             <div class="card">
                 <div class="card-image">
                     <img src="{{cover}}">
-                    <span class="card-title">{{title}}</span>
+                    <span class="card-title tex-text">{{title}}</span>
                 </div>
-                <div class="card-content truncate">
+                <div class="card-content truncate tex-text">
                     <p>{{content}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="/article/{{_id}}">ecrit par {{author}}</a>
+                    <span>ecrit par {{author}}</span>
                 </div>
             </div>
+            </a>
         </div>
         {{/each}}
         {{#each dbArticleVerif}}

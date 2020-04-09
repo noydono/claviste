@@ -3,6 +3,7 @@
         <h1 class="title center-align">Dernier Publication</h1>
         
         {{#each dbArticleReverseLast}}
+        <a href="/VerifArticle/{{_id}}">
         <div class="col s12 m6  offset-m3 mt-20 ">
             <div class="card">
                 <div class="card-image">
@@ -13,10 +14,10 @@
                     <p>{{content}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="/VerifArticle/{{_id}}">ecrit par {{author}}</a>
+                    <span>ecrit par {{author}}</span>
                 </div>
             </div>
-
+        </a>
         </div>
         {{/each}}
     </div>
@@ -26,6 +27,7 @@
         
 
         {{#each dbArticleReverse}}
+        <a href="/VerifArticle/{{_id}}">
         <div class="col s12 m6 mt-20 mb-20">
             <div class="card">
                 <div class="card-image">
@@ -36,9 +38,10 @@
                     <p>{{content}}</p>
                 </div>
                 <div class="card-action">
-                    <a href="/VerifArticle/{{_id}}">ecrit par {{author}}</a>
+                    <span>ecrit par {{author}}</span>
                 </div>
             </div>
+            </a>
         </div>
         {{/each}}
         

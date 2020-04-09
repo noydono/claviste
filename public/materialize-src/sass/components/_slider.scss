@@ -80,13 +80,13 @@
       height: 16px;
       width: 16px;
       margin: 0 12px;
-      background-color: $soustitre;
+      background-color: $tex;
 
       transition: background-color .3s;
       border-radius: 50%;
 
       &.active {
-        background-color: $titre;
+        background-color: $soustitre;
       }
     }
   }
