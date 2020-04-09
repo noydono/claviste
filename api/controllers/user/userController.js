@@ -1,3 +1,4 @@
+
 // req.flash ne marche pas fair la gestion d'err plus tard
 
 
@@ -12,7 +13,7 @@ const User = require('../../db/User'),
         host: "smtp.gmail.com",
         service: 'gmail',
         port: '587',
-        secure: false,
+        secure: true,
         auth: {
             user: "noytest.test@gmail.com",
             pass: keys.mdpMailer
@@ -88,8 +89,7 @@ module.exports = {
                                 console.log(req.get('host'));
 
                                 rand = Math.floor((Math.random() * 100) + 54)
-                                host = req.get('host')
-                                link = "http://" + req.get('host') + "/verify/" + rand
+                                link = "http://" + "theclaviste.noydono.fr" + "/verify/" + rand
                                 mailOptions = {
                                     from: 'noytest.test@gmail.com',
                                     to: req.body.email,
@@ -149,7 +149,7 @@ module.exports = {
 
                                 rand = Math.floor((Math.random() * 100) + 54)
                                 host = req.get('host')
-                                link = "http://" + req.get('host') + "/verify/" + rand
+                                link = "http://" + "theclaviste.noydono.fr" + "/verify/" + rand
                                 mailOptions = {
                                     from: 'noytest.test@gmail.com',
                                     to: req.body.email,
