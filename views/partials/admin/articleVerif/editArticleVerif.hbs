@@ -1,0 +1,48 @@
+<div class="mt-30 center-align">
+    <span class="title">edit Utilisateur</span>
+</div>
+
+<div class="row s12 m12 l12 card-panel mt-30">
+    <form action="/admin/update/articleVerif/{{dbArticleVerif._id}}" method="POST">
+
+        <div class="row ml-20 mr-20 mt-20">
+            <div class="input-field col s12">
+                <input name="title" value="{{dbArticleVerif.title}}" id="titleArticleVerif" type="text"
+                    class="validate">
+                <label for="titleArticleVerif">Title</label>
+            </div>
+        </div>
+
+        <div class="row ml-20 mr-20">
+            <div class="input-field col s12">
+                <textarea name="content" id="contentArticleVerif"
+                    class="materialize-textarea">{{dbArticleVerif.content}}</textarea>
+                <label for="contentArticleVerif">content</label>
+            </div>
+        </div>
+
+        <div class="row ml-20 mr-20">
+            <div class="input-field col s12">
+                <input name="author" value="{{dbArticleVerif.author}}" id="authorArticleVerif" type="text"
+                    class="validate">
+                <label for="authorArticleVerif">author</label>
+            </div>
+        </div>
+
+        <button type="submit" class="btn waves-effect waves-light btn modal-trigger"
+            href="#modal{{dbArticleVerif._id}}">changer les images</button>
+        <button type="submit" class="btn right">Validé</button>
+
+        <!-- Modal Structure -->
+        <div id="modal{{dbArticleVerif._id}}" class="modal">
+            <div class="modal-content">
+                <h4>Modal Header</h4>
+                <p>A bunch of text</p>
+            </div>
+            <div class="modal-footer">
+                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+            </div>
+        </div>
+
+    </form>
+</div>
