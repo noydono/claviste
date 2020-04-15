@@ -1,4 +1,6 @@
-const Contact = require('../../db/contact')
+const Contact = require('../../db/contact'),
+format = require('date-format');
+
 module.exports = {
 
 
@@ -8,8 +10,13 @@ module.exports = {
 
         const sess = req.session;
 
+        dateLe = format.asString('dd-MM-yyyy', new Date()),
+        dateA = format.asString('hh:mm:ss', new Date()),
+
         Contact.create({
 
+            dateLe: dateLe,
+            dateA: dateA,
             sujet: req.body.sujet,
             email: req.body.email,
             destinataire: req.body.destinataire,
@@ -29,5 +36,25 @@ module.exports = {
             }
         })
 
+    },
+    list: async (req, res) => {
+
+        dbContact = await Contact.find({}),
+        Contacts = dbContact.reverse() 
+
+        res.render('admin/contact/listContact',{
+            dbContact : Contacts,
+            contactDel : req.flash('contactDel')
+
+        })
+
+    },
+    delContact: async (req, res) => {
+
+        const dbContact = await Contact.findById({ _id: req.params.id })
+        dbContact.deleteOne({ _id: req.params.id })
+        req.flash('contactDel', '.')
+        res.redirect('back')
     }
 }
+

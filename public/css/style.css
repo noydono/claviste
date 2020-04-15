@@ -3375,6 +3375,14 @@ input[type=range] + .thumb {
   display: none;
 }
 
+.bg-header {
+  background-image: url(/public/img/theClavist.png);
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+}
+
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
@@ -8673,20 +8681,12 @@ input[type=range]::-ms-thumb {
   height: 16px;
   width: 16px;
   margin: 0 12px;
-<<<<<<< HEAD
-  background-color: #56D2e5;
-=======
   background-color: #2d3332;
->>>>>>> premaster
   transition: background-color 0.3s;
   border-radius: 50%;
 }
 .slider .indicators .indicator-item.active {
-<<<<<<< HEAD
-  background-color: #2d3332;
-=======
   background-color: #56D2e5;
->>>>>>> premaster
 }
 
 .carousel {

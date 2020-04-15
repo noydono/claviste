@@ -14,6 +14,7 @@
                         <th>role</th>
                         <th>status</th>
                         <th>edit</th>
+                        <th>supprimer</th>
                     </tr>
                 </thead>
 
@@ -27,25 +28,36 @@
                         <td>12/14/123</td>
                         <td>{{isVerified}}</td>
                         <td>{{role}}</td>
-                        <td class="spanstatus">
-                            <span class="chip green lighten-5">
-                                <span class="green-text ">{{status}}</span>
-                            </span>
+                        <td>
+                            
+                                <span>{{status}}</span>
+                            
                         </td>
 
                         <form action="/admin/list/user/{{_id}}" method="post">
                             <td><button class="btn-flat" name="edit" value="edit" type="submit"><i
                                         class="fas fa-pen"></i></button></td>
                         </form>
-                    </tr>
+                        <td><a class="modal-trigger" href="#deleteUser{{_id}}">supprimer</a></td> 
 
+                    </tr>
+                    <form action="/admin/delete/user/{{_id}}" method="POST">
+
+                        <div id="deleteUser{{_id}}" class="modal" style="height: 20%;">
+                            <div class="modal-content">
+                                <h4>Voulez-vous vraiment supprimer {{username}}</h4>
+                                <p><strong></strong></p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="submit" class=" red waves-effect waves-green btn-flat">supprimer</button>
+                                <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
+                            </div>
+                        </div>
+
+                    </form>
                     {{/each}}
                 </tbody>
             </table>
         </div>
     </div>
 </div>
-
-
-
-

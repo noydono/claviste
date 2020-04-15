@@ -10,7 +10,8 @@ module.exports = {
         const dbArticle = await Article.find({})
 
         res.render('admin/article/listArticle', {
-            dbArticle : dbArticle
+            dbArticle : dbArticle,
+            ArticleU:req.flash('ArticleU')
         })
 
     },

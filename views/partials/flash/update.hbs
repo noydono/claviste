@@ -242,6 +242,57 @@
 </script>
 {{/if}}
 
+{{#if ArticleU}}
+<script>
+    window.onload = function login() {
+        var toastHTML = '<span>l\'article a bien été modifier</span>';
+        M.toast({ html: toastHTML});
+    }
+</script>
+{{/if}}
+{{#if ArticleVerifU}}
+<script>
+    window.onload = function login() {
+        var toastHTML = '<span>l\'article Verifier a bien été modifier </span>';
+        M.toast({ html: toastHTML});
+    }
+</script>
+{{/if}}
+{{#if comDel}}
+<script>
+    window.onload = function login() {
+        var toastHTML = '<span> le commentaire et supprimer </span>';
+        M.toast({ html: toastHTML});
+    }
+</script>
+{{/if}}
+{{#if signaleC}}
+<script>
+
+    window.onload = function login() {
+        var toastHTML = '<span>signalement envoyer</span>';
+        M.toast({ html: toastHTML });
+    }
+</script>
+{{/if}}
+{{#if signaleDel}}
+<script>
+
+    window.onload = function login() {
+        var toastHTML = '<span>signalement supprimer</span>';
+        M.toast({ html: toastHTML });
+    }
+</script>
+{{/if}}
+{{#if contactDel}}
+<script>
+
+    window.onload = function login() {
+        var toastHTML = '<span>message supprimer</span>';
+        M.toast({ html: toastHTML });
+    }
+</script>
+{{/if}}
 
 
 

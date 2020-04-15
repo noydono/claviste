@@ -1,4 +1,5 @@
 const Article = require('../../db/Article'),
+    Com = require('../../db/commentaire'),
     ArticleVerif = require('../../db/ArticleVerif'),
     User = require('../../db/User'),
     path = require('path'),
@@ -14,17 +15,14 @@ module.exports = {
         let arrFiles = []
 
         for (i = 0; i < req.files.length; i++) {
-            
-           
-                
 
-            arrFiles.push({ 
+            arrFiles.push({
 
-                img : '/' + req.files[i].path,
-                nameImg : req.files[i].filename
+                img: '/' + req.files[i].path,
+                nameImg: req.files[i].filename
 
-             })
-            
+            })
+
             console.log(arrFiles);
 
         }
@@ -35,11 +33,10 @@ module.exports = {
             content: req.body.content,
             author: req.body.author,
             cover: arrFiles[0].img,
-            nameCover:  arrFiles[0].nameImg,
+            nameCover: arrFiles[0].nameImg,
             callery: arrFiles,
             createDate: new Date(),
-            signal:[]
-
+            signal: []
 
         }, (err, post) => {
 
@@ -50,7 +47,7 @@ module.exports = {
 
             } else {
                 console.log('article crée');
-                req.flash('ArticleC','.')
+                req.flash('ArticleC', '.')
                 res.redirect('/')
             }
 
@@ -119,28 +116,5 @@ module.exports = {
                 })
         }
 
-    },
-    delete: async (req, res) => {
-
-        const dbArticle = await Article.findById(req.params.id)
-
-        pathImg = path.resolve('public/uploads/' + dbArticle.nameImg)
-
-
-        Article.findByIdAndRemove(req.params.id, (err) => {
-            if (!err) {
-                fs.unlink(pathImg,
-                    (err) => {
-                        if (err) {
-                            console.log(err)
-                        } else {
-                            console.log('File Deleted.')
-                            res.redirect('/')
-                        }
-
-                    })
-
-            }
-        })
     }
 }

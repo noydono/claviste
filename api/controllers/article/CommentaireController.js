@@ -1,55 +1,27 @@
 
 const ArticleVerif = require('../../db/ArticleVerif'),
     User = require('../../db/User'),
+    Com = require('../../db/commentaire'),
     format = require('date-format');
 
 module.exports = {
 
-    addCom: async (req, res) => {
+    addCom: (req, res) => {
 
-        console.log('add Com');
-        const dbArticleVerif = await ArticleVerif.find({
-            _id: req.params.id
-        }),
         dateLe = format.asString('dd-MM-yyyy', new Date()),
         dateA = format.asString('hh:mm:ss', new Date()),
-            recup = {
 
-                dateLe: dateLe,
-                dateA: dateA,
-                article_id: req.params.id,
-                username: req.session.username || req.session.lastname + " " + req.session.firstname,
-                content: req.body.content,
-                avatarImg: req.session.avatarImg
+        Com.create({
 
-            }
-
-        ArticleVerif.findOneAndUpdate({
-            _id: req.params.id
-        }, {
-            $push: {
-                commentaire: recup
-            }
-        },
-            function (error, success) {
-                if (error) {
-                    console.log(error);
-                } else {
-                    console.log(success);
-                }
-            });
-        req.flash('addCom','.')
-        res.redirect('back')
-
-    },
-    DelCom: async (req, res) => {
-
-        const dbCom = await Com.findById({
-            _id: req.params.id
+            dateLe: dateLe,
+            dateA: dateA,
+            article_id: req.params.id,
+            username: req.session.username,
+            content: req.body.content,
+            user_id: req.session.userId
+            
         })
-        dbCom.deleteOne({
-            _id: req.params.id
-        })
+        
         res.redirect('back')
 
     },

@@ -943,3 +943,13 @@ th {
 .displayNone{
   display: none;
 }
+
+.bg-header{
+
+  background-image: url(/public/img/theClavist.png);
+  background-position: center;
+  background-size: cover;
+  height: 300px;
+  width: 100%;
+
+}

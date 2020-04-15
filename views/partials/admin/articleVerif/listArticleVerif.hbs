@@ -17,8 +17,10 @@
                             <th>Id</th>
                             <th>Title</th>
                             <th>date de publication</th>
+                            <th>Commentaire</th>
                             <th>edit</th>
                             <th>view</th>
+                            <th>supprimer</th>
                         </tr>
                     </thead>
 
@@ -28,6 +30,7 @@
                             <td>{{_id}}</td>
                             <td>{{title}}</td>
                             <td>12/14/123</td>
+                            <td><a href="/admin/list/com/{{_id}}" ><i class="fas fa-eye"></i></a></td>
                             <form action="/admin/list/articleVerif/{{_id}}" method="post">
                                 <td>
                                     <button class="btn-flat" name="edit" value="edit" type="submit">
@@ -35,8 +38,27 @@
                                     </button>
                                 </td>
                             </form>
-                            <td><a><i class="fas fa-eye"></i></a></td>
+                            <td><a href="/article/{{_id}}"><i class="fas fa-eye"></i></a></td>
+                            <td><a class="modal-trigger" href="#deleteVerif{{_id}}">supprimer</a></td>
+                            <td><a class="modal-trigger" href="#deleteVerif{{_id}}">supprimer</a></td>
                         </tr>
+
+                        <form action="/admin/delete/articleVerif/{{_id}}" method="POST">
+
+                            <div id="deleteVerif{{_id}}" class="modal" style="height: 20%;">
+                                <div class="modal-content">
+                                    <h4>Voulez-vous vraiment supprimer {{title}}</h4>
+                                    <p><strong></strong></p>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit"
+                                        class=" red waves-effect waves-green btn-flat">supprimer</button>
+                                    <a href="#!" class="modal-close waves-effect waves-green btn-flat">Annuler</a>
+                                </div>
+                            </div>
+
+                        </form>
+                        
                         {{/each}}
                     </tbody>
                 </table>

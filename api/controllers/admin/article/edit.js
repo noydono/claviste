@@ -1,5 +1,6 @@
 const Article = require('../../../db/Article'),
-        User = require('../../../db/User')
+        User = require('../../../db/User'),
+        format = require('date-format')
   
 
 module.exports = {
@@ -34,7 +35,7 @@ module.exports = {
             }else{
 
             req.flash('ArticleU', '.')
-            res.redirect('back')
+            res.redirect('/admin/list/article')
 
             }
 

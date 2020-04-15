@@ -30,7 +30,12 @@ const indexController = require('./controllers/pages/indexController'),
     adminEditArticleController = require('./controllers/admin/article/edit'),
     adminArticleVerifController = require('./controllers/admin/articleVerif/articleVerif'),
     adminlistArticleVerifController = require('./controllers/admin/articleVerif/list'),
-    adminEditArticleVerifController = require('./controllers/admin/articleVerif/edit')
+    adminEditArticleVerifController = require('./controllers/admin/articleVerif/edit'),
+    adminDeleteArticleController = require('./controllers/admin/article/delete'),
+    adminDeleteArticleVerifController = require('./controllers/admin/articleVerif/delete'),
+    adminDeleteUserController = require('./controllers/admin/user/delete'),
+    adminComController = require ('./controllers/admin/com/comController'),
+    adminSignaleController = require ('./controllers/admin/signale/signalController')
     
 
 
@@ -60,9 +65,6 @@ router.route('/article/create')
 
 router.route('/article/update/:id')
     .post(multer.array('imgArticle'), ArticleController.update)
-
-router.route('/article/delete/:id')
-    .post(ArticleController.delete)
 
 router.route('/article/:id')
     .get(ArticleSingleController.get)
@@ -162,7 +164,11 @@ router.route('/admin/edit/user/:id')
 router.route('/admin/update/user/:id')
     .post(isAdmin,adminEditUserController.post)
 
+router.route('/admin/delete/user/:id')
+    .post(isAdmin,adminDeleteUserController.delete)
+
 //-----------------article----------------------
+
 
 router.route('/admin/list/article')
     .get(isAdmin,adminArticleController.list)
@@ -176,6 +182,18 @@ router.route('/admin/edit/article/:id')
 router.route('/admin/update/article/:id')
     .post(isAdmin,adminEditArticleController.post)
 
+router.route('/admin/delete/article/:id')
+    .post(isAdmin,adminDeleteArticleController.delete)
+
+router.route ('/signale/:id')
+    .post(auth,adminSignaleController.postSignale)
+
+router.route('/admin/list/signale/:id')
+    .get(isAdmin,adminSignaleController.list)
+
+router.route('/admin/delete/signale/:id')
+    .post(isAdmin,adminSignaleController.delSignale)
+
 //--------------articleVerif-----------------------
 
 router.route('/admin/list/articleVerif')
@@ -188,8 +206,16 @@ router.route('/admin/edit/articleVerif/:id')
     .get(isAdmin,adminEditArticleVerifController.editId)
 
 router.route('/admin/update/articleVerif/:id')
-    .post(isAdmin,adminEditArticleVerifController.post)
+    .post(isAdmin,multer.array('imgArticle', 5),adminEditArticleVerifController.post)
 
+router.route('/admin/delete/articleVerif/:id')
+    .post(isAdmin,adminDeleteArticleVerifController.delete)
+
+router.route('/admin/list/com/:id')
+    .get(isAdmin,adminComController.list)
+
+router.route('/admin/delete/com/:id')
+    .post(isAdmin,adminComController.delCom)
 
 
 /* * * * * * * * * * * * * * * * * * * * * * * */
@@ -199,6 +225,14 @@ router.route('/admin/update/articleVerif/:id')
 
 router.route('/contact/create')
     .post(ContactController.create)
+
+router.route('/admin/list/contact')
+    .get(ContactController.list)
+
+router.route('/admin/delete/Contact/:id')
+    .post(isAdmin,ContactController.delContact)
+
+
 
     
 /* * * * * * * * * * * * * * * * * * * * * * * */

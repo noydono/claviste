@@ -32,6 +32,7 @@ module.exports = {
         res.render('article/single/articleSingle', {
             dbArticle,
             dbUser,
+            signaleC: req.flash('signaleC'),
             verifErr: req.flash('verifErr'),
             addVerif: req.flash('addVerif')
         })

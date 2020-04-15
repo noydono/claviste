@@ -207,10 +207,14 @@ module.exports = {
 
         const dbUser = ({
             username: req.body.username
-        })
+        }),
+        status = await User.findOne({username : req.body.username})
 
+        console.log(status);
+        
+        if(status.status != "ferme"){
 
-        User.findOne(dbUser, (err, user) => {
+           User.findOne(dbUser, (err, user) => {
 
             if (user) {
 
@@ -249,7 +253,15 @@ module.exports = {
 
             }
 
-        })
+        }) 
+
+        }else{
+
+            res.redirect('/')
+
+        }
+
+        
 
     },
     logout: (req, res) => {

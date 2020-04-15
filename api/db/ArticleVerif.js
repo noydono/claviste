@@ -13,16 +13,7 @@ var ArticleVerifSchema = new mongoose.Schema({
         nameImg : String,
         img : String
     }],
-     commentaire: [
-        {
-            avatarImg:String,
-            article_id: String,
-            username: String,
-            content: String,
-            dateLe: String,
-            dateA: String,
-        }
-    ],like:[{
+    like:[{
 
         userId:String,
         title:String
