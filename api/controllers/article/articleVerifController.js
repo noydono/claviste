@@ -47,17 +47,18 @@ module.exports = {
             recup = {
                 article_id: req.params.id
             }
-                                //17               
-        let pourcentage = dbArticle.articleVerified / dbUserVerif.length * 100,
-            limitVerif = dbUserVerif.length * 20 / 100,
-            verifUser = dbUser.verif,
+                     
+        let pourcentage = (dbArticle.articleVerified / dbUserVerif.length) * 100,
+            verifUser = dbUser.verif
+            console.log(pourcentage);
+            
             arrVerif = verifUser.filter((a) => {
 
                 return a.article_id === req.params.id
 
             })
 
-            console.log(dbUser.length);
+            
             
 
         if (arrVerif.length === 0) {
@@ -93,7 +94,7 @@ module.exports = {
 
                                 console.log(success);
                             
-                                if (pourcentage > limitVerif) {
+                                if (pourcentage > 30) {
 
                                     ArticleVerif.create({
 
