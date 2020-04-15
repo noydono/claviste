@@ -70,7 +70,7 @@ module.exports = {
                 _id: userID._id
             }
 
-        if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
+        if ((req.protocol + "://" + req.get('host')) == ("http://" + host) || ("https://" + host) ) {
 
 
             console.log("Domain is matched. Information is from Authentic email")
