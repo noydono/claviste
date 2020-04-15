@@ -61,12 +61,14 @@ module.exports = {
                             author: req.body.author,
                             activiteDate: format.asString('dd-MM-yyyy', new Date()),
                             callery: arrFiles,
+                            cover: arrFiles[0].img,
+                            nameCover: arrFiles[0].nameImg
 
                         }, (err, post) => {
 
                             if (err) {
 
-                            } 
+                            }
 
                         })
 
