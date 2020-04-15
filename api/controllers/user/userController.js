@@ -147,7 +147,7 @@ module.exports = {
                                 console.log(req.get('host'));
 
                                 rand = Math.floor((Math.random() * 100) + 54)
-                                host = req.get('host')
+                                host = 'theclaviste.noydono.fr'
                                 link = "http://" + "theclaviste.noydono.fr" + "/verify/" + rand
                                 mailOptions = {
                                     from: 'noytest.test@gmail.com',
