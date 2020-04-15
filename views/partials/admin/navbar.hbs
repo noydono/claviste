@@ -1,0 +1,97 @@
+<!-- BEGIN: SideNav-->
+<aside id="admin-nav" class="sidenav-main z-depth-4">
+
+        <ul class="sidenav sidenav-collapsible  collapsible sidenav-fixed " id="slide-out" data-menu="menu-navigation"
+                data-collapsible="menu-accordion">
+
+                <li>
+                        
+                        <div class="user-view no-padding center-align">
+
+                                <a href="/">
+                                <span class="tex-text" style="font-size: 20px;">Acceuil</span>
+                                </a>
+                                
+                                <div class="underline-nav"></div>
+
+                        </div>
+                </li>
+
+                <li class="bold">
+
+                        <a class="waves-effect waves-cyan " href="/admin/list/contact">
+                                <i class="material-icons">mail_outline</i>
+                                <span class="menu-title">Message</span>
+                        </a>
+                </li>
+
+        
+
+                {{!-- gestion User --}}
+                <li class="bold">
+                        <a class="collapsible-header waves-effect waves-cyan pl-30 pr-30">
+                                <i class="material-icons">face</i>
+                                <span class="menu-title">Utilisateur</span>
+                        </a>
+
+                        <div class="collapsible-body">
+                                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                                        <li>
+                                                <a href="/admin/list/user">
+                                                        <i class="material-icons"
+                                                                style="font-size: 10px;">radio_button_unchecked</i>
+                                                        <span>List </span>
+                                                </a>
+                                        </li>
+                                </ul>
+                        </div>
+                </li>
+
+
+                {{!-- gestion article verifier --}}
+                <li class="bold">
+
+                        <a class="collapsible-header waves-effect waves-cyan pl-30 pr-30 ">
+                                <i class="fas fa-file-alt"></i>
+                                <span class="menu-title">article Verifier</span>
+
+                        </a>
+
+                        <div class="collapsible-body">
+                                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                                        <li>
+                                                <a href="/admin/list/articleVerif">
+                                                        <i class="material-icons"
+                                                                style="font-size: 10px;">radio_button_unchecked</i>
+                                                        <span>List </span>
+                                                </a>
+                                        </li>
+                                </ul>
+                        </div>
+                </li>
+
+
+                {{!-- gestion article --}}
+                <li class="bold">
+                        <a class="collapsible-header waves-effect waves-cyan pl-30 pr-30">
+
+                                <i class="fas fa-file"></i>
+                                <span class="menu-title">article</span>
+                        </a>
+
+                        <div class="collapsible-body">
+                                <ul class="collapsible collapsible-sub" data-collapsible="accordion">
+                                        <li>
+                                                <a href="/admin/list/article">
+                                                        <i class="material-icons"
+                                                                style="font-size: 10px;">radio_button_unchecked</i>
+                                                        <span>List </span>
+                                                </a>
+                                        </li>
+                                </ul>
+                        </div>
+                </li>
+
+        </ul>
+
+</aside>

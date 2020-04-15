@@ -1,0 +1,38 @@
+<div class="row mt-30 mr-30">
+    <div class="col s12 m12">
+        <div class="card ">
+            <div class="card-content ">
+                <span class="card-title">Liste des signalements </span>
+                <p>I am a very simple card. I am good at containing small bits of information.
+                    I am convenient because I require little markup to use effectively.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="col s12">
+        <ul class="collection">
+            {{#each dbSignale}}
+            <form action="/admin/delete/signale/{{_id}}" method="POST">
+
+                <li class="collection-item avatar">
+                    <span class="title">{{userId}}</span>
+                    <br>
+                    <span class="date"> le {{dateLe}} a
+                            {{dateA}}</span>
+                    <p>
+                        <i class="fas fa-quote-left"></i>
+                        {{content}}
+                        <i class="fas fa-quote-right"></i>
+                    </p>
+                    <button type="submit" class="btn">Supprimer</button>
+                </li>
+
+            </form>
+
+            {{/each}}
+        </ul>
+    </div>
+
+
+</div>

@@ -1,0 +1,11 @@
+<form action="/like/create/{{dbArticleSingle._id}}" method="POST">
+<div class="right-align tex">
+    <a href="#modalCom{{dbArticleSingle._id}}" class="modal-trigger addCom btn-flat mt-10 mb-10 ">
+        {{Comlength}}<i class="far fa-comment ml-5 mr-5" style="font-size: 25px;"></i>
+    </a>
+    <button class="addCom btn-flat mt-10 mr-10 mb-10" type="submit">
+        {{#like dbArticleSingle}}{{/like}}<i class="far fa-heart ml-1  " style="font-size: 25px;"></i>
+    </button>
+</div>
+
+</form>

@@ -1,0 +1,31 @@
+<header class="white valign-wrapper">
+    {{>global/nav/navmenu}}
+    {{>global/nav/sidebar}}
+</header>
+
+<div>
+
+    <div class="row hide-on-med-and-down">
+
+        <div class="col s4">
+            {{>Article/bgArticleSingle}}
+        </div>
+
+        <div class="col s12 m12 l8 right" id="imgArticleVerif">
+            {{>Article/imgArticle}}
+        </div>
+
+    </div>
+
+
+    <div class="row s12 show-on-medium-and-down hide-on-med-and-up">
+        {{>Article/responsiveArticleSingle}}
+    </div>
+
+</div>
+
+<footer class="page-footer">
+    {{>home/footer}}
+</footer>
+
+{{>flash/ComLike}}
