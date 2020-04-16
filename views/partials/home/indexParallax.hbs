@@ -1,6 +1,6 @@
 <div class="container">
     <div class="row mt-30">
-        <h1 class="title center-align">Dernier Publication</h1>
+        <h1 class="title center-align">Dernière Publication</h1>
         
         {{#each ArticleVerifReverseLast}}
         <a href="/article/{{_id}}">
@@ -11,7 +11,7 @@
                     <span class="card-title tex-text">{{title}}</span>
                 </div>
                 <div class="card-content truncate tex-text">
-                    <p>{{content}}</p>
+                    <p class="truncate">{{content}}</p>
                 </div>
                 <div class="card-action">
                     <span>ecrit par {{author}}</span>
@@ -34,8 +34,8 @@
                     <img src="{{cover}}">
                     <span class="card-title tex-text">{{title}}</span>
                 </div>
-                <div class="card-content truncate tex-text">
-                    <p>{{content}}</p>
+                <div class="card-content tex-text">
+                    <p class="truncate">{{content}}</p>
                 </div>
                 <div class="card-action">
                     <span>ecrit par {{author}}</span>
@@ -52,3 +52,4 @@
 
     </div>
 </div>
+

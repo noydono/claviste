@@ -26,8 +26,8 @@ module.exports = {
         console.log(req.get('host'));
 
         rand = Math.floor((Math.random() * 100) + 54)
-        host = req.get('host')
-        link = "http://" + req.get('host') + "/mdpOublier/" + rand
+        host = 'theclaviste.noydono.fr'
+        link = "http://" + 'theclaviste.noydono.fr' + "/mdpOublier/" + rand
         mailOptions = {
             from: 'noytest.test@gmail.com',
             to: req.body.email,
@@ -131,7 +131,7 @@ module.exports = {
             }),
             query = userId._id
 
-        if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
+        if ((req.protocol + "://" + 'theclaviste.noydono.fr') == ("http://" + 'theclaviste.noydono.fr')) {
 
 
             console.log("Domain is matched. Information is from Authentic email")

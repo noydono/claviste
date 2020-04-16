@@ -1,0 +1,45 @@
+<div class="row rgpdContainer">
+    <form action="/rgpd" method="POST" class="rgpdForm">
+
+        <p class="mt-30 ml-20">ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site. <a
+                href="https://www.websitepolicies.com/policies/view/tvEm1QYy">voir la politique des cookies</a></p>
+
+        <div class="mr-20">
+            <button type="submit" value="dismiss" name="dismiss" class="btn red mt-10">refuser</button>
+            <button type="submit" value="accept" name="accept" class="btn mt-10">accepter</button>
+        </div>
+
+
+    </form>
+</div>
+
+
+
+<script>
+
+    console.log(`{{accept}}`);
+    const rgpdBandeau = document.querySelector('.rgpdContainer')
+    if(`{{accept}}` === 'true'){
+        rgpdBandeau.style.display='none';
+    }
+</script>
+
+<style>
+    .rgpdContainer {
+        position: fixed;
+        bottom: 0;
+        z-index: 1;
+        background-color: rgb(54, 54, 54);
+        width: 100%;
+        height: 80px;
+        color: white;
+    }
+
+    .rgpdForm {
+
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
