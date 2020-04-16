@@ -16,16 +16,21 @@ module.exports = {
             dbArticleVerif = await ArticleVerif.find({}),
             ArticleReverse = dbArticle.reverse(),
             ArticleVerifReverse = dbArticleVerif.reverse().slice(1,8)
-            ArticleVerifReverseLast = dbArticleVerif.slice(0,1)
+            ArticleVerifReverseLast = dbArticleVerif.slice(0,1),
+            accept = ""
+                if(req.cookies.CookieAccept){
+                accept = "true"
+                }
             
-            console.log(req.session);
+
 
         res.render('articleVerif/home', {
             ArticleVerifReverseLast:ArticleVerifReverseLast,
             dbArticle: ArticleReverse,
             ArticleVerifReverse: ArticleVerifReverse,
             dbUser,
-            dbAllUser,                
+            dbAllUser, 
+            accept,      
             emailUErr : req.flash('emailUErr'),
             emailU : req.flash('emailU'),            
             usernameErr : req.flash('usernameErr'),

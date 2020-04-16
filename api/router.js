@@ -35,7 +35,9 @@ const indexController = require('./controllers/pages/indexController'),
     adminDeleteArticleVerifController = require('./controllers/admin/articleVerif/delete'),
     adminDeleteUserController = require('./controllers/admin/user/delete'),
     adminComController = require ('./controllers/admin/com/comController'),
-    adminSignaleController = require ('./controllers/admin/signale/signalController')
+    adminSignaleController = require ('./controllers/admin/signale/signalController'),
+    rgpdcontroller = require('./controllers/legal/rgpdController')
+    
     
 
 
@@ -45,6 +47,7 @@ const indexController = require('./controllers/pages/indexController'),
 
 const isAdmin = require('./middleware/isAdmin'),
     auth = require('./middleware/auth')
+    
 
                     /* * * * * * * * * * * * * * * * * * * * * * * */
                     /* * * * * * * *  page * * * * * * * * * * * * */
@@ -241,6 +244,8 @@ router.route('/admin/delete/Contact/:id')
 
 router.route('/mentionLegal')
     .get(mentionLegalController.get)
+router.route('/rgpd')
+    .post(rgpdcontroller.post)
 
 
 module.exports = router

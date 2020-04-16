@@ -11,13 +11,17 @@ const express = require('express'),
     session = require('express-session'),
     MongoStore = require('connect-mongo')(session),
     flash = require('connect-flash'),
+    cookieParser = require('cookie-parser'),
     port = 4000
 /*
  *   api
  * * * * * */
 const ROUTER = require('./api/router'),
     keys = require('./config/keys'),
-    Helper = require('./api/helper/helperHbs')
+    Helper = require('./api/helper/helperHbs'),
+    cheh = require('./api/middleware/rgpdDismiss')
+
+
 
 /*
  *  mongoose
@@ -46,6 +50,7 @@ mongoose.connect(keys.mongoUri, {
 /*
  *   Express-session
  * * * * * */
+app.use(cookieParser())
 
 app.use(session({
 
@@ -67,11 +72,11 @@ app.use(session({
  *   middleware global
  * * * * * */
 
-app.use('*', (req, res, next) => {
+app.use('*',cheh, (req, res, next) => {
 
 
 
-    if (res.locals.user = req.session.userId) {
+      if (res.locals.user = req.session.userId) {
 
 
         if (req.session.role === 'user') {
@@ -93,7 +98,9 @@ app.use('*', (req, res, next) => {
 
         }
 
-    }
+    }  
+
+    
     // La function next permet qu'une fois la condition effectuer il reprenne son chemin
     next()
 })
@@ -147,6 +154,10 @@ app.engine('hbs', hbs({
 
 app.use('/', ROUTER)
 
+// Error404
+app.use((req, res) => {
+    res.render('error404')
+})
 
 app.listen(port, () => {
 
