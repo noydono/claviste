@@ -1,0 +1,17 @@
+<form action="/VerifArticle/{{dbArticle._id}}" method="post">
+    
+
+    <div class="right-align tex">
+        <a href="#signalR{{dbArticle._id}}" class="modal-trigger left addCom btn red mt-10 mb-10 ml-10 ">
+            signaler
+        </a>
+       
+        <button class="addCom btn-flat mt-10 mr-10 mb-10" type="submit">
+         {{#verif dbArticle}}{{/verif}} <i class="fas fa-check" style="font-size: 25px;"></i>
+        </button>
+    </div>
+
+   
+
+</form>
+{{>modal/modalSignalResponsive}}
