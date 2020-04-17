@@ -3391,6 +3391,23 @@ input[type=range] + .thumb {
   width: 100%;
 }
 
+.rgpdContainer {
+  position: fixed;
+  bottom: 0;
+  z-index: 1;
+  background-color: #363636;
+  width: 100%;
+  height: 80px;
+  color: white;
+}
+
+.rgpdForm {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
 span.badge {
   min-width: 3rem;
   padding: 0 6px;
