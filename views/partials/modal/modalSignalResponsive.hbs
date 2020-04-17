@@ -1,19 +1,22 @@
+{{!-- modal signale responsive --}}
 
-<div id="signalR{{dbArticle._id}}" class="modal modal-fixed-footer"  style="height: 300px;">
+<div id="signalR{{dbArticle._id}}" class="modal modal-fixed-footer" style="height: 300px;">
     <form action="/signale/{{dbArticle._id}}" method="POST">
         <div class="modal-content center-align">
             <h2 class="title">signalement</h2>
             <div class="row s6">
                 <div class="input-field col s12">
-                    <textarea id="textareasignalR{{dbArticle._id}}" class="materialize-textarea" name="content"></textarea>
+                    <textarea id="textareasignalR{{dbArticle._id}}" class="materialize-textarea"
+                        name="content"></textarea>
                     <label for="textareasignalR{{dbArticle._id}}">Textarea</label>
                 </div>
             </div>
         </div>
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn left">Close</a>
-            <button type="submit"
-                class="modal-close addCom waves-effect waves-green btn mt-10 ">envoyer le signallement</button>
+            <button type="submit" class="modal-close addCom waves-effect waves-green btn mt-10 ">
+                envoyer le signallement
+            </button>
         </div>
     </form>
 </div>

@@ -1,33 +1,31 @@
+{{!-- article home --}}
 <div class="container">
     <div class="row mt-30">
         <h1 class="title center-align">Dernière Publication</h1>
-        
         {{#each ArticleVerifReverseLast}}
         <a href="/article/{{_id}}">
-        <div class="col s12 m6  offset-m3 mt-20 ">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{cover}}">
-                    <span class="card-title tex-text">{{title}}</span>
-                </div>
-                <div class="card-content truncate tex-text">
-                    <p class="truncate">{{content}}</p>
-                </div>
-                <div class="card-action">
-                    <span>ecrit par {{author}}</span>
+            <div class="col s12 m6  offset-m3 mt-20 ">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{cover}}">
+                        <span class="card-title tex-text">{{title}}</span>
+                    </div>
+                    <div class="card-content truncate tex-text">
+                        <p class="truncate">{{content}}</p>
+                    </div>
+                    <div class="card-action">
+                        <span>ecrit par {{author}}</span>
+                    </div>
                 </div>
             </div>
         </a>
-        </div>
         {{/each}}
     </div>
-    <div class="row mt-30">
-
-        <h1 class="title">Autre Publication</h1>
-        
-
-        {{#each ArticleVerifReverse}}
-        <a href="/article/{{_id}}">
+</div>
+<div class="row mt-30">
+    <h1 class="title">Autre Publication</h1>
+    {{#each ArticleVerifReverse}}
+    <a href="/article/{{_id}}">
         <div class="col s12 m6 mt-20 mb-20">
             <div class="card">
                 <div class="card-image">
@@ -41,15 +39,11 @@
                     <span>ecrit par {{author}}</span>
                 </div>
             </div>
-            </a>
         </div>
-        {{/each}}
-        {{#each dbArticleVerif}}
-        {{>modal/modalAddCommentaire}}
-        {{/each}}
-
-
-
-    </div>
+    </a>
+    {{/each}}
 </div>
 
+{{#each dbArticleVerif}}
+{{>modal/modalAddCommentaire}}
+{{/each}}

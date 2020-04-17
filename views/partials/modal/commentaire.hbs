@@ -1,12 +1,10 @@
 <!-- Modal read commentaire-->
 <div id="modalCom{{dbArticleSingle._id}}" class="modal modal-fixed-footer ">
     <form action="/like/create/{{dbArticleSingle._id}}" method="POST">
-
         <div class="modal-content">
             <div class="row center-align">
                 <span class="title" style="margin-top: 10px; margin-bottom:25px;">Commentaire</span>
             </div>
-
             <div class="row">
                 <div class="col s12">
                     <ul class="collection">
@@ -25,14 +23,10 @@
                     </ul>
                 </div>
             </div>
-
-
         </div>
-
         <div class="modal-footer">
             <a href="#!" class="modal-close waves-effect waves-green btn left">Close</a>
             <a href="#modalAddCom{{dbArticleSingle._id}}" class="modal-trigger modal-close addCom waves-effect waves-green btn mt-10 ">envoyer un commentaire</a>
          </div>
-
     </form>
 </div>
