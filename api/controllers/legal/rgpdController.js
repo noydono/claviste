@@ -14,7 +14,7 @@ module.exports={
         }else if(req.body.dismiss === "dismiss"){
 
             res.clearCookie(`CookieAccept`)
-            res.cookie('CookieDismiss', { domain: '.coucou', path: '/coucou', secure: true, resave: false, consent:true, maxAge: 60000 })
+            res.cookie('CookieDismiss', { domain: '.coucou', path: '/coucou', secure: true, resave: false, consent:true, expire:2000 })
 
 
         }
