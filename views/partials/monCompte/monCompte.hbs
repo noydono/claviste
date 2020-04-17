@@ -1,17 +1,17 @@
 
+{{!-- partial monCompte input form --}}
+
+
+
+
 <form action="monCompte" method="post" enctype="multipart/form-data">
-  
-
       <div class="col s12 center-align">
-       
-
         <div class="row">
           <div class="input-field col s12">
             <input id="PseaudoMonCompte" type="text" name="username">
             <label for="PseaudoMonCompte">{{dbUser.username}}</label>
           </div>
         </div>
-
         <div class="row">
           <div class="input-field col s12">
             <input id="emailMonCompte" type="email" class="validate" name="email">
@@ -19,7 +19,6 @@
           </div>
         </div>
       </div>
-
       <div class="col s12">
         <div class="file-field input-field">
           <div class="btn">
@@ -31,11 +30,8 @@
           </div>
         </div>
       </div>
-
-
     <a href="#modalMpdNodemailer" class="modal-trigger waves-effect waves-green btn left ml-11">Modifier Le Mot de passe</a>
     <button type="submit" class="mr-11 waves-effect waves-green waves-light btn right">enregister les modifications</button>
-    
 </form>
 
 {{>modal/modalMpdNodemailer}}

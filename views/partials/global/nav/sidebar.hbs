@@ -1,9 +1,7 @@
 
-{{!-- <form action="user/logout" method="POST"> --}}
+{{!-- side bar --}}
     <ul id="slide-out" class="sidenav ">
-
         {{#if user}}
-
         <li>
             <div class="user-view">
                 <div style="float:right; font-size:25px"><a href="/monCompte"
@@ -15,18 +13,12 @@
                 <a><img class="circle" src="{{dbUser.avatarImg}}"></a>
                 <a href="#name"><span class="white-text name">{{dbUser.username}}</span></a>
                 <a href="#email"><span class="white-text email">{{dbUser.email}}</span></a>
-
             </div>
         </li>
-
         {{#if isAdmin}}
-
         <li><a class="waves-effect waves-light btn modal-trigger" href="/admin">Administration</a></li>
-
         {{else}}
-
         {{/if}}
-
         <li>
             <a class="waves-effect mb-3 waves-light dropdown-trigger btn" href='#'
                 data-target='dropdown{{dbUser._id}}'>Mes like</a>
@@ -37,28 +29,18 @@
         <li>
             <a class="waves-effect waves-light btn modal-trigger" href="/listVerifArticle">article a verifier</a>
         </li>
-        <li><a class="waves-effect waves-light btn hide-on-large-only" href="/">Acceuil</a></li>
-
+        <li></li><a class="waves-effect waves-light btn hide-on-large-only" href="/">Acceuil</a></li>
         <li>
             <a href="/user/logout" class="waves-effect waves-light btn modal-trigger"
                 style="bottom: 8%;">Deconnection</a>
         </li>
-
         {{else}}
-
         <li><a class="waves-effect waves-light btn" href="/user/create">m'inscrire</a></li>
         <li><a class="waves-effect waves-light btn modal-trigger" href="/user/login">Ce connecter</a></li>
         <li><a class="waves-effect waves-light btn hide-on-large-only" href="/">Acceuil</a></li>
-
- 
         {{/if}}
-
-
-
     </ul>
-
-{{!-- </form> --}}
-
+    
 {{>global/nav/dropLike}}
 {{>modal/modalCreate}} 
 {{>modal/modalContact}}
