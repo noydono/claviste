@@ -1,46 +1,44 @@
-
-
 <div class="container">
     <div class="row mt-30">
         <h1 class="title center-align">Article a valider</h1>
         {{#each dbArticleReverseLast}}
         <a href="/VerifArticle/{{_id}}">
-        <div class="col s12 m6  offset-m3 mt-20 ">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{cover}}" height="300" alt="clavier mécanique" />
-                    <span class="card-title tex-text">{{title}}</span>
-                </div>
-                <div class="card-content  tex-text">
-                    <p class="truncate">{{content}}</p>
-                </div>
-                <div class="card-action">
-                    <span>ecrit par {{author}}</span>
+            <div class="col s12 m6  offset-m3 mt-20 ">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{cover}}" height="300" alt="clavier mécanique" />
+                        <span class="card-title tex-text">{{title}}</span>
+                    </div>
+                    <div class="card-content  tex-text">
+                        <p class="truncate">{{content}}</p>
+                    </div>
+                    <div class="card-action">
+                        <span>ecrit par {{author}}</span>
+                    </div>
                 </div>
             </div>
         </a>
-        </div>
         {{/each}}
     </div>
     <div class="row mt-30">
         <h1 class="title">Autre Publication a validé</h1>
         {{#each dbArticleReverse}}
         <a href="/VerifArticle/{{_id}}">
-        <div class="col s12 m6 mt-20 mb-20">
-            <div class="card">
-                <div class="card-image">
-                    <img src="{{cover}}" height="300" alt="clavier mécanique" />
-                    <span class="card-title tex-text">{{title}}</span>
-                </div>
-                <div class="card-content truncate tex-text">
-                    <p>{{content}}</p>
-                </div>
-                <div class="card-action">
-                    <span>ecrit par {{author}}</span>
+            <div class="col s12 m6 mt-20 mb-20">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{cover}}" height="300" alt="clavier mécanique" />
+                        <span class="card-title tex-text">{{title}}</span>
+                    </div>
+                    <div class="card-content truncate tex-text">
+                        <p>{{content}}</p>
+                    </div>
+                    <div class="card-action">
+                        <span>ecrit par {{author}}</span>
+                    </div>
                 </div>
             </div>
-            </a>
-        </div>
+        </a>
         {{/each}}
     </div>
 </div>
