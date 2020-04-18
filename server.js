@@ -18,8 +18,7 @@ const express = require('express'),
  * * * * * */
 const ROUTER = require('./api/router'),
     keys = require('./config/keys'),
-    Helper = require('./api/helper/helperHbs'),
-    cheh = require('./api/middleware/rgpdDismiss')
+    Helper = require('./api/helper/helperHbs')
 
 
 
@@ -72,7 +71,7 @@ app.use(session({
  *   middleware global
  * * * * * */
 
-app.use('*',cheh, (req, res, next) => {
+app.use('*', (req, res, next) => {
 
 
 

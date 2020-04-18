@@ -46,7 +46,9 @@ const indexController = require('./controllers/pages/indexController'),
                     /* * * * * * * * * * * * * * * * * * * * * * * */
 
 const isAdmin = require('./middleware/isAdmin'),
-    auth = require('./middleware/auth')
+    auth = require('./middleware/auth'),
+    cheh = require('./middleware/rgpdDismiss')
+
     
 
                     /* * * * * * * * * * * * * * * * * * * * * * * */
@@ -55,7 +57,7 @@ const isAdmin = require('./middleware/isAdmin'),
 
 
 router.route('/')
-    .get(indexController.get)
+    .get(cheh,indexController.get)
 
 
                     /* * * * * * * * * * * * * * * * * * * * * * * */
@@ -70,13 +72,13 @@ router.route('/article/update/:id')
     .post(multer.array('imgArticle'), ArticleController.update)
 
 router.route('/article/:id')
-    .get(ArticleSingleController.get)
+    .get(cheh,ArticleSingleController.get)
 
 router.route('/listVerifArticle')
-    .get(ArticleVerifController.get)
+    .get(cheh,ArticleVerifController.get)
 
 router.route('/VerifArticle/:id')
-    .get(ArticleVerifController.getSingle)
+    .get(cheh,ArticleVerifController.getSingle)
     .post(ArticleVerifController.addVerif)
 
 
@@ -96,15 +98,15 @@ router.route('/like/create/:id')
                         /* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/user/create')
-    .get(UserController.getInscription)
+    .get(cheh,UserController.getInscription)
     .post(multer.single('img'), UserController.create)
 
 router.route('/user/login')
-    .get(UserController.getlogin)
+    .get(cheh,UserController.getlogin)
     .post(UserController.login)
 
 router.route('/user/logout')
-    .get(UserController.logout)
+    .get(cheh,UserController.logout)
 
 
 
@@ -114,7 +116,7 @@ router.route('/user/logout')
                         /* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/moncompte')
-    .get(MonCompteController.get)
+    .get(cheh,MonCompteController.get)
     .post(multer.single('img'), MonCompteController.update)
 
 
@@ -126,7 +128,7 @@ router.route('/moncompte')
 
 
 router.route('/verify/:id')
-    .get(nodmailercontroller.verifMail)
+    .get(cheh,nodmailercontroller.verifMail)
 
 // envoye du mail de mdp oublier
 router.route('/mdpOublier/send')
@@ -134,11 +136,11 @@ router.route('/mdpOublier/send')
 
 // redirige apres le click du lien du mail 
 router.route('/mdpOublier/:id')
-    .get(nodmailercontroller.getMpdOublier)
+    .get(cheh,nodmailercontroller.getMpdOublier)
 
 // update du mdp
 router.route('/updateMdp/:id')
-    .get(nodmailercontroller.getputmdpOublier)
+    .get(cheh,nodmailercontroller.getputmdpOublier)
     .post(nodmailercontroller.putMdpOublier)
 
 
@@ -230,7 +232,7 @@ router.route('/contact/create')
     .post(ContactController.create)
 
 router.route('/admin/list/contact')
-    .get(ContactController.list)
+    .get(cheh,ContactController.list)
 
 router.route('/admin/delete/Contact/:id')
     .post(isAdmin,ContactController.delContact)
@@ -243,7 +245,7 @@ router.route('/admin/delete/Contact/:id')
 /* * * * * * * * * * * * * * * * * * * * * * * */
 
 router.route('/mentionLegal')
-    .get(mentionLegalController.get)
+    .get(cheh,mentionLegalController.get)
 router.route('/rgpd')
     .post(rgpdcontroller.post)
 

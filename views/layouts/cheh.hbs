@@ -1,311 +1,464 @@
-{{>global/structureCheh/head}}
+<div class="cont">
+    <div class="menu">
+        <div class="menu-row-score">
 
-<body>
+            <ul class="menu-row-score-list">
+                <li>Nombre de Cookie</li>
+                <li class="readScore"></li>
+            </ul>
 
-    <div id="clouds">
-        <div class="cloud x1"></div>
-        <div class="cloud x1_5"></div>
-        <div class="cloud x2"></div>
-        <div class="cloud x3"></div>
-        <div class="cloud x4"></div>
-        <div class="cloud x5"></div>
+        </div>
+        <div class="menu-row-magazin">
+            <div class="main">
+                <div class="menu-row-magazin-div-cursor">
+                    <img src="/public/img/main.png" width="100" height="100" class="magazinImg" alt="main cookie">
+                </div>
+                <div class="menu-row-magazin-div-cursor-info">
+                    <ul>
+                        <li>valeur : 10</li>
+                        <li>rapport: 0.10/s</li>
+                        <li>vous a rapporter:<p class="rapMain"></p></li>
+                        <li>vous en avez: <p>0</p></li>                        
+                    </ul>
+                </div>
+            </div>
+            <div class="mamie">
+                <div class="menu-row-magazin-div-mamie">
+
+                    <img src="/public/img/mamie.png" width="100" class="magazinImg" height="100" alt="mamie cookie">
+                </div>
+                <div class="menu-row-magazin-div-mamie-info">
+                    <ul>
+                        <li>valeur : 10</li>
+                        <li>rapport: 0.10/s</li>
+                        <li>vous a rapporter:<p class="rapMain"></p></li>
+                        <li>vaous en avez:<p>0</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mine">
+                <div class="menu-row-magazin-div-mine">
+
+                    <img src="/public/img/mine.png" width="100" class="magazinImg" class="magazinImg" height="100"
+                        alt="mine cookie">
+                </div>
+                <div class="menu-row-magazin-div-mine-info">
+                    <ul>
+                        <li>valeur : 10</li>
+                        <li>rapport: 0.10/s</li>
+                        <li>vous a rapporter:<p class="rapMain"></p></li>
+                        <li>vaous en avez:<p>0</p></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="usine">
+                <div class="menu-row-magazin-div-usine">
+                    <img src="/public/img/usine.png" width="100" height="100" class="magazinImg" alt="usine cookie">
+                </div>
+                <div class="menu-row-magazin-div-usine-info">
+                    <ul>
+                        <li>valeur : 10</li>
+                        <li>vous en avez : <p>0</p></li>
+                        <li>rapport: 0.10/s</li>
+                        <li>vous a rapporter:<p class="rapMain"></p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class='c'>
-        <div class='_404'>Cheh</div>
-        <hr>
-        <div class='_1'>Si t'avais accepter les cookie on aurait pu vendre tes données. </div>
-        <div class='_2'>click sur le button en dessous pour accepter les cookies .<a
-                href="https://www.websitepolicies.com/policies/view/tvEm1QYy">voir la politique des cookies</a> </div>
-
-
-
-        <button class="btn">accepter</button>
-
-
-
+    <div class="cookie">
+        <img src="/public/img/cookie.png" class="cookieImg" alt="Cookie">
     </div>
+    <div class="info">
+        ceci sont des infos
+    </div>
+</div>
+
+
+<style>
+    .cont {
+        display: grid;
+        grid-template-columns: 2fr 2fr 0.5fr;
+        grid-template-rows: 100%;
+        grid-template-areas: " menu cookie info";
+        height: 100%;
+        grid-gap: 5px;
+
+    }
+
+    .menu {
+        grid-area: menu;
+        border: 1px black solid;
+        background-image: url(/public/img/woodScore.png);
+    }
+
+    .cookie {
+        grid-area: cookie;
+        border: 1px black solid;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+    }
+
+    .info {
+        grid-area: info;
+        border: 1px black solid;
+        background-image: url(/public/img/woodScore.png);
+
+    }
+
+
+    .menu-row-score-list {
+
+        list-style: none;
+        display: flex;
+        margin: 0;
+        padding: 0;
+        height: 70px;
+        margin-top: 10px;
+        padding-top: 30px;
+        justify-content: center;
+        align-items: center;
+        background-image: url(/public/img/pancarte.png);
+        background-size: 400px 200px;
+        background-position: bottom;
+        background-repeat: no-repeat;
+        color: rgb(255, 255, 255);
+        font-size: 20px;
+
+
+    }
+
+    .menu-row-score-list li {
+        margin-right: 10px;
+        margin-left: 10px;
+    }
+
+    .menu-row-magazin {
+
+        background-image: url(/public/img/pancarteMagazin.png);
+        background-size: 400px 200px;
+        background-position: bottom;
+        background-repeat: repeat-y;
+        margin-top: 10px;
+        height: 800px;
+
+    }
+
+    .menu-row-magazin {
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr 1fr 1fr;
+        grid-template-areas: "main"
+            "mamie"
+            "mine"
+            "usine";
+        margin: 0;
+        padding: 0;
+        font-size: 20px;
+        color: papayawhip;
+
+
+    }
+
+    .menu-row-magazin div:first-child {
+
+
+        grid-area: main;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
 
 
 
-    <script>
 
-        const btnCLick = $('.btn')
+    }
 
+    .menu-row-magazin div:nth-child(2) {
 
-        btnCLick.click(() => {
-
-           
-
-                $('._1').text('Le cookie disparaitrera dans 1 minute').delay(10)
-            
-        })
-
-    </script>
+        grid-area: mamie;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
 
 
 
+    }
 
-    <style>
-        @import url(https://fonts.googleapis.com/css?family=opensans:500);
+    .menu-row-magazin div:nth-child(3) {
 
-        body {
-            background: #33cc99;
-            color: #fff;
-            font-family: 'Open Sans', sans-serif;
-            max-height: 700px;
-            overflow: hidden;
+        grid-area: mine;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+
+
+    }
+
+    .menu-row-magazin div:last-child {
+
+
+        grid-area: usine;
+        margin-left: 50px;
+        margin-right: 50px;
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+
+
+    }
+
+    .magazinImg:hover {
+
+        transform: scale(0.9);
+
+    }
+
+    .menu-row-magazin-div-cursor {
+
+        display: flex;
+        flex-direction: column;
+        width: 60px;
+
+
+    }
+
+    .menu-row-magazin-div-cursor-info {
+
+        margin: 0 !important;
+        list-style: none;
+
+
+    }
+
+    .menu-row-magazin-div-cursor-info ul {
+
+        list-style: none;
+
+
+    }
+
+    .menu-row-magazin-div-mamie {
+
+        display: flex;
+        flex-direction: column;
+        width: 50px;
+    }
+
+    .menu-row-magazin-div-mamie-info {
+
+        margin: 0 !important;
+        list-style: none;
+
+
+    }
+
+    .menu-row-magazin-div-mamie-info ul {
+
+        list-style: none;
+
+
+    }
+    .menu-row-magazin-div-mine {
+
+        display: flex;
+        flex-direction: column;
+        width: 50px;
+    }
+    .menu-row-magazin-div-mine-info {
+
+        margin: 0 !important;
+        list-style: none;
+
+
+    }
+    .menu-row-magazin-div-mine-info ul {
+
+        list-style: none;
+
+    }
+    .menu-row-magazin-div-usine {
+
+        display: flex;
+        flex-direction: column;
+        width: 50px;
+        
+    }
+    .menu-row-magazin-div-usine-info {
+
+        margin: 0 !important;
+        list-style: none;
+
+
+    }
+    .menu-row-magazin-div-usine-info ul {
+
+        list-style: none;
+
+
+    }
+    .main {
+        display: flex;
+        justify-content: space-around;
+        height: 180px;
+        
+
+    }
+    .mamie {
+        display: flex;
+        justify-content: space-around;
+        height: 180px;
+        
+
+    }
+    .mine {
+        display: flex;
+        justify-content: space-around;
+        height: 180px;
+        
+
+    }
+    .usine {
+        display: flex;
+        justify-content: space-around;
+        height: 180px;
+        
+
+    }
+</style>
+
+<script>
+
+    let cookie = document.querySelector('.cookieImg'),
+        divMain = document.querySelector('.main'),
+        divMamie = document.querySelector('.mamie'),
+        divMine = document.querySelector('.mine'),
+        divUsine = document.querySelector('.usine'),
+        readScore = document.querySelector('.readScore'),
+        score = 0,
+        mamie = 0,
+        main = 0,
+        mine = 0,
+        usine = 0,
+        mainVal = 0.10 + main / 10,
+        mamieVal = 0,
+        mineVal = 0,
+        usineVal = 0;
+
+
+
+    cookie.addEventListener('click', function (event) {
+        if (cookie.style.transform == 'scale(0.95)') {
+
+            cookie.style.transform = "scale(1)";
+
+        } else {
+
+            cookie.style.transform = "scale(0.95)";
+
         }
+        score++
+        readScore.textContent = score;
+        console.log(score + "cookie click")
 
-        .c {
-            text-align: center;
-            display: block;
-            position: relative;
-            width: 80%;
-            margin: 100px auto;
+
+    })
+
+
+    divMain.addEventListener('click', function (event) {
+
+        if (score > 10) {
+
+            console.log(score)
+            score -= 10
+            readScore.textContent = score.toFixed(2);
+            main++
+            console.log(main)
+
         }
-
-        ._404 {
-            font-size: 220px;
-            position: relative;
-            display: inline-block;
-            z-index: 2;
-            height: 250px;
-            letter-spacing: 15px;
+        if (main >= 1) {
+            setInterval(function () {
+                score += mainVal
+                readScore.textContent = score.toFixed(2);
+                console.log(score + "coucou")
+            }, 1000)
         }
+    })
 
-        ._1 {
-            text-align: center;
-            display: block;
-            position: relative;
-            letter-spacing: 12px;
-            font-size: 3em;
-            line-height: 80%;
+    divMamie.addEventListener('clic', function () {
+
+        if (score > 10) {
+
+            console.log(score)
+            score -= 10
+            readScore.textContent = score;
+            main++
+            console.log(main)
+
         }
+        if (main >= 1) {
+            setInterval(function () {
+                score += mainVal
+                readScore.textContent = score.toFixed(2);
+                console.log(score + "coucou")
+            }, 1000)
 
-        ._2 {
-            text-align: center;
-            display: block;
-            position: relative;
-            font-size: 20px;
-            margin-top: 20px;
-            margin-bottom: 10px;
         }
+    })
 
-        .text {
-            font-size: 70px;
-            text-align: center;
-            position: relative;
-            display: inline-block;
-            margin: 19px 0px 0px 0px;
-            /* top: 256.301px; */
-            z-index: 3;
-            width: 100%;
-            line-height: 1.2em;
-            display: inline-block;
+    divMine.addEventListener('click', function () {
+        if (score > 10) {
+
+            console.log(score)
+            score -= 10
+            readScore.textContent = score.toFixed(2);
+            main++
+            console.log(main)
+
         }
+        if (main >= 1) {
+            setInterval(function () {
+                score += mainVal
+                readScore.textContent = score.toFixed(2);
+                console.log(score + "coucou")
+            }, 1000)
 
 
-        .btn {
-            background-color: rgb(255, 255, 255);
-            position: relative;
-            display: inline-block;
-            width: 358px;
-            padding: 5px;
-            z-index: 5;
-            font-size: 25px;
-            margin: 0 auto;
-            color: #33cc99;
-            text-decoration: none;
-            margin-right: 10px
         }
+    })
 
-        .right {
-            float: right;
-            width: 60%;
+    divUsine.addEventListener('clic', function () {
+
+        if (score > 10) {
+
+            console.log(score)
+            score -= 10
+            readScore.textContent = score.toFixed(2);
+            main++
+            console.log(main)
+
         }
+        if (main >= 1) {
+            setInterval(function () {
+                score += mainVal
+                readScore.textContent = score.toFixed(2);
+                console.log(score + "coucou")
+            }, 1000)
 
-        hr {
-            padding: 0;
-            border: none;
-            border-top: 5px solid #fff;
-            color: #fff;
-            text-align: center;
-            margin: 0px auto;
-            width: 420px;
-            height: 10px;
-            z-index: -10;
+
         }
+    })
 
-        hr:after {
-            content: "\2022";
-            display: inline-block;
-            position: relative;
-            top: -0.75em;
-            font-size: 2em;
-            padding: 0 0.2em;
-            background: #33cc99;
-        }
 
-        .cloud {
-            width: 350px;
-            height: 120px;
 
-            background: #FFF;
-            background: linear-gradient(top, #FFF 100%);
-            background: -webkit-linear-gradient(top, #FFF 100%);
-            background: -moz-linear-gradient(top, #FFF 100%);
-            background: -ms-linear-gradient(top, #FFF 100%);
-            background: -o-linear-gradient(top, #FFF 100%);
 
-            border-radius: 100px;
-            -webkit-border-radius: 100px;
-            -moz-border-radius: 100px;
 
-            position: absolute;
-            margin: 120px auto 20px;
-            z-index: -1;
-            transition: ease 1s;
-        }
-
-        .cloud:after,
-        .cloud:before {
-            content: '';
-            position: absolute;
-            background: #FFF;
-            z-index: -1
-        }
-
-        .cloud:after {
-            width: 100px;
-            height: 100px;
-            top: -50px;
-            left: 50px;
-
-            border-radius: 100px;
-            -webkit-border-radius: 100px;
-            -moz-border-radius: 100px;
-        }
-
-        .cloud:before {
-            width: 180px;
-            height: 180px;
-            top: -90px;
-            right: 50px;
-
-            border-radius: 200px;
-            -webkit-border-radius: 200px;
-            -moz-border-radius: 200px;
-        }
-
-        .x1 {
-            top: -50px;
-            left: 100px;
-            -webkit-transform: scale(0.3);
-            -moz-transform: scale(0.3);
-            transform: scale(0.3);
-            opacity: 0.9;
-            -webkit-animation: moveclouds 15s linear infinite;
-            -moz-animation: moveclouds 15s linear infinite;
-            -o-animation: moveclouds 15s linear infinite;
-        }
-
-        .x1_5 {
-            top: -80px;
-            left: 250px;
-            -webkit-transform: scale(0.3);
-            -moz-transform: scale(0.3);
-            transform: scale(0.3);
-            -webkit-animation: moveclouds 17s linear infinite;
-            -moz-animation: moveclouds 17s linear infinite;
-            -o-animation: moveclouds 17s linear infinite;
-        }
-
-        .x2 {
-            left: 250px;
-            top: 30px;
-            -webkit-transform: scale(0.6);
-            -moz-transform: scale(0.6);
-            transform: scale(0.6);
-            opacity: 0.6;
-            -webkit-animation: moveclouds 25s linear infinite;
-            -moz-animation: moveclouds 25s linear infinite;
-            -o-animation: moveclouds 25s linear infinite;
-        }
-
-        .x3 {
-            left: 250px;
-            bottom: -70px;
-
-            -webkit-transform: scale(0.6);
-            -moz-transform: scale(0.6);
-            transform: scale(0.6);
-            opacity: 0.8;
-
-            -webkit-animation: moveclouds 25s linear infinite;
-            -moz-animation: moveclouds 25s linear infinite;
-            -o-animation: moveclouds 25s linear infinite;
-        }
-
-        .x4 {
-            left: 470px;
-            botttom: 20px;
-
-            -webkit-transform: scale(0.75);
-            -moz-transform: scale(0.75);
-            transform: scale(0.75);
-            opacity: 0.75;
-
-            -webkit-animation: moveclouds 18s linear infinite;
-            -moz-animation: moveclouds 18s linear infinite;
-            -o-animation: moveclouds 18s linear infinite;
-        }
-
-        .x5 {
-            left: 200px;
-            top: 300px;
-
-            -webkit-transform: scale(0.5);
-            -moz-transform: scale(0.5);
-            transform: scale(0.5);
-            opacity: 0.8;
-
-            -webkit-animation: moveclouds 20s linear infinite;
-            -moz-animation: moveclouds 20s linear infinite;
-            -o-animation: moveclouds 20s linear infinite;
-        }
-
-        @-webkit-keyframes moveclouds {
-            0% {
-                margin-left: 1000px;
-            }
-
-            100% {
-                margin-left: -1000px;
-            }
-        }
-
-        @-moz-keyframes moveclouds {
-            0% {
-                margin-left: 1000px;
-            }
-
-            100% {
-                margin-left: -1000px;
-            }
-        }
-
-        @-o-keyframes moveclouds {
-            0% {
-                margin-left: 1000px;
-            }
-
-            100% {
-                margin-left: -1000px;
-            }
-        }
-    </style>
-</body>
-
-{{>global/structureCheh/script}}
-
-{{>global/structureCheh/end}}
+</script>
