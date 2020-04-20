@@ -72,8 +72,10 @@
             recolter plus de cookie.</p>
         <p>pour pouvoir retourner sur le site vous devez avoir 1 000 000 cookies</p>
         <form action="/clear/cookie" method="POST">
-            <div class="clearCookie"></div>
+            <div class="clearCookie">
+            </div>
         </form>
+        <p>si le bouton n'aparait pas et que vous avez plus 1 million de cookie cliquer sur le cookie</p>
     </div>
 </div>
 
@@ -369,7 +371,7 @@
         mamieQuant = document.querySelector('.mamieQuant'),
         mineQuant = document.querySelector('.mineQuant'),
         usineQuant = document.querySelector('.usineQuant'),
-        score = 0,
+        score = 999999,
         mamie = 0,
         mamieCoup = 100,
         main = 0,
@@ -388,7 +390,34 @@
         rapMain = document.querySelector('.rapMain'),
         rapMamie = document.querySelector('.rapMamie'),
         rapMine = document.querySelector('.rapMine'),
-        rapUsine = document.querySelector('.rapUsine');
+        rapUsine = document.querySelector('.rapUsine')
+
+
+    function clearcookie() {
+    let cookie = document.querySelector('.clearCookie').children.length
+
+       if (cookie === 0) {
+
+            if (score >= 1000000) {
+
+
+                let btn = document.createElement("button"),
+                    type = document.createAttribute("type")
+                btn.innerHTML = "Accedez au site";
+                type.value = "submit";
+                document.querySelector(".clearCookie").appendChild(btn).setAttributeNode(type);
+
+
+
+
+
+            }
+        }
+
+
+
+    }
+
 
 
     cookie.addEventListener('click', function (event) {
@@ -403,7 +432,9 @@
         }
 
         score++
+
         readScore.textContent = score.toFixed(2);
+        clearcookie()
 
 
     })
@@ -433,6 +464,7 @@
             }, 1000)
 
         }
+        clearcookie()
     })
 
     divMamie.addEventListener('click', function (event) {
@@ -456,6 +488,7 @@
             }, 1000)
 
         }
+        clearcookie()
     })
 
     divMine.addEventListener('click', function (event) {
@@ -480,6 +513,7 @@
 
 
         }
+        clearcookie()
     })
 
     divUsine.addEventListener('click', function (event) {
@@ -505,17 +539,9 @@
 
 
         }
+        clearcookie()
+
     })
 
-    if (score > 1000000) {
-
-        let btn = document.createElement("button"),
-        type = document.createAttribute("type")
-
-        btn.innerHTML = "Accedez au site";
-        type.value  = "submit"
-        document.querySelector(".clearCookie").appendChild(btn).setAttributeNode(type);
-
-    }
 
 </script>
