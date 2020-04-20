@@ -15,10 +15,9 @@
                 </div>
                 <div class="menu-row-magazin-div-cursor-info">
                     <ul>
-                        <li>valeur : 10</li>
-                        <li>rapport: 0.10/s</li>
-                        <li>vous a rapporter:<p class="rapMain"></p></li>
-                        <li>vous en avez: <p>0</p></li>                        
+                        <li>coûte :<span class="valMain">10</span></li>
+                        <li>rapport : <span class="rapMain">0,10</span>/s</li>
+                        <li>vous en avez: <span class="mainQuant">0</span></li>
                     </ul>
                 </div>
             </div>
@@ -29,10 +28,9 @@
                 </div>
                 <div class="menu-row-magazin-div-mamie-info">
                     <ul>
-                        <li>valeur : 10</li>
-                        <li>rapport: 0.10/s</li>
-                        <li>vous a rapporter:<p class="rapMain"></p></li>
-                        <li>vaous en avez:<p>0</p></li>
+                        <li>coûte : <span class="valMamie">100</span> </li>
+                        <li>rapport: <span class="rapMamie">1</span>/s</li>
+                        <li>vous en avez:<span class="mamieQuant">0</span></li>
                     </ul>
                 </div>
             </div>
@@ -44,10 +42,9 @@
                 </div>
                 <div class="menu-row-magazin-div-mine-info">
                     <ul>
-                        <li>valeur : 10</li>
-                        <li>rapport: 0.10/s</li>
-                        <li>vous a rapporter:<p class="rapMain"></p></li>
-                        <li>vaous en avez:<p>0</p></li>
+                        <li>coûte : <span class="valMine">1000</span></li>
+                        <li>rapport: <span class="rapMine">10</span>/s</li>
+                        <li>vous en avez:<span class="mineQuant">0</span></li>
                     </ul>
                 </div>
             </div>
@@ -57,10 +54,9 @@
                 </div>
                 <div class="menu-row-magazin-div-usine-info">
                     <ul>
-                        <li>valeur : 10</li>
-                        <li>vous en avez : <p>0</p></li>
-                        <li>rapport: 0.10/s</li>
-                        <li>vous a rapporter:<p class="rapMain"></p>
+                        <li>coûte : <span class="valUsine">10000</span></li>
+                        <li>rapport: <span class="rapUsine">100</span>/s</li>
+                        <li>vous en avez :/s <span class="usineQuant">0</span></li>
                         </li>
                     </ul>
                 </div>
@@ -71,7 +67,13 @@
         <img src="/public/img/cookie.png" class="cookieImg" alt="Cookie">
     </div>
     <div class="info">
-        ceci sont des infos
+        <p>cookie clicker</p>
+        <p>Le but est simple clicker sur le cookie vous rapport 1 cookie vous pouvez acheter a gauche des outils pour
+            recolter plus de cookie.</p>
+        <p>pour pouvoir retourner sur le site vous devez avoir 1 000 000 cookies</p>
+        <form action="/clear/cookie" method="POST">
+            <div class="clearCookie"></div>
+        </form>
     </div>
 </div>
 
@@ -79,7 +81,7 @@
 <style>
     .cont {
         display: grid;
-        grid-template-columns: 2fr 2fr 0.5fr;
+        grid-template-columns: 2fr 2fr 1fr;
         grid-template-rows: 100%;
         grid-template-areas: " menu cookie info";
         height: 100%;
@@ -99,6 +101,7 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        background-image: url(/public/img/woodScore.png);
 
     }
 
@@ -106,6 +109,12 @@
         grid-area: info;
         border: 1px black solid;
         background-image: url(/public/img/woodScore.png);
+        font-size: 20px;
+        color: blanchedalmond;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
 
     }
 
@@ -267,12 +276,14 @@
 
 
     }
+
     .menu-row-magazin-div-mine {
 
         display: flex;
         flex-direction: column;
         width: 50px;
     }
+
     .menu-row-magazin-div-mine-info {
 
         margin: 0 !important;
@@ -280,18 +291,21 @@
 
 
     }
+
     .menu-row-magazin-div-mine-info ul {
 
         list-style: none;
 
     }
+
     .menu-row-magazin-div-usine {
 
         display: flex;
         flex-direction: column;
         width: 50px;
-        
+
     }
+
     .menu-row-magazin-div-usine-info {
 
         margin: 0 !important;
@@ -299,38 +313,46 @@
 
 
     }
+
     .menu-row-magazin-div-usine-info ul {
 
         list-style: none;
 
 
+
     }
+
     .main {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         height: 180px;
-        
+
 
     }
+
     .mamie {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         height: 180px;
-        
+
 
     }
+
     .mine {
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         height: 180px;
-        
+
 
     }
+
     .usine {
+
+        margin-right: 600px;
+        margin-left: 600px;
         display: flex;
-        justify-content: space-around;
+        justify-content: center;
         height: 180px;
-        
 
     }
 </style>
@@ -343,16 +365,30 @@
         divMine = document.querySelector('.mine'),
         divUsine = document.querySelector('.usine'),
         readScore = document.querySelector('.readScore'),
+        mainQuant = document.querySelector('.mainQuant'),
+        mamieQuant = document.querySelector('.mamieQuant'),
+        mineQuant = document.querySelector('.mineQuant'),
+        usineQuant = document.querySelector('.usineQuant'),
         score = 0,
         mamie = 0,
+        mamieCoup = 100,
         main = 0,
+        mainCoup = 10,
         mine = 0,
+        mineCoup = 1000,
         usine = 0,
-        mainVal = 0.10 + main / 10,
-        mamieVal = 0,
+        usineCoup = 10000,
+        mainVal = 0,
         mineVal = 0,
-        usineVal = 0;
-
+        usineVal = 0,
+        valMain = document.querySelector('.valMain'),
+        valMamie = document.querySelector('.valMamie'),
+        valMine = document.querySelector('.valMine'),
+        valUsine = document.querySelector('.valUsine'),
+        rapMain = document.querySelector('.rapMain'),
+        rapMamie = document.querySelector('.rapMamie'),
+        rapMine = document.querySelector('.rapMine'),
+        rapUsine = document.querySelector('.rapUsine');
 
 
     cookie.addEventListener('click', function (event) {
@@ -365,100 +401,121 @@
             cookie.style.transform = "scale(0.95)";
 
         }
+
         score++
-        readScore.textContent = score;
-        console.log(score + "cookie click")
+        readScore.textContent = score.toFixed(2);
 
 
     })
-
 
     divMain.addEventListener('click', function (event) {
 
-        if (score > 10) {
+        if (score >= mainCoup && score < 100000000) {
 
-            console.log(score)
-            score -= 10
+            score -= mainCoup
             readScore.textContent = score.toFixed(2);
             main++
-            console.log(main)
+            mainVal = 0.10 * main
+            mainCoup += 2
+            mainQuant.textContent = main;
+            valMain.textContent = mainCoup;
+            rapMain.textContent = mainVal.toFixed(2);
+
+
 
         }
         if (main >= 1) {
             setInterval(function () {
+
                 score += mainVal
                 readScore.textContent = score.toFixed(2);
-                console.log(score + "coucou")
-            }, 1000)
-        }
-    })
 
-    divMamie.addEventListener('clic', function () {
-
-        if (score > 10) {
-
-            console.log(score)
-            score -= 10
-            readScore.textContent = score;
-            main++
-            console.log(main)
-
-        }
-        if (main >= 1) {
-            setInterval(function () {
-                score += mainVal
-                readScore.textContent = score.toFixed(2);
-                console.log(score + "coucou")
             }, 1000)
 
         }
     })
 
-    divMine.addEventListener('click', function () {
-        if (score > 10) {
+    divMamie.addEventListener('click', function (event) {
 
-            console.log(score)
-            score -= 10
+        if (score >= mamieCoup && score < 100000000) {
+
+            score -= mamieCoup
             readScore.textContent = score.toFixed(2);
-            main++
-            console.log(main)
+            mamie++
+            mamieCoup += 15
+            mamieQuant.textContent = mamie;
+            valMamie.textContent = mamieCoup;
+            rapMamie.textContent = mamie;
+
 
         }
-        if (main >= 1) {
+        if (mamie >= 1) {
             setInterval(function () {
-                score += mainVal
+                score += mamie
                 readScore.textContent = score.toFixed(2);
-                console.log(score + "coucou")
             }, 1000)
-
 
         }
     })
 
-    divUsine.addEventListener('clic', function () {
+    divMine.addEventListener('click', function (event) {
+        if (score >= mineCoup && score < 100000000) {
 
-        if (score > 10) {
-
-            console.log(score)
-            score -= 10
+            score -= mineCoup
             readScore.textContent = score.toFixed(2);
-            main++
-            console.log(main)
+            mineQuant.textContent = mine;
+            mine++
+            mineVal = 10 * mine
+            mineCoup += 150
+            valMine.textContent = mineCoup;
+            rapMine.textContent = mineVal;
 
         }
-        if (main >= 1) {
+        if (mine >= 1) {
+
             setInterval(function () {
-                score += mainVal
+                score += mineVal
                 readScore.textContent = score.toFixed(2);
-                console.log(score + "coucou")
             }, 1000)
 
 
         }
     })
 
+    divUsine.addEventListener('click', function (event) {
+
+        if (score >= usineCoup && score < 100000000) {
+
+            score -= usineCoup
+            readScore.textContent = score.toFixed(2);
+            usineQuant.textContent = usine;
+            usine++
+            usineVal = 100 * usine
+            usineCoup += 2500
+            valUsine.textContent = usineCoup;
+            rapUsine.textContent = usineVal;
 
 
+        }
+        if (usine >= 1) {
+            setInterval(function () {
+                score += usineVal
+                readScore.textContent = score.toFixed(2);
+            }, 1000)
 
+
+        }
+    })
+
+    if (score > 1000000) {
+
+        let btn = document.createElement("button"),
+        type = document.createAttribute("type")
+
+        btn.innerHTML = "Accedez au site";
+        type.value  = "submit"
+        document.querySelector(".clearCookie").appendChild(btn).setAttributeNode(type);
+
+    }
 
 </script>

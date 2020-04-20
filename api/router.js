@@ -59,6 +59,9 @@ const isAdmin = require('./middleware/isAdmin'),
 router.route('/')
     .get(cheh,indexController.get)
 
+router.route('/clear/cookie')
+    .post(indexController.clearCookie)
+
 
                     /* * * * * * * * * * * * * * * * * * * * * * * */
                     /* * * * * * * *  Article * * * * * * * * * *  */

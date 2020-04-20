@@ -55,6 +55,13 @@ module.exports = {
             
             
         })
+    },
+    clearCookie : (req,res) =>  {
+
+
+        res.clearCookie(`CookieDismiss`)
+        res.redirect ('/')
+
     }
 
 
