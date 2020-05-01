@@ -22,6 +22,8 @@ module.exports = {
             dbUser,
             dbAllUser,
             dbCom : Coms,
+            com : dbCom.length,
+            like: dbUser.like.length,
             Comlength:dbCom.length,
             addLike:req.flash('addLike'),
             likeErr:req.flash('likeErr'),

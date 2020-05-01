@@ -49,6 +49,10 @@ const isAdmin = require('./middleware/isAdmin'),
     auth = require('./middleware/auth'),
     cheh = require('./middleware/rgpdDismiss')
 
+
+
+
+
     
 
                     /* * * * * * * * * * * * * * * * * * * * * * * */
@@ -112,8 +116,6 @@ router.route('/user/logout')
     .get(cheh,UserController.logout)
 
 
-
-
                         /* * * * * * * * * * * * * * * * * * * * * * * */
                         /* * * * * * * *  Mon Compte * * * * * * * *  */
                         /* * * * * * * * * * * * * * * * * * * * * * * */
@@ -163,8 +165,6 @@ router.route('/admin/list/user')
 router.route('/admin/list/user/:id')
     .post(isAdmin,adminlistUserController.listPost)
     
-router.route('/admin/edit/user')
-    .get(isAdmin,adminUserController.edit)
 
 router.route('/admin/edit/user/:id')
     .get(isAdmin,adminEditUserController.editId)

@@ -15,8 +15,6 @@ module.exports = {
     },
     edit: (req, res) => {
         console.log('user controler edit');
-        
-
         res.render('admin/user/editUser')
 
     }

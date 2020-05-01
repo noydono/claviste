@@ -59,11 +59,11 @@ var UserSchema = new mongoose.Schema({
 // chiffrée le mot de passe
 UserSchema.pre('save', function (next) {
 
-    const user = this                                      //prends le mot de passe
+    const user = this                                   
 
-    bcrypt.hash(user.passwordVerif, 10, (error, encrypted) => {  //crypte le (! il faut installer bcrypt : npm i bcrypt)
+    bcrypt.hash(user.passwordVerif, 10, (error, encrypted) => { 
         user.passwordVerif = encrypted
-        next()                                                //et ensuite continue
+        next()                                                
     })
 })
 

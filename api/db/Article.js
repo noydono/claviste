@@ -24,7 +24,11 @@ var ArticleSchema = new mongoose.Schema({
         userId: String
     
     }],
-    activiteDate: String
+    activiteDate: String,
+    
+    
+    
+    
    
     
 });
