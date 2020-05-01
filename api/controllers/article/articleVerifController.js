@@ -27,10 +27,11 @@ module.exports = {
         const dbUser = await User.findById(req.session.userId),
             dbArticle = await Article.findById(req.params.id)
 
-
+console.log(dbArticle)
 
         res.render('article/single/articleSingle', {
             dbArticle,
+            verif : dbArticle.articleVerified,
             dbUser,
             signaleC: req.flash('signaleC'),
             verifErr: req.flash('verifErr'),

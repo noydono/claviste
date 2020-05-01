@@ -12,13 +12,13 @@ const express = require('express'),
     MongoStore = require('connect-mongo')(session),
     flash = require('connect-flash'),
     cookieParser = require('cookie-parser'),
+    {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access'),
     port = 4000
 /*
  *   api
  * * * * * */
 const ROUTER = require('./api/router'),
-    keys = require('./config/keys'),
-    Helper = require('./api/helper/helperHbs')
+    keys = require('./config/keys')
 
 
 
@@ -146,7 +146,9 @@ app.set('view engine', 'hbs');
 app.engine('hbs', hbs({
     extname: 'hbs',
     defaultLayout: 'main',
-    layoutsDir: __dirname + '/views/layouts/'
+    layoutsDir: __dirname + '/views/layouts/',
+    handlebars: allowInsecurePrototypeAccess(Handlebars),
+    
 }));
 
 

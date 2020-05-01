@@ -22,64 +22,40 @@ module.exports = {
 
         const id = req.params.id
         const dbArticleVerif = await ArticleVerif.findById(req.params.id)
-        const dbcallery = dbArticleVerif.callery
-        let arrFiles = []
+       
+       
 
-        console.log(dbcallery);
+        
+        
 
-        for (i = 0; i < req.files.length; i++) {
+            ArticleVerif.findByIdAndUpdate(id, {
 
-            arrFiles.push({
+                title: req.body.title,
+                content: req.body.content,
+                author: req.body.author,
+                activiteDate: format.asString('dd-MM-yyyy', new Date()),
+               
+               
 
-                img: '/' + req.files[i].path,
-                nameImg: req.files[i].filename
+            }, (err, post) => {
+
+                if (err) {
+                    console.log(err)
+
+                }else{
+
+                    req.flash('ArticleVerifU', '.')
+                    res.redirect('/admin/list/articleVerif')
+
+                }
 
             })
 
-            console.log(arrFiles);
-
-        }
 
 
+        
 
-        for (i = 0; i < dbcallery.length; i++) {
-
-            fs.unlink(path.resolve('public/uploads/' + dbcallery[i].nameImg),
-
-                (err) => {
-
-                    if (err) {
-
-                        console.log(err)
-
-                    } else {
-
-                        ArticleVerif.findByIdAndUpdate(id, {
-
-                            title: req.body.title,
-                            content: req.body.content,
-                            author: req.body.author,
-                            activiteDate: format.asString('dd-MM-yyyy', new Date()),
-                            callery: arrFiles,
-                            cover: arrFiles[0].img,
-                            nameCover: arrFiles[0].nameImg
-
-                        }, (err, post) => {
-
-                            if (err) {
-
-                            }
-
-                        })
-
-                    }
-
-                })
-
-        }
-
-        req.flash('ArticleVerifU', '.')
-        res.redirect('/admin/list/articleVerif')
+       
 
 
 

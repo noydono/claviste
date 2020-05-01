@@ -28,7 +28,7 @@ module.exports = {
             ArticleVerifReverseLast:ArticleVerifReverseLast,
             dbArticle: ArticleReverse,
             ArticleVerifReverse: ArticleVerifReverse,
-            dbUser,
+            dbUser: dbUser,
             dbAllUser, 
             accept,      
             emailUErr : req.flash('emailUErr'),
