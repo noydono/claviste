@@ -23,7 +23,7 @@
     </div>
 </div>
 <div class="container" >    
-    <h1 class="title">Autre Publication</h1>
+    <h1 class="title">Autres Publications</h1>
 <div class="row mt-30">
     {{#each ArticleVerifReverse}}
     <a href="/article/{{_id}}">
@@ -31,7 +31,8 @@
             <div class="card">
                 <div class="card-image">
                     <img src="{{cover}}" height="300" alt="clavier mécanique">
-                    <span class="card-title tex-text">{{title}}</span>
+                    <span class="card-title tex-text hide-on-med-and-down" style="word-break: break-all; max-width:500px">{{title}}</span>
+                    <span class="card-title tex-text show-on-medium-and-down hide-on-med-and-up" style="word-break: break-all; max-width:500px">{{title}}</span>
                 </div>
                 <div class="card-content tex-text">
                     <p class="truncate">{{content}}</p>
