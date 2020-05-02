@@ -26,7 +26,7 @@ module.exports = {
         console.log(req.get('host'));
 
         rand = Math.floor((Math.random() * 100) + 54)
-        host = 'theclaviste.noydono.fr'
+        host = 'z'
         link = "http://" + 'theclaviste.noydono.fr' + "/mdpOublier/" + rand
         mailOptions = {
             from: 'noytest.test@gmail.com',
@@ -155,7 +155,7 @@ module.exports = {
     },
     getputmdpOublier: (req, res) => {
     
-        res.render('/user/mdpOublier')
+        res.render('user/mdpOublier')
 
     },
     putMdpOublier: async (req, res) => {
