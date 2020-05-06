@@ -13,7 +13,8 @@ module.exports = {
             dbArticleVerifSingle = await ArticleVerif.findById(req.params.id),
             ArticleReverse = dbArticle.reverse(),
             dbCom = await Com.find({ article_id: req.params.id }),
-             Coms = dbCom.reverse()            
+             Coms = dbCom.reverse(),
+             like = dbUser.like.length          
 
         res.render('articleVerif/single/articleVerifSingle', {
 
@@ -23,7 +24,7 @@ module.exports = {
             dbAllUser,
             dbCom : Coms,
             com : dbCom.length,
-            like: dbUser.like.length,
+            like: like,
             Comlength:dbCom.length,
             addLike:req.flash('addLike'),
             likeErr:req.flash('likeErr'),
