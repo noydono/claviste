@@ -1,45 +1,36 @@
 {{!-- list article --}}
 <div class="container">
-    <div class="row mt-30">
-        <h1 class="title center-align">Article a valider</h1>
-        {{#each dbArticleReverseLast}}
-        <a href="/VerifArticle/{{_id}}">
-            <div class="col s12 m6  offset-m3 mt-20 ">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{cover}}" height="300" alt="clavier mécanique" />
-                        <span class="card-title tex-text">{{title}}</span>
-                    </div>
-                    <div class="card-content  tex-text">
-                        <p class="truncate">{{content}}</p>
-                    </div>
-                    <div class="card-action">
-                        <span>ecrit par {{author}}</span>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {{/each}}
+    <div style="display: flex; flex-direction:column;align-items:center;">
+        <h1 class="title">Article a vérifier</h1>
+        <p style="width: 600px; word-break: break-all; max-width:360px">
+            Ci-dessous se trouve la liste des articles que <br> les utilisateurs ont créés. Si un article vous plait est que
+            vous le trouvez pertinent alors vérifier-le pour qu'il
+            apparaisse sur la page principale.
+        </p>
     </div>
-    <div class="row mt-30">
-        <h1 class="title">Autres Publications a validé</h1>
+    <div class="row mt-30" style="display: flex; flex-direction:column;align-items:center;">
         {{#each dbArticleReverse}}
-        <a href="/VerifArticle/{{_id}}">
-            <div class="col s12 m6 mt-20 mb-20">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{cover}}" height="300" alt="clavier mécanique" />
-                        <span class="card-title tex-text">{{title}}</span>
-                    </div>
-                    <div class="card-content tex-text">
-                        <p class=" truncate ">{{content}}</p>
-                    </div>
-                    <div class="card-action">
-                        <span>ecrit par {{author}}</span>
-                    </div>
+        <div class="col s12 m8 mt-20 mb-20" style="margin:0;">
+            <div class="card">
+                <div class="card-image">
+                    <img src="{{cover}}" height="300" alt="clavier mécanique">
+                </div>
+                <div class="card-content tex-text">
+                    <h3 class="card-title tex-text">{{title}}</h3>
+                    <h5 style="font-size: 20px;">écrit par {{author}} <span style="color: rgb(122, 122, 122);">le
+                            {{activiteDate}}</span> </h5>
+                    <p>{{content}}</p>
+                </div>
+                <div class="card-action">
+                    <a href="/VerifArticle/{{_id}}" class="btn">voir plus</a>
                 </div>
             </div>
-        </a>
+        </div>
         {{/each}}
     </div>
 </div>
+
+
+
+
+
