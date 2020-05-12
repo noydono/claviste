@@ -14,7 +14,7 @@ module.exports = {
             ArticleReverse = dbArticle.reverse(),
             dbCom = await Com.find({ article_id: req.params.id }),
              Coms = dbCom.reverse(),
-             like = dbUser.like.length          
+             like = dbArticleVerifSingle.like.length          
 
         res.render('articleVerif/single/articleVerifSingle', {
 
