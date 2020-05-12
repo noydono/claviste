@@ -1,50 +1,35 @@
 {{!-- article home --}}
+
 <div class="container">
-    <div class="row mt-30">
-        <h1 class="title center-align">Dernière Publication</h1>
-        {{#each ArticleVerifReverseLast}}
-        <a href="/article/{{_id}}">
-            <div class="col s12 m6  offset-m3 mt-20 ">
-                <div class="card">
-                    <div class="card-image">
-                        <img src="{{cover}}" height="300" alt="clavier mécanique">
-                        <span class="card-title tex-text">{{title}}</span>
-                    </div>
-                    <div class="card-content tex-text">
-                        <p class="truncate">{{content}}</p>
-                    </div>
-                    <div class="card-action">
-                        <span>ecrit par {{author}}</span>
-                    </div>
-                </div>
-            </div>
-        </a>
-        {{/each}}
+    <div style="display: flex; flex-direction:column;align-items:center;">
+        <h1 class="title">Bienvenue sur " the claviste "</h1>
+        <p style="width: 600px; word-break: break-all; max-width:300px">The claviste et un site pour
+            partager sur la passion du clavier. Une fois connecté vous pourez
+            crée un article commentair et montré votre interérè pour des article
+            avec des likes.
+        </p>
     </div>
-</div>
-<div class="container" >    
-    <h1 class="title">Autres Publications</h1>
-<div class="row mt-30">
-    {{#each ArticleVerifReverse}}
-    <a href="/article/{{_id}}">
-        <div class="col s12 m6 mt-20 mb-20">
+    <div class="row mt-30" style="display: flex; flex-direction:column;align-items:center;">
+
+        {{#each ArticleVerifReverse}}
+        <div class="col s12 m8 mt-20 mb-20" style="margin:0;">
             <div class="card">
                 <div class="card-image">
                     <img src="{{cover}}" height="300" alt="clavier mécanique">
-                    <span class="card-title tex-text hide-on-med-and-down" style="word-break: break-all; max-width:500px">{{title}}</span>
-                    <span class="card-title tex-text show-on-medium-and-down hide-on-med-and-up" style="word-break: break-all; max-width:500px">{{title}}</span>
                 </div>
                 <div class="card-content tex-text">
-                    <p class="truncate">{{content}}</p>
+                    <h3 class="card-title tex-text">{{title}}</h3>
+                    <h5 style="font-size: 20px;">écrit par {{author}} <span style="color: rgb(122, 122, 122);">le
+                            {{activiteDate}}</span> </h5>
+                    <p >{{content}}</p>
                 </div>
                 <div class="card-action">
-                    <span>ecrit par {{author}}</span>
+                    <a href="/article/{{_id}}" class="btn">voir plus</a>
                 </div>
             </div>
         </div>
-    </a>
-    {{/each}}
-</div>
+        {{/each}}
+    </div>
 
 </div>
 

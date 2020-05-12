@@ -5628,10 +5628,10 @@ small {
   position: relative;
   background-color: #FFFFFF;
   transition: box-shadow 0.25s;
-  border-radius: 2px;
+  border-radius: 5px;
 }
 .card .card-title {
-  font-size: 40px;
+  font-size: 35px;
   font-family: "Lobster Two";
   font-weight: 300;
   color: #2d3332;

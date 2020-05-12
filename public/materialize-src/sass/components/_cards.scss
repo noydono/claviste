@@ -9,18 +9,16 @@
 
 .card {
   position: relative;
-  
   background-color: $card-bg-color;
   transition: box-shadow .25s;
-  border-radius: 2px;
+  border-radius: 5px;
   @extend .z-depth-1;
 
 
-  
 
   .card-title {
     
-    font-size: 40px;
+    font-size: 35px;
     font-family: $font-titre ;
     font-weight: 300;
     color: $titre;
