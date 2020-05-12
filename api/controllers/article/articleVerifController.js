@@ -30,7 +30,7 @@ module.exports = {
         console.log(dbArticle)
 
         res.render('article/single/articleSingle', {
-            dbArticle : dbArticle,
+            dbArticle: dbArticle,
             verif: dbArticle.articleVerified,
             dbUser: dbUser,
             signaleC: req.flash('signaleC'),
