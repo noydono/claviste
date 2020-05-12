@@ -18,7 +18,8 @@ module.exports = {
             article_id: req.params.id,
             username: req.session.username,
             content: req.body.content,
-            user_id: req.session.userId
+            user_id: req.session.userId,
+            avatarImg: req.session.avatarImg
             
         })
         
