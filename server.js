@@ -12,14 +12,18 @@ const express = require('express'),
     MongoStore = require('connect-mongo')(session),
     flash = require('connect-flash'),
     cookieParser = require('cookie-parser'),
-    {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access'),
-    port = 4000
+    {
+        allowInsecurePrototypeAccess
+    } = require('@handlebars/allow-prototype-access'),
+    helmet = require('helmet')
+port = 4000
 /*
  *   api
  * * * * * */
 const ROUTER = require('./api/router'),
     keys = require('./config/keys')
 
+app.use(helmet())
 
 
 /*
@@ -75,7 +79,7 @@ app.use('*', (req, res, next) => {
 
 
 
-      if (res.locals.user = req.session.userId) {
+    if (res.locals.user = req.session.userId) {
 
 
         if (req.session.role === 'user') {
@@ -91,15 +95,15 @@ app.use('*', (req, res, next) => {
                 }
 
                 res.locals.isVerified = req.session.isVerified
-                
+
             }
             res.locals.user = req.session.role
 
         }
 
-    }  
+    }
 
-    
+
     // La function next permet qu'une fois la condition effectuer il reprenne son chemin
     next()
 })
@@ -148,7 +152,7 @@ app.engine('hbs', hbs({
     defaultLayout: 'main',
     layoutsDir: __dirname + '/views/layouts/',
     handlebars: allowInsecurePrototypeAccess(Handlebars),
-    
+
 }));
 
 

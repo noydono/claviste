@@ -4,9 +4,11 @@
   "description": "blog clavier",
   "main": "app.js",
   "scripts": {
-    "test": "snyk test && nodemon --exec 'mocha -R nyan ./mocha/*.js'",
+    "test": "snyk test &&  nodemon --exec 'mocha -R nyan ./mocha/*.js'",
     "start": "nodemon server.js",
-    "sass": "sass --watch ./public/materialize-src/sass/materialize.scss:./public/css/style.css"
+    "sass": "sass --watch ./public/materialize-src/sass/materialize.scss:./public/css/style.css",
+    "snyk-protect": "snyk protect",
+    "prepare": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -30,7 +32,9 @@
     "express-fileupload": "^1.1.6",
     "express-handlebars": "^4.0.3",
     "express-session": "^1.17.0",
+    "express-validator": "^6.4.1",
     "handlebars.moment": "^1.0.4",
+    "helmet": "^3.22.0",
     "minimist": "^1.2.5",
     "mocha": "^7.1.1",
     "mongoose": "^5.9.10",
@@ -38,9 +42,10 @@
     "multer": "^1.4.2",
     "nodemailer": "^6.4.4",
     "nodemon": "^2.0.3",
-    "snyk": "^1.314.0"
+    "snyk": "^1.320.3"
   },
   "devDependencies": {
     "handlebars": "^4.7.6"
-  }
+  },
+  "snyk": true
 }

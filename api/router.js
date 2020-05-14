@@ -47,7 +47,8 @@ const indexController = require('./controllers/pages/indexController'),
 
 const isAdmin = require('./middleware/isAdmin'),
     auth = require('./middleware/auth'),
-    cheh = require('./middleware/rgpdDismiss')
+    cheh = require('./middleware/rgpdDismiss'),
+    validate = require('./middleware/validate');
 
 
 
