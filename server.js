@@ -169,3 +169,5 @@ app.listen(port, () => {
     console.log('connecter sur le port : ' + port);
 
 })
+
+module.exports = app

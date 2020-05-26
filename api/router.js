@@ -47,11 +47,11 @@ const indexController = require('./controllers/pages/indexController'),
 
 const isAdmin = require('./middleware/isAdmin'),
     auth = require('./middleware/auth'),
-    cheh = require('./middleware/rgpdDismiss'),
-    validate = require('./middleware/validate');
+    cheh = require('./middleware/rgpdDismiss')
 
 
 
+const { check, validationResult } = require('express-validator');
 
 
     
@@ -107,7 +107,13 @@ router.route('/like/create/:id')
 
 router.route('/user/create')
     .get(cheh,UserController.getInscription)
-    .post(multer.single('img'), UserController.create)
+    .post(multer.single('img'),[
+
+        check('passwordVerif')
+            .matches("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})")
+       
+    
+    ], UserController.create)
 
 router.route('/user/login')
     .get(cheh,UserController.getlogin)

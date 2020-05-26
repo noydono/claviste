@@ -21,6 +21,7 @@ const User = require('../../db/User'),
             rejectUnauthorized: false
         }
     })
+    const { validationResult } = require('express-validator');
 
 module.exports = {
     getlogin: (req, res) => {
@@ -34,15 +35,27 @@ module.exports = {
     getInscription: (req, res) => {
         console.log('coucou')
         res.render('user/inscription', {
+
             usernameNotUnique: req.flash('usernameNotUnique'),
             emailNotUnique: req.flash('emailNotUnique'),
             registerPwdErr: req.flash('registerPwdErr'),
+            validatorPWD1: req.flash('validatorPWD1'),
+
         })
     },
     create: async (req, res) => {
 
-        console.log('create user');
+        
+        const errors = validationResult(req);
 
+       if (!errors.isEmpty()) {
+
+            console.log(errors)
+
+            req.flash('validatorPWD1', 'Votre mot de passe doit faire plus de 8 caractère, avoir 1 majusculeer 1 caractère special')
+            return res.status(422).redirect('back');
+
+        }
 
         const mail = await User.findOne({
             email: req.body.email
@@ -120,6 +133,7 @@ module.exports = {
                     }
                     req.flash('inscription', '.')
                     res.redirect('/')
+                    
                 } else {
                     if (req.body.password !== req.body.passwordVerif) {
 
@@ -210,7 +224,6 @@ module.exports = {
         }),
         status = await User.findOne({username : req.body.username})
 
-        console.log(status);
         
         if(status.status != "ferme"){
 
