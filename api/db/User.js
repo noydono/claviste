@@ -14,7 +14,7 @@ var UserSchema = new mongoose.Schema({
         
         type: String,
         unique: true, 
-           //l'email ne doit etre identique aux autres utilisateurs
+           
     },
     isAdmin:{
         type:Boolean,

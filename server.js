@@ -39,12 +39,12 @@ mongoose.connect(keys.mongoUri, {
 
     if (err) {
 
-        console.log('attention erreur de connection' + err);
+        console.log('attention erreur de connexion' + err);
         res.json(err)
 
     } else {
 
-        console.log('ATTENTION connecter a mongo cloud!');
+        console.log('ATTENTION connecté à mongo cloud!');
 
     }
 
@@ -62,7 +62,6 @@ app.use(session({
     saveUninitialized: true, // ne crée pas de session tant que quelque chose n'est pas stocké
     resave: false, //ne pas enregistrer la session si non modifié
     maxAge: 24 * 60 * 60 * 1000,
-    //me permet de stocker la sesion dans un store dans ma db et me la je connect le store a ma db
     store: new MongoStore({
         mongooseConnection: mongoose.connection,
 
