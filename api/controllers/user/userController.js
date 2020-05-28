@@ -21,7 +21,9 @@ const User = require('../../db/User'),
             rejectUnauthorized: false
         }
     })
-    const { validationResult } = require('express-validator');
+const {
+    validationResult
+} = require('express-validator');
 
 module.exports = {
     getlogin: (req, res) => {
@@ -45,10 +47,10 @@ module.exports = {
     },
     create: async (req, res) => {
 
-        
+
         const errors = validationResult(req);
 
-       if (!errors.isEmpty()) {
+        if (!errors.isEmpty()) {
 
             console.log(errors)
 
@@ -133,7 +135,7 @@ module.exports = {
                     }
                     req.flash('inscription', '.')
                     res.redirect('/')
-                    
+
                 } else {
                     if (req.body.password !== req.body.passwordVerif) {
 
@@ -220,61 +222,71 @@ module.exports = {
         console.log('dans le login ');
 
         const dbUser = ({
-            username: req.body.username
-        }),
-        status = await User.findOne({username : req.body.username})
+                username: req.body.username
+            }),
+            status = await User.findOne({
+                username: req.body.username
+            })
 
-        
-        if(status.status != "ferme"){
+        if (status) {
 
-           User.findOne(dbUser, (err, user) => {
+            if (status.status != "ferme") {
 
-            if (user) {
+                User.findOne(dbUser, (err, user) => {
 
-                bcrypt.compare(req.body.passwordVerif, user.passwordVerif, function (err, same) {
+                    if (user) {
 
-                    if (same) {
-                        console.log('pwd same ');
-                        req.session.userId = user._id
-                        req.session.username = user.username,
-                            req.session.email = user.email,
-                            req.session.isAdmin = user.isAdmin,
-                            req.session.isVerified = user.isVerified,
-                            req.session.isBan = user.isBan,
-                            req.session.role = user.role,
-                            req.session.avatarImg = user.avatarImg
-                        req.session.status = user.status
+                        bcrypt.compare(req.body.passwordVerif, user.passwordVerif, function (err, same) {
 
-                        req.flash('login', '.')
-                        res.redirect('/')
+                            if (same) {
+                                console.log('pwd same ');
+                                req.session.userId = user._id
+                                req.session.username = user.username,
+                                    req.session.email = user.email,
+                                    req.session.isAdmin = user.isAdmin,
+                                    req.session.isVerified = user.isVerified,
+                                    req.session.isBan = user.isBan,
+                                    req.session.role = user.role,
+                                    req.session.avatarImg = user.avatarImg
+                                req.session.status = user.status
+
+                                req.flash('login', '.')
+                                res.redirect('/')
+
+                            } else {
+
+                                console.log('mauvais mot de passe ');
+                                req.flash('passLog', 'mot de pass incorrect')
+                                res.redirect('back')
+
+                            }
+
+                        });
 
                     } else {
 
-                        console.log('mauvais mot de passe ');
-                        req.flash('passLog', 'mot de pass incorrect')
+                        console.log('pas existant dans la db');
+                        req.flash('notUser', 'cette utilisateur n\'existe pas ')
                         res.redirect('back')
 
                     }
 
-                });
+                })
 
             } else {
 
-                console.log('pas existant dans la db');
-                req.flash('notUser', 'cette utilisateur n\'existe pas ')
-                res.redirect('back')
+                res.redirect('/')
+
 
             }
 
-        }) 
+        } else {
+            req.flash('notUser', 'cette utilisateur n\'existe pas ')
 
-        }else{
-
-            res.redirect('/')
-
+            res.redirect('back')
         }
 
-        
+
 
     },
     logout: (req, res) => {

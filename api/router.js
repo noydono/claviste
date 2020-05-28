@@ -36,7 +36,8 @@ const indexController = require('./controllers/pages/indexController'),
     adminDeleteUserController = require('./controllers/admin/user/delete'),
     adminComController = require ('./controllers/admin/com/comController'),
     adminSignaleController = require ('./controllers/admin/signale/signalController'),
-    rgpdcontroller = require('./controllers/legal/rgpdController')
+    rgpdcontroller = require('./controllers/legal/rgpdController'),
+    sitemap = require('./controllers/pages/sitemapController')
     
     
 
@@ -51,7 +52,8 @@ const isAdmin = require('./middleware/isAdmin'),
 
 
 
-const { check, validationResult } = require('express-validator');
+const { check, validationResult } = require('express-validator')
+
 
 
     
@@ -63,6 +65,9 @@ const { check, validationResult } = require('express-validator');
 
 router.route('/')
     .get(cheh,indexController.get)
+
+router.route('/sitemap.xml')
+    .get(sitemap.get)
 
 router.route('/clear/cookie')
     .post(indexController.clearCookie)
