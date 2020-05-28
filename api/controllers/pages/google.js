@@ -10,7 +10,7 @@ module.exports={
 
     },
     robot:(req,res)=> {
-        res.sendFile(path.join(__dirname + '../'+'../'+'../'+ '../'+'robot.txt'));
+        res.sendFile(path.join(__dirname + '../'+'../'+'../'+ '../'+'robots.txt'));
 
     }
 }

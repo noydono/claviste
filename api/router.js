@@ -69,7 +69,7 @@ router.route('/')
 router.route('/sitemap.xml')
     .get(google.sitemap)
 
-router.route('/robot.txt')
+router.route('/robots.txt')
     .get(google.robot)
 
 router.route('/clear/cookie')
