@@ -37,7 +37,7 @@ const indexController = require('./controllers/pages/indexController'),
     adminComController = require ('./controllers/admin/com/comController'),
     adminSignaleController = require ('./controllers/admin/signale/signalController'),
     rgpdcontroller = require('./controllers/legal/rgpdController'),
-    sitemap = require('./controllers/pages/sitemapController')
+    google = require('./controllers/pages/google')
     
     
 
@@ -67,7 +67,10 @@ router.route('/')
     .get(cheh,indexController.get)
 
 router.route('/sitemap.xml')
-    .get(sitemap.get)
+    .get(google.sitemap)
+
+router.route('/robot.txt')
+    .get(google.robot)
 
 router.route('/clear/cookie')
     .post(indexController.clearCookie)
