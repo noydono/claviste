@@ -5,7 +5,7 @@ Disallow: /nogooglebot/
 # Groupe 2
 User-agent: *
 Allow: /
-Disallow:/monCompte
-Disallow:/admin
+Noindex:/monCompte
+Noindex:/admin
 
 Sitemap: https://theclaviste.noydono.fr/sitemap.xml
