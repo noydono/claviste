@@ -15,8 +15,15 @@ const express = require('express'),
     {
         allowInsecurePrototypeAccess
     } = require('@handlebars/allow-prototype-access'),
-    helmet = require('helmet')
-port = 4000
+    swaggerUi = require('swagger-ui-express'),
+    helmet = require('helmet'),
+    swaggerDocument = require('./config/swagger.json'),
+    port = 4000
+
+
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
+
+
 /*
  *   api
  * * * * * */
@@ -158,10 +165,10 @@ app.engine('hbs', hbs({
 
 app.use('/', ROUTER)
 
-// Error404
-app.use((req, res) => {
-    res.render('error404')
-})
+// // Error404
+// app.use((req, res) => {
+//     res.render('error404')
+// })
 
 app.listen(port, () => {
 

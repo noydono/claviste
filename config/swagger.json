@@ -1,0 +1,692 @@
+{
+    "info": {
+      "title": "claviste",
+      "version": "1.0.0",
+      "license": {
+        "name": "ISC"
+      },
+      "description": "[Specification JSON](/api-spec)\n\nblog clavier"
+    },
+    "paths": {
+      "/": {
+        "get": {
+          "summary": "/",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "200": {
+              "schema": {
+                "type": "string",
+                "example": "<!DOCTYPE html>\n<html lang=\"en\">\n\n\n<head>\n    <!-- Global site tag (gtag.js) - Google Analytics -->\n    <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-167852628-1\"></script>\n    <script>\n        window.dataLayer = window.dataLayer || [];\n        function gtag() { dataLayer.push(arguments); }\n        gtag('js', new Date());\n\n        gtag('config', 'UA-167852628-1');\n    </script>\n\n    <meta charset=\"UTF-8\">\n    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n    <meta name=\"google-site-verification\" content=\"oN5A1gsHVPS59X--Ss-5rBakXyH64MkzfOnn67JvxX4\" />\n    <meta name=\"description\" content=\"the claviste, un site pour partager ça passion du clavier mécanique ou autre.\">\n    <link href=\"https://fonts.googleapis.com/icon?family=Material+Icons\" rel=\"stylesheet\">\n    <script src=\"https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js\"></script>\n    <link rel=\"stylesheet\" href=\"/public/css/style.css\" />\n    <link rel=\"shortcut icon\" href=\"/public/img/favicon(1).ico\" type=\"image/x-icon\" />\n    <link href=\"https://fonts.googleapis.com/css?family=Poppins&display=swap\" rel=\"stylesheet\">\n    <link href=\"https://fonts.googleapis.com/css?family=Lobster+Two&display=swap\" rel=\"stylesheet\">\n\n    <title>The Claviste</title>\n\n</head>\n<body>\n<header class=\"white valign-wrapper bg-header\" style=\"height:510px\">\n\n\n        <ul id=\"slide-out\" class=\"sidenav \">\n            <li><a class=\"waves-effect waves-light btn\" href=\"/user/create\">M'inscrire</a></li>\n            <li><a class=\"waves-effect waves-light btn modal-trigger\" href=\"/user/login\">Se connecter</a></li>\n            <li><a class=\"waves-effect waves-light btn hide-on-large-only\" href=\"/\">Accueil</a></li>\n        </ul>\n        \n    <!-- Dropdown like -->\n        <ul id='dropdown' class='dropdown-content'>\n        </ul><form action=\"/article/create\" method=\"POST\" enctype=\"multipart/form-data\">\n      <div id=\"modalCreate\" class=\"modal modal-fixed-footer\" style=\"height: 60%;\">\n        <div class=\"modal-content\">\n          <div class=\"col s12\">\n            <h2 class=\"title\">Créer un Article</h2>\n            <div class=\"input-field col s12  mt-30\">\n              <input id=\"titleArticle\" type=\"text\" name=\"title\">\n              <label for=\"titleArticle\">Titre De L'article</label>\n            </div>\n            <div class=\"input-field col s12 mt-30\">\n              <textarea id=\"textarea1\" class=\"materialize-textarea\" name=\"content\"></textarea>\n              <label for=\"textarea1\">contenu</label>\n            </div>\n            <div class=\"input-field col s12 mt-30\">\n              <input id=\"author\" type=\"text\" name=\"author\">\n              <label for=\"author\">auteur</label>\n            </div>\n            <div class=\"file-field input-field mt-30\">\n              <div class=\"btn\">\n                <span>image</span>\n                <input type=\"file\" name=\"imgArticle\" multiple>\n              </div>\n              <div class=\"file-path-wrapper\">\n                <input class=\"file-path validate\" type=\"text\">\n              </div>\n            </div>\n          </div>\n        </div>\n        <div class=\"modal-footer\">\n          <a href=\"#!\" class=\"modal-close waves-effect waves-green btn left\">fermer</a>\n          <button type=\"submit\" class=\"modal-close waves-effect waves-light btn \">valider</button>\n        </div>\n      </div>\n    </form><form action=\"/contact/create\" method=\"POST\">\n        <div id=\"modalContact\" class=\"modal modal-fixed-footer bottom-sheet\" style=\"height: 35%;\">\n            <div class=\"modal-content\">\n                <div class=\"col s12\">\n                    <span class=\"title\">Contact</span>\n                    <div class=\"row\">\n                        <div class=\"input-field col s2\">\n                            <select name=\"destinataire\" required>\n                                <option value=\"\" disabled selected>Votre destinataire</option>\n                                <option value=\"Web&Master\">Web&Master</option>\n                                <option value=\"TheClaviste\">TheClaviste</option>\n                            </select>\n                        </div>\n                        <div class=\"input-field col s10\">\n                            <input id=\"sujetContact\" type=\"text\" class=\"validate\" name=\"sujet\" required>\n                            <label for=\"sujetContact\">sujet</label>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"input-field col s12\">\n                            <input id=\"emailContact\" type=\"text\" class=\"validate\" name=\"email\" required>\n                            <label for=\"emailContact\">Email</label>\n                        </div>\n                    </div>\n                    <div class=\"row\">\n                        <div class=\"input-field col s12\">\n                            <textarea id=\"textareaContact\" class=\"materialize-textarea\" name=\"content\" required></textarea>\n                            <label for=\"textareaContact\">Textarea</label>\n                        </div>\n                    </div>\n                </div>\n            </div>\n            <div class=\"modal-footer\">\n                <a href=\"#!\" class=\"modal-close waves-effect waves-green btn left\">Close</a>\n                <button type=\"submit\" class=\"modal-close waves-effect waves-green btn\">Agree</button>\n            </div>\n        </div>\n    </form>    \n\n</header>\n\n<main>\n\n    <nav id=\"main-menu-container\">\n      <div id=\"main-menu\">\n        <ul id=\"nav-mobile\" class=\"right\">\n          <li>\n            <a href=\"/\" class=\" hide-on-med-and-down\"><span class=\"author\">Accueil</span> </a>\n          </li>\n          <li>\n            <a href=\"#\" data-target=\"slide-out\"\n              class=\"sidenav-trigger hide-on-med-and-down author show-on-large waves-effect waves-light \">\n              <i class=\"material-icons\">menu</i>\n            </a>\n          </li>\n          <li>\n            <a href=\"#\" data-target=\"slide-out\" class=\"sidenav-trigger author\">\n              <i class=\"material-icons\">menu</i>\n            </a>\n          </li>\n        </ul>\n      </div>\n    </nav>    \n    <div class=\"container\">\n        <div style=\"display: flex; flex-direction:column;align-items:center;\">\n            <h1 class=\"title\">Bienvenue <span class=\"hide-on-small-only\"> sur \" the claviste \"</span></h1>\n            <p style=\"width: 600px; word-break: break-all; max-width:385px\">The claviste est un site pour partager sur la passion du clavier. Une fois connecté vous pourrez créer un article  le commenter et montré votre intérêt pour <br> des articles avec des likes.\n            </p>\n        </div>\n        <div class=\"row mt-30\" style=\"display: flex; flex-direction:column;align-items:center;\">\n    \n    \n            <div class=\"col s12 m8 mt-20 mb-20\" style=\"margin:0;\">\n                <div class=\"card\">\n                    <div class=\"card-image\">\n                        <img src=\"/public/uploads/1588349222926-RW-M60-A-PRODUCT-RENDERS-SEQ2.1600-2.jpg\" height=\"300\" alt=\"clavier mécanique\">\n                    </div>\n                    <div class=\"card-content tex-text\">\n                        <h3 class=\"card-title tex-text\">test de titre d&#x27;article de blog. </h3>\n                        <h5 style=\"font-size: 20px;\">écrit par aaa <span style=\"color: rgb(122, 122, 122);\">le\n                                12-05-2020</span> </h5>\n                        <p >&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\n                    </div>\n                    <div class=\"card-action\">\n                        <a href=\"/article/5ebaa34eb45ad4a641af7cd0\" class=\"btn\">voir plus</a>\n                    </div>\n                </div>\n            </div>\n            \n    \n            <div class=\"col s12 m8 mt-20 mb-20\" style=\"margin:0;\">\n                <div class=\"card\">\n                    <div class=\"card-image\">\n                        <img src=\"/public/uploads/1588349222926-RW-M60-A-PRODUCT-RENDERS-SEQ2.1600-2.jpg\" height=\"300\" alt=\"clavier mécanique\">\n                    </div>\n                    <div class=\"card-content tex-text\">\n                        <h3 class=\"card-title tex-text\">test de titre d&#x27;article de blog. </h3>\n                        <h5 style=\"font-size: 20px;\">écrit par aaa <span style=\"color: rgb(122, 122, 122);\">le\n                                12-05-2020</span> </h5>\n                        <p >&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\n                    </div>\n                    <div class=\"card-action\">\n                        <a href=\"/article/5ebaa348b45ad4a641af7ccf\" class=\"btn\">voir plus</a>\n                    </div>\n                </div>\n            </div>\n            \n    \n            <div class=\"col s12 m8 mt-20 mb-20\" style=\"margin:0;\">\n                <div class=\"card\">\n                    <div class=\"card-image\">\n                        <img src=\"/public/uploads/1588349208827-L1020428-edit.jpg\" height=\"300\" alt=\"clavier mécanique\">\n                    </div>\n                    <div class=\"card-content tex-text\">\n                        <h3 class=\"card-title tex-text\">aze</h3>\n                        <h5 style=\"font-size: 20px;\">écrit par aze <span style=\"color: rgb(122, 122, 122);\">le\n                                12-05-2020</span> </h5>\n                        <p >&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\n                    </div>\n                    <div class=\"card-action\">\n                        <a href=\"/article/5eadaace838a286516db84e2\" class=\"btn\">voir plus</a>\n                    </div>\n                </div>\n            </div>\n            \n    \n            <div class=\"col s12 m8 mt-20 mb-20\" style=\"margin:0;\">\n                <div class=\"card\">\n                    <div class=\"card-image\">\n                        <img src=\"/public/uploads/1588349222926-RW-M60-A-PRODUCT-RENDERS-SEQ2.1600-2.jpg\" height=\"300\" alt=\"clavier mécanique\">\n                    </div>\n                    <div class=\"card-content tex-text\">\n                        <h3 class=\"card-title tex-text\">test de titre d&#x27;article de blog. </h3>\n                        <h5 style=\"font-size: 20px;\">écrit par aaa <span style=\"color: rgb(122, 122, 122);\">le\n                                12-05-2020</span> </h5>\n                        <p >&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;</p>\n                    </div>\n                    <div class=\"card-action\">\n                        <a href=\"/article/5eadaa37838a286516db84dc\" class=\"btn\">voir plus</a>\n                    </div>\n                </div>\n            </div>\n            \n        </div>\n    \n    </div>\n    \n    \n    \n    <script>\n    \n     \n    </script>\n</main>\n\n<footer class=\"page-footer\">\n\n    <div class=\"container\">\n    \n      <div class=\"row\">\n    \n        <div class=\"col l6 s12 \">\n    \n          <div class=\"card-panel tex-text radius\">\n            <span class=\"title\">Cookie & confidentialité</span>\n            <form action=\"/rgpd\" method=\"POST\" class=\"rgpdForm\">\n    \n              <p class=\"mt-30 ml-20\">ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site.\n                <a href=\"https://www.websitepolicies.com/policies/view/tvEm1QYy\">voir la politique des cookies</a></p>\n    \n              <div class=\"mr-20\">\n                <button type=\"submit\" value=\"dismiss\" name=\"dismiss\" class=\"btn red mt-10\">refuser</button>\n                <button type=\"submit\" value=\"accept\" name=\"accept\" class=\"btn mt-10\">accepter</button>\n              </div>\n    \n    \n            </form>\n          </div>\n    \n        </div>\n    \n        <div class=\"col l4 offset-l2 s12\">\n          <h5 class=\"tex-text\">Navigation</h5>\n          <ul>\n            <li><a class=\"grey-text text-lighten-3 modal-trigger\" href=\"/monCompte\">Mon Compte</a></li>\n            <li><a class=\"grey-text text-lighten-3\" href=\"/\">Accueil</a></li>\n            <li><a href=\"#modalContact\" class=\"grey-text text-lighten-3 modal-trigger\"> Me Contacter</a></li>\n            <li><a class=\"grey-text text-lighten-3\" href=\"/user/create\">Inscription</a></li>\n            <li><a class=\"grey-text text-lighten-3\" href=\"/user/login\">connexion</a></li>\n          </ul>\n        </div>\n    \n      </div>\n    \n    </div>\n    \n    <div class=\"footer-copyright\">\n      <div class=\"container\">\n        © 2014 Copyright Text - <a href=\"/mentionLegal\">mention Legals</a>\n      </div>\n    </div>\n</footer>\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n<div class=\"row rgpdContainer\">\n    <form action=\"/rgpd\" method=\"POST\" class=\"rgpdForm\">\n\n        <p class=\"mt-30 ml-20\">ce site utilise des cookies pour vous garantir la meilleure expérience sur notre site. \n            <a href=\"https://www.websitepolicies.com/policies/view/tvEm1QYy\">voir la politique des cookies</a>\n        </p>\n\n        <div class=\"mr-20\">\n            <button type=\"submit\" value=\"dismiss\" name=\"dismiss\" class=\"btn red mt-10\">refuser</button>\n            <button type=\"submit\" value=\"accept\" name=\"accept\" class=\"btn mt-10\">accepter</button>\n        </div>\n\n\n    </form>\n</div>\n\n<script>\n\n    console.log(`true`);\n    const rgpdBandeau = document.querySelector('.rgpdContainer')\n    if(`true` === 'true'){\n        rgpdBandeau.style.display='none';\n    }\n</script>\n\n<script>\n    $(\"document\").ready(function ($) {\n        var nav = $('#main-menu-container');\n        $(window).scroll(function () {\n            if ($(this).scrollTop() >  510) {\n                nav.addClass(\"f-nav\");\n            } else {\n                nav.removeClass(\"f-nav\");\n            }\n        });\n    });\n</script>\n\n<script src=\"https://kit.fontawesome.com/614db98f48.js\" crossorigin=\"anonymous\"></script>\n<script src=\"/public/materialize-src/js/bin/materialize.min.js\"></script>\n\n<script>\n\n\n    $(document).ready(function () {\n\n        $('.tooltipped').tooltip();\n\n        $('.dropdown-trigger').dropdown({\n            closeOnClick: false\n        });\n\n        $('.materialboxed').materialbox();\n        $('.collapsible').collapsible({\n            accordion: true,\n        });\n\n        $('.sidenav').sidenav({\n            draggable: true\n        });\n\n        $('.modal').modal();\n\n        $('.fixed-action-btn').floatingActionButton();\n\n        $('select').formSelect();\n\n        $('.parallax').parallax();\n\n        $('.slider').slider({\n            height: 700\n        });\n\n    });\n   \n</script>\n</body>\n</html>"
+              }
+            },
+            "304": {}
+          },
+          "produces": [
+            "text/html"
+          ]
+        }
+      },
+      "/sitemap.xml": {
+        "get": {
+          "summary": "/sitemap.xml",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/robots.txt": {
+        "get": {
+          "summary": "/robots.txt",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/clear/cookie": {
+        "post": {
+          "summary": "/clear/cookie",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/article/create": {
+        "post": {
+          "summary": "/article/create",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/article/update/{id}": {
+        "post": {
+          "summary": "/article/update/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/article/{id}": {
+        "get": {
+          "summary": "/article/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/listVerifArticle": {
+        "get": {
+          "summary": "/listVerifArticle",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/VerifArticle/{id}": {
+        "get": {
+          "summary": "/VerifArticle/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        },
+        "post": {
+          "summary": "/VerifArticle/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/commentaire/create/{id}": {
+        "post": {
+          "summary": "/commentaire/create/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/like/create/{id}": {
+        "post": {
+          "summary": "/like/create/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/user/create": {
+        "get": {
+          "summary": "/user/create",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        },
+        "post": {
+          "summary": "/user/create",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/user/login": {
+        "get": {
+          "summary": "/user/login",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        },
+        "post": {
+          "summary": "/user/login",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/user/logout": {
+        "get": {
+          "summary": "/user/logout",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/moncompte": {
+        "get": {
+          "summary": "/moncompte",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        },
+        "post": {
+          "summary": "/moncompte",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/verify/{id}": {
+        "get": {
+          "summary": "/verify/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/mdpOublier/send": {
+        "post": {
+          "summary": "/mdpOublier/send",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/mdpOublier/{id}": {
+        "get": {
+          "summary": "/mdpOublier/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/updateMdp/{id}": {
+        "get": {
+          "summary": "/updateMdp/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        },
+        "post": {
+          "summary": "/updateMdp/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin": {
+        "get": {
+          "summary": "/admin",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/admin/list/user": {
+        "get": {
+          "summary": "/admin/list/user",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/admin/list/user/{id}": {
+        "post": {
+          "summary": "/admin/list/user/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/edit/user/{id}": {
+        "get": {
+          "summary": "/admin/edit/user/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/update/user/{id}": {
+        "post": {
+          "summary": "/admin/update/user/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/delete/user/{id}": {
+        "post": {
+          "summary": "/admin/delete/user/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/list/article": {
+        "get": {
+          "summary": "/admin/list/article",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/admin/list/article/{id}": {
+        "post": {
+          "summary": "/admin/list/article/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/edit/article/{id}": {
+        "get": {
+          "summary": "/admin/edit/article/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/update/article/{id}": {
+        "post": {
+          "summary": "/admin/update/article/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/delete/article/{id}": {
+        "post": {
+          "summary": "/admin/delete/article/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/signale/{id}": {
+        "post": {
+          "summary": "/signale/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/list/signale/{id}": {
+        "get": {
+          "summary": "/admin/list/signale/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/delete/signale/{id}": {
+        "post": {
+          "summary": "/admin/delete/signale/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/list/articleVerif": {
+        "get": {
+          "summary": "/admin/list/articleVerif",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/admin/list/articleVerif/{id}": {
+        "post": {
+          "summary": "/admin/list/articleVerif/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/edit/articleVerif/{id}": {
+        "get": {
+          "summary": "/admin/edit/articleVerif/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/update/articleVerif/{id}": {
+        "post": {
+          "summary": "/admin/update/articleVerif/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/delete/articleVerif/{id}": {
+        "post": {
+          "summary": "/admin/delete/articleVerif/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/list/com/{id}": {
+        "get": {
+          "summary": "/admin/list/com/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/admin/delete/com/{id}": {
+        "post": {
+          "summary": "/admin/delete/com/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/contact/create": {
+        "post": {
+          "summary": "/contact/create",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/admin/list/contact": {
+        "get": {
+          "summary": "/admin/list/contact",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/admin/delete/Contact/{id}": {
+        "post": {
+          "summary": "/admin/delete/Contact/{id}",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [
+            {
+              "name": "id",
+              "in": "path",
+              "required": true
+            }
+          ],
+          "responses": {}
+        }
+      },
+      "/mentionLegal": {
+        "get": {
+          "summary": "/mentionLegal",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {}
+        }
+      },
+      "/rgpd": {
+        "post": {
+          "summary": "/rgpd",
+          "consumes": [
+            "application/json"
+          ],
+          "parameters": [],
+          "responses": {
+            "302": {
+              "schema": {
+                "type": "string",
+                "example": "<p>Found. Redirecting to <a href=\"/\">/</a></p>"
+              }
+            }
+          },
+          "produces": [
+            "text/html"
+          ]
+        }
+      }
+    },
+    "swagger": "2.0"
+  }

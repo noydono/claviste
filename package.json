@@ -48,7 +48,8 @@
     "nodemon": "^2.0.3",
     "snyk": "^1.320.3",
     "supertest": "^4.0.2",
-    "swagger": "^0.7.5"
+    "swagger": "^0.7.5",
+    "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
     "handlebars": "^4.7.6"
