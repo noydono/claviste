@@ -1,2 +1,1 @@
-# claviste
-site realiser pour mon examen 
+# Exercice réaliser pendant ma formation
