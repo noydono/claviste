@@ -15,13 +15,9 @@ const express = require('express'),
     {
         allowInsecurePrototypeAccess
     } = require('@handlebars/allow-prototype-access'),
-    swaggerUi = require('swagger-ui-express'),
     helmet = require('helmet'),
-    swaggerDocument = require('./config/swagger.json'),
     port = 4000
 
-
-app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 
 /*
@@ -41,6 +37,7 @@ mongoose.connect(keys.mongoUri, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
     useFindAndModify: false,
+    useCreateIndex: true,
 
 }, (err) => {
 
