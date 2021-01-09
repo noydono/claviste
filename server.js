@@ -32,7 +32,7 @@ app.use(helmet())
 /*
  *  mongoose
  * * * * * */
-mongoose.connect(keys.mongoUri, {
+mongoose.connect(keys.mongoUri || process.env.mongoUri, {
 
     useNewUrlParser: true,
     useUnifiedTopology: true,
