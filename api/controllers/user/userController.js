@@ -6,8 +6,6 @@ const User = require('../../db/User'),
     path = require('path'),
     fs = require('fs'),
     nodemailer = require('nodemailer'),
-    keys = require('../../../config/keys'),
-
     transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         service: 'gmail',
