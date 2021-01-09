@@ -16,6 +16,7 @@ const express = require('express'),
         allowInsecurePrototypeAccess
     } = require('@handlebars/allow-prototype-access'),
     helmet = require('helmet'),
+    dotenv = require("dotenv").config(),
     port = process.env.PORT || 4000
 
 

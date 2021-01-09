@@ -10,28 +10,24 @@ module.exports = {
 
 
     create: (req, res) => {
-
+        console.log(req.files);
         console.log("creation d'article");
         let arrFiles = []
 
-        for (i = 0; i < req.files.length; i++) {
+       
 
-            arrFiles.push({
+        if(req.files.length != 0 && req.body.title && req.body.content){
+            for (i = 0; i < req.files.length; i++) {
 
-                img: '/' + req.files[i].path,
-                nameImg: req.files[i].filename
+                arrFiles.push({
+    
+                    img: '/' + req.files[i].path,
+                    nameImg: req.files[i].filename
+    
+                })
+    
+            }
 
-            })
-
-            console.log(arrFiles);
-
-        }
-
-        if(!arrFiles && !req.body.title && ! req.body.content){
-            console.log('article crée');
-            req.flash('ArticleErrNoContent', '.')
-            res.redirect('back')
-        }else {
             Article.create({
 
                 title: req.body.title,
@@ -57,6 +53,12 @@ module.exports = {
                 }
     
             })
+            
+        }else {
+
+            console.log('article err ');
+            req.flash('ArticleErrNoContent', '.')
+            res.redirect('/')
         }
         
     },
