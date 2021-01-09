@@ -14,9 +14,8 @@ const User = require('../../db/User'),
         port: '587',
         secure: true,
         auth: {
-            user: "noytest.test@gmail.com",
-            pass: keys.mdpMailer
-        },
+            user: "noydono.dev@gmail.com",
+            pass: process.env.MPDEMAIL,
         tls: {
             rejectUnauthorized: false
         }
@@ -105,7 +104,7 @@ module.exports = {
                                 rand = Math.floor((Math.random() * 100) + 54)
                                 link = "http://" + "theclaviste.noydono.fr" + "/verify/" + rand
                                 mailOptions = {
-                                    from: 'noytest.test@gmail.com',
+                                    from: 'noydono.dev@gmail.com',
                                     to: req.body.email,
                                     subject: "The Clavist Email de Verification",
                                     rand: rand,
@@ -166,7 +165,7 @@ module.exports = {
                                 host = 'theclaviste.noydono.fr'
                                 link = "http://" + "theclaviste.noydono.fr" + "/verify/" + rand
                                 mailOptions = {
-                                    from: 'noytest.test@gmail.com',
+                                    from: 'noydono.dev@gmail.com',
                                     to: req.body.email,
                                     subject: "The Clavist Email de Verification",
                                     rand: rand,
