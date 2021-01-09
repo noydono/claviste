@@ -15,7 +15,8 @@ const User = require('../../db/User'),
         secure: true,
         auth: {
             user: "noydono.dev@gmail.com",
-            pass: process.env.MPDEMAIL,
+            pass:  process.env.MPDEMAIL
+        },
         tls: {
             rejectUnauthorized: false
         }
