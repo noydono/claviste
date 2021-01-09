@@ -3,15 +3,14 @@ const User = require('../../db/User'),
     path = require('path'),
     fs = require('fs'),
     nodemailer = require('nodemailer'),
-    keys = require('../../../config/keys'),
     transporter = nodemailer.createTransport({
         host: "smtp.gmail.com",
         service: 'gmail',
         port: '587',
         secure: false,
         auth: {
-            user: "noytest.test@gmail.com",
-            pass: keys.mdpMailer
+            user: "noydono.dev@gmail.com",
+            pass: process.env.MPDEMAIL
         },
         tls: {
             rejectUnauthorized: false
@@ -29,7 +28,7 @@ module.exports = {
         host = 'z'
         link = "http://" + 'theclaviste.noydono.fr' + "/mdpOublier/" + rand
         mailOptions = {
-            from: 'noytest.test@gmail.com',
+            from: 'noydono.dev@gmail.com',
             to: req.body.email,
             subject: "Mot de passe Oublier",
             rand: rand,

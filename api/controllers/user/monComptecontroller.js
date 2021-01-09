@@ -7,9 +7,7 @@ const User = require('../../db/User'),
     bcrypt = require('bcrypt'),
     path = require('path'),
     fs = require('fs'),
-    nodemailer = require('nodemailer'),
-    keys = require('../../../config/keys')
-
+    nodemailer = require('nodemailer')
 
 
 
