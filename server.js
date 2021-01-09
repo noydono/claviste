@@ -23,8 +23,7 @@ const express = require('express'),
 /*
  *   api
  * * * * * */
-const ROUTER = require('./api/router'),
-    keys = require('./config/keys')
+const ROUTER = require('./api/router')
 
 app.use(helmet())
 
