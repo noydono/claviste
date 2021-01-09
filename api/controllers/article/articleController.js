@@ -27,31 +27,38 @@ module.exports = {
 
         }
 
-        Article.create({
+        if(!arrFiles && !req.body.title && ! req.body.content){
+            console.log('article crée');
+            req.flash('ArticleErrNoContent', '.')
+            res.redirect('back')
+        }else {
+            Article.create({
 
-            title: req.body.title,
-            content: req.body.content,
-            author: req.body.author,
-            cover: arrFiles[0].img,
-            nameCover: arrFiles[0].nameImg,
-            callery: arrFiles,
-            createDate: new Date(),
-            signal: []
-
-        }, (err, post) => {
-
-            if (err) {
-                console.log('article nest pas post ' + err);
-                req.flash('ArticleErr', '.')
-                res.redirect('/')
-
-            } else {
-                console.log('article crée');
-                req.flash('ArticleC', '.')
-                res.redirect('/')
-            }
-
-        })
+                title: req.body.title,
+                content: req.body.content,
+                author: req.body.author,
+                cover: arrFiles[0].img,
+                nameCover: arrFiles[0].nameImg,
+                callery: arrFiles,
+                createDate: new Date(),
+                signal: []
+    
+            }, (err, post) => {
+    
+                if (err) {
+                    console.log('article nest pas post ' + err);
+                    req.flash('ArticleErr', '.')
+                    res.redirect('/')
+    
+                } else {
+                    console.log('article crée');
+                    req.flash('ArticleC', '.')
+                    res.redirect('/')
+                }
+    
+            })
+        }
+        
     },
     update: async (req, res) => {
 

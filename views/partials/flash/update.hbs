@@ -223,6 +223,16 @@
 </script>
 {{/if}}
 
+{{#if ArticleErrNoContent}}
+<script>
+
+    window.onload = function login() {
+        var toastHTML = '<span>Veuillez remplire tout les champs pour crée un article</span>';
+        M.toast({ html: toastHTML});
+    }
+</script>
+{{/if}}
+
 {{#if ArticleC}}
 <script>
 

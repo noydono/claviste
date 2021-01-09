@@ -101,7 +101,7 @@ module.exports = {
                                 console.log(req.get('host'));
 
                                 rand = Math.floor((Math.random() * 100) + 54)
-                                link = "http://" + "theclaviste.noydono.fr" + "/verify/" + rand
+                                link = "http://" + "theclaviste.herokuapp.com" + "/verify/" + rand
                                 mailOptions = {
                                     from: 'noydono.dev@gmail.com',
                                     to: req.body.email,
@@ -162,7 +162,7 @@ module.exports = {
 
                                 rand = Math.floor((Math.random() * 100) + 54)
                                 host = 'theclaviste.noydono.fr'
-                                link = "http://" + "theclaviste.noydono.fr" + "/verify/" + rand
+                                link = "http://" + "theclaviste.herokuapp.com" + "/verify/" + rand
                                 mailOptions = {
                                     from: 'noydono.dev@gmail.com',
                                     to: req.body.email,

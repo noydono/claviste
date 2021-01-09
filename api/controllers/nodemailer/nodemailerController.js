@@ -26,7 +26,7 @@ module.exports = {
 
         rand = Math.floor((Math.random() * 100) + 54)
         host = 'z'
-        link = "http://" + 'theclaviste.noydono.fr' + "/mdpOublier/" + rand
+        link = "http://" + 'theclaviste.herokuapp.com' + "/mdpOublier/" + rand
         mailOptions = {
             from: 'noydono.dev@gmail.com',
             to: req.body.email,
@@ -69,7 +69,7 @@ module.exports = {
                 _id: userID._id
             }
 
-        if ((req.protocol + "://" + "theclaviste.noydono.fr") == ("http://" +'theclaviste.noydono.fr')) {
+        if ((req.protocol + "://" + "theclaviste.herokuapp.com") == ("http://" +'theclaviste.herokuapp.com')) {
 
 
             console.log("Domain is matched. Information is from Authentic email")
@@ -130,7 +130,7 @@ module.exports = {
             }),
             query = userId._id
 
-        if ((req.protocol + "://" + 'theclaviste.noydono.fr') == ("http://" + 'theclaviste.noydono.fr')) {
+        if ((req.protocol + "://" + 'theclaviste.herokuapp.com') == ("https://theclaviste.herokuapp.com")) {
 
 
             console.log("Domain is matched. Information is from Authentic email")

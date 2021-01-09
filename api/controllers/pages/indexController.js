@@ -50,6 +50,7 @@ module.exports = {
             addVerifPost : req.flash('addVerifPost'),
             verifOk: req.flash('verifOk'),
             mdpOublierC : req.flash('mdpOublierC'),
+            ArticleErrNoContent : req.flash('ArticleErrNoContent')
             
             
         })
